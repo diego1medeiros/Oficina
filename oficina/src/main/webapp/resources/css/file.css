@@ -1,0 +1,43 @@
+
+@charset "UTF-8";
+body {
+  background-color: rgb(0, 255, 255);
+}
+
+body {
+	font-size:12px;
+	font-family: "Helvetica Nelvetica", Arial, sans-serif;
+	margin:20px
+}
+
+body {
+	background-image: url("resources/imagens/fundo-png.jpg");
+}
+
+
+.cabecalho {
+
+   text-align: center;
+
+   font: 11px Arial, sans-serif;
+
+   font-weight: bold;
+
+   color: Snow;
+
+   background:  #008B45;
+
+}
+
+
+.datatable {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.column {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+.column :hover {background-color: coral;}

@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+.cabecalho {
+
+   text-align: center;
+
+   font: 11px Arial, sans-serif;
+
+   font-weight: bold;
+
+   color: Snow;
+
+   background:  #008B45;
+
+}
+.tabela {
+
+     border: 1px solid green;
+
+}

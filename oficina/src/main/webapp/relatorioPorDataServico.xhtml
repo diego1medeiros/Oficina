@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<h:outputScript library="js" name="locale-primefaces.js"/>
+	<title>Sistema de Oficina</title>
+</h:head>
+
+<ui:composition template="/_template.html">
+	<ui:define name="titulo">
+	</ui:define>
+	<ui:define name="conteudo">
+		<h:body>
+			<center>
+				<h1>Buscar Serviços</h1>
+			</center>
+			<h:form id="form">
+				<p:growl  showDetail="true" />
+				<p:panel>
+					<p:panelGrid columns="8" layout="grid" styleClass="ui-fluid"
+						columnClasses="ui-grid-col-1,ui-grid-col-3, ui-grid-col-1,ui-grid-col-3,ui-grid-col-1,ui-grid-col-3,ui-grid-col-1,ui-grid-col-3">
+						<p:outputLabel for="dataServico" value="Data do Serviço" />
+						<p:datePicker id="dataServico" showIcon="true" 
+							value="#{servicobean.servico.data}" locale="pt_BR" />
+
+						<p:outputLabel for="dataEntrega" value="Data do Entrega" />
+						<p:datePicker id="dataEntrega" showIcon="true"
+							value="#{servicobean.servico.dataEntrega}"  pattern="dd/MM/yyyy" locale="pt_BR" />
+
+
+
+						<p:outputLabel for="pago" value="Pago" />
+						<p:selectOneMenu id="pago" value="#{servicobean.servico.pago}">
+							<f:selectItem itemLabel="Todos" itemValue="2" />
+							<f:selectItem itemLabel="Sim" itemValue="1" />
+							<f:selectItem itemLabel="Não" itemValue="0" />
+						</p:selectOneMenu>
+					</p:panelGrid>
+				</p:panel>
+				<p:commandButton value="Pesquisar" icon="pi pi-search"
+					id="pesquisar"
+					actionListener="#{servicobean.buscarServicosPorData}"
+					update="form tabelaServico" process="@form" />
+				<p:tooltip for="pesquisar" value="Pesquisar Serviço"
+					showEffect="clip" hideEffect="fold" />
+				<font></font>
+				<font></font>
+				<font></font>
+				<font></font>
+				<p:commandButton value="Imprimir"
+					action="#{servicobean.imprimirServicoPorData}" id="imprimir"
+					icon="pi pi-print" update="tabelaServico" process="@this">
+					<p:tooltip for="imprimir" value="Imprimir Relatorio"
+						showEffect="clip" hideEffect="fold" />
+				</p:commandButton>
+				<center>
+					<h1>Lista de Serviço</h1>
+				</center>
+				<p:dataTable value="#{servicobean.servicosPorData}" var="s"
+					id="tabelaServico" paginator="true" rows="7"  stickyHeader="true" stickyTopAt=".layout-topbar">
+					<p:column headerText="Funcionario">
+						<h:outputText value="#{s.nomeFuncionario}" />
+					</p:column>
+					<p:column headerText="Cliente">
+						<h:outputText value="#{s.nomeCliente}" />
+					</p:column>
+					<p:column headerText="Modelo">
+						<h:outputText value="#{s.modelo}" />
+					</p:column>
+					<p:column headerText="Data do Serviço">
+						<h:outputText value="#{s.dataServico}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</h:outputText>
+					</p:column>
+					<p:column headerText="Data da Entrega">
+						<h:outputText value="#{s.dataEntrega}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</h:outputText>
+					</p:column>
+					<p:column headerText="Valor">
+						<h:outputText value="#{s.valor}">
+							<f:convertNumber type="currency" />
+						</h:outputText>
+					</p:column>
+					<p:column headerText="Pago">
+						<h:outputText value="#{s.pago}" />
+					</p:column>
+					<p:column headerText="Status" width="100">
+						<h:outputText value="#{s.status}" />
+					</p:column>
+					<p:column headerText="Descrição">
+						<h:outputText value="#{s.descricao}" />
+					</p:column>
+					<p:column headerText="Observação">
+						<h:outputText value="#{s.observacoes}" />
+					</p:column>
+
+
+				</p:dataTable>
+			</h:form>
+		</h:body>
+	</ui:define>
+</ui:composition>
+
+</html>

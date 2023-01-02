@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<h:outputStylesheet library="css" name="estilo.css" />
+   <link rel="stylesheet" type="text/css"  href="css/estilo.css"/>  
+<title>Sistema de Oficina</title>
+</head>
+
+
+<ui:composition template="/_template.html">
+	<ui:define name="titulo">
+		<h1>Cadastro de Serviço</h1>
+	</ui:define>
+
+	<ui:define name="conteudo">
+
+		<h:body>
+			<h:form id="form">
+				<p:growl showDetail="true" />
+				<p:separator />
+				<p:panel>
+					<p:panelGrid columns="6" layout="grid" styleClass="ui-fluid"
+						columnClasses="ui-grid-col-1,ui-grid-col-3,ui-grid-col-1,ui-grid-col-3,ui-grid-col-1,ui-grid-col-3">
+
+						<p:outputLabel value="Funcionario" for="funcionario" />
+						<p:selectOneMenu id="funcionario" required="true"
+							requiredMessage="A funcionario e obrigatório !!"
+							value="#{servicobean.servico.funcionario.idFuncionario}"
+							size="19" converter="#{servicoConverter}">
+							<f:selectItem itemLabel="Selecione o funcionario"
+								noSelectionOption="true" />
+							<f:selectItems value="#{servicobean.lista}" />
+						</p:selectOneMenu>
+
+						<p:outputLabel value="Cliente" for="cliente" />
+						<p:selectOneMenu value="#{servicobean.servico.cliente.idCliente}"
+							id="cliente" converter="#{veiculoConverter}" required="true"
+							requiredMessage="O cliente e Obrigatorio!!" size="30">
+							<f:selectItem itemLabel="Selecione o cliente"
+								noSelectionOption="true" />
+							<f:selectItems value="#{veiculobean.lista}" />
+						</p:selectOneMenu>
+
+						<p:outputLabel value="Modelo" for="modelo" />
+						<p:selectOneMenu value="#{servicobean.servico.veiculo.idVeiculo}"
+							required="true" requiredMessage="O veiculo e Obrigatorio!!"
+							size="30">
+							<f:selectItem itemLabel="Selecione o modelo"
+								noSelectionOption="true" />
+							<f:selectItems value="#{servicobean.modelo}" id="modelo" />
+						</p:selectOneMenu>
+
+						<p:outputLabel for="dataServico" value="Data do Serviço" />
+						<p:datePicker id="dataServico" value="#{servicobean.servico.data}" 
+							showIcon="true" />
+
+						<p:outputLabel for="dataEntrega" value="Data do Entrega" />
+						<p:datePicker id="dataEntrega"
+							value="#{servicobean.servico.dataEntrega}" showIcon="true" />
+
+						<p:outputLabel for="valor" value="Valor" />
+						<p:inputNumber id="valor" value="#{servicobean.servico.valor}"
+							roundMethod="S" decimalPlaces="2" symbol="R$" required="true"
+							requiredMessage="O valor e Obrigatorio!!" decimalSeparator=","
+							thousandSeparator="." readonly="false" />
+
+						<p:outputLabel for="pago" value="Pago" />
+						<p:selectBooleanButton onLabel="Sim" offLabel="Não" id="pago"
+							value="#{servicobean.checked}" onIcon="pi pi-check"
+							offIcon="pi pi-times" style="width:6rem" />
+
+						<p:outputLabel value="Status" for="status" />
+						<p:selectOneMenu value="#{servicobean.servico.status}"
+							required="true" requiredMessage="O status e Obrigatorio!!"
+							size="30">
+							<f:selectItem itemLabel="Selecione o status"
+								noSelectionOption="true" />
+							<f:selectItems value="#{servicobean.carregarStatus}" id="status" />
+						</p:selectOneMenu>
+
+						<p:outputLabel value="Descrição do Serviço" for="descricao" />
+						<p:selectOneMenu value="#{servicobean.servico.descricao}"
+							required="true" requiredMessage="O descrição e Obrigatorio!!">
+							<f:selectItem itemLabel="Selecione o descrição"
+								noSelectionOption="true" />
+							<f:selectItems value="#{servicobean.descricao}" id="descricao"
+								var="v" itemValue="#{s}" itemLabel="#{s}" />
+						</p:selectOneMenu>
+
+						<p:outputLabel value="Observação" for="obs" />
+						<p:inputTextarea id="obs"
+							value="#{servicobean.servico.observacoes}" />
+					</p:panelGrid>
+				</p:panel>
+				<p:separator />
+				<p:commandButton value="Salvar" icon="pi pi-save" id="salvar"
+					action="#{servicobean.cadastrarServico}"
+					update="form tabelaServico" style="margin-tpo:10pix"
+					process="@form" />
+				<p:tooltip for="salvar" value="Salvar Serviço" showEffect="clip"
+					hideEffect="fold" />
+				<font></font>
+				<font></font>
+				<font></font>
+				<font></font>
+				<p:commandButton value="Pesquisar"
+					oncomplete="PF('pesquisarServico').show()" icon="pi pi-search"
+					id="pesquisar" />
+				<p:tooltip for="pesquisar" value="Pesquisar Serviço"
+					showEffect="clip" hideEffect="fold" />
+				<font></font>
+				<font></font>
+				<font></font>
+				<p:commandButton value="Imprimir"
+					action="#{servicobean.imprimirRelatorioServico}" id="imprimir"
+					icon="pi pi-print" update="form tabelaServico" process="@this">
+					<p:tooltip for="imprimir" value="Imprimir Relatorio"
+						showEffect="clip" hideEffect="fold" />
+				</p:commandButton>
+				<font></font>
+				<font></font>
+
+				<p:commandButton value="Download" icon="pi pi-arrow-down"
+					action="#{servicobean.gerarPdf}" id="download"
+					update="form tabelaServico" process="@this">
+					<p:tooltip for="download" value="Download Relatorio"
+						showEffect="clip" hideEffect="fold" />
+				</p:commandButton>
+				<p:separator />
+			</h:form>
+
+			<p:dialog header="Pesquisar Serviço" widgetVar="pesquisarServico"
+				modal="true" resizable="false" closeOnEscape="true">
+				<h:form id="form1">
+					<p:messages autoUpdate="true" id="msg" />
+					<p:panel>
+						<p:panelGrid columns="8" layout="grid" styleClass="ui-fluid"
+							columnClasses="ui-grid-col-1,ui-grid-col-3,ui-grid-col-1,ui-grid-col-3,ui-grid-col-1,ui-grid-col-3">
+
+							<p:outputLabel value="Funcionario" for="funcionario" />
+							<p:inputMask id="funcionario" placeholder="Insira o funcionario"
+								value="#{servicobean.servico.funcionario.nome}" size="15" />
+
+							<p:outputLabel value="Cliente" for="cliente" />
+							<p:inputMask id="cliente" placeholder="Insira o cliente"
+								value="#{servicobean.servico.cliente.nome}" size="15" />
+
+							<p:outputLabel value="Modelo" for="modelo" />
+							<p:inputMask id="modelo" placeholder="Insira o modelo"
+								value="#{servicobean.servico.veiculo.modelo}" size="15" />
+
+							<p:outputLabel for="dataServico" value="Data do Serviço" />
+							<p:datePicker id="dataServico"
+								value="#{servicobean.servico.data}" showIcon="true" />
+
+							<p:outputLabel for="dataEntrega" value="Data do Entrega" />
+							<p:datePicker id="dataEntrega"
+								value="#{servicobean.servico.dataEntrega}" showIcon="true" />
+
+							<p:outputLabel for="valor" value="Valor" />
+							<p:inputNumber id="valor" value="#{servicobean.servico.valor}"
+								symbol=" R$" symbolPosition="s" decimalSeparator=","
+								thousandSeparator="." />
+
+							<p:outputLabel for="pago" value="Pago" />
+							<p:selectBooleanButton onLabel="Sim" offLabel="Não" id="pago"
+								value="#{servicobean.checked}" onIcon="pi pi-check"
+								offIcon="pi pi-times" style="width:6rem" />
+
+							<p:outputLabel value="Status" for="status" />
+							<p:selectOneMenu value="#{servicobean.servico.status}" size="30">
+								<f:selectItem itemLabel="Selecione o status"
+									noSelectionOption="true" />
+								<f:selectItems value="#{servicobean.carregarStatus}" id="status" />
+							</p:selectOneMenu>
+
+							<p:outputLabel value="Descrição do Serviço" for="descricao" />
+							<p:selectOneMenu value="#{servicobean.servico.descricao}">
+								<f:selectItem itemLabel="Selecione o descrição"
+									noSelectionOption="true" />
+								<f:selectItems value="#{servicobean.descricao}" id="descricao"
+									var="v" itemValue="#{s}" itemLabel="#{s}" />
+							</p:selectOneMenu>
+
+							<p:outputLabel value="Observação" for="obs" />
+							<p:inputTextarea id="obs"
+								value="#{servicobean.servico.observacoes}" />
+						</p:panelGrid>
+					</p:panel>
+					<p:separator />
+					<font></font>
+					<font></font>
+					<p:commandButton icon="pi pi-search" id="pesquisar"
+						actionListener="#{servicobean.pesquisarServico}"
+						update="form tabelaServico" process="@form"
+						oncomplete="PF('pesquisarServico').hide()" />
+					<p:tooltip for="pesquisar" value="Pesquisar Serviço"
+						showEffect="clip" hideEffect="fold" />
+
+				</h:form>
+			</p:dialog>
+			<center>
+				<h1>Lista de Serviço</h1>
+			</center>
+
+			<p:dataTable value="#{servicobean.servicos}" var="s" headerClass="cabecalho" styleClass="tabela"
+				id="tabelaServico" paginator="true" rows="5" stickyHeader="true"
+				stickyTopAt=".layout-topbar">
+				<p:column headerText="Funcionario">
+					<h:outputText value="#{s.funcionario.nome}" />
+				</p:column>
+				<p:column headerText="Cliente">
+					<h:outputText value="#{s.cliente.nome}" />
+				</p:column>
+				<p:column headerText="Modelo">
+					<h:outputText value="#{s.veiculo.modelo}" />
+				</p:column>
+
+				<p:column headerText="Data do Serviço">
+					<h:outputText value="#{s.data}">
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</h:outputText>
+				</p:column>
+				<p:column headerText="Data da Entrega">
+					<h:outputText value="#{s.dataEntrega}">
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</h:outputText>
+				</p:column>
+
+				<p:column headerText="Valor">
+					<h:outputText value="#{s.valor}">
+						<f:convertNumber type="currency" />
+					</h:outputText>
+				</p:column>
+				<p:column headerText="Pago">
+					<h:outputText value="#{servicobean.formatarServicoPago}" />
+				</p:column>
+				<p:column headerText="Status" width="100">
+					<h:outputText value="#{s.status}" />
+				</p:column>
+				<p:column headerText="Descrição">
+					<h:outputText value="#{s.descricao}" />
+				</p:column>
+				<p:column headerText="Observação">
+					<h:outputText value="#{s.observacoes}" />
+				</p:column>
+
+				<p:column headerText="" width="100">
+					<p:commandButton icon="pi pi-pencil" update="form tabelaServico"
+						id="atualizar" process="@this">
+						<f:setPropertyActionListener value="#{s}"
+							target="#{servicobean.servico}" />
+						<p:tooltip for="atualizar" value="Editar Serviço"
+							showEffect="clip" hideEffect="fold" />
+
+					</p:commandButton>
+					<font></font>
+
+					<p:commandButton action="#{servicobean.excluirServico(s)}"
+						styleClass="ui-button-danger" id="excluir" icon="pi pi-trash"
+						update="tabelaServico" process="@this">
+						<f:setPropertyActionListener value="#{s}"
+							target="#{servicobean.servico}" />
+						<p:tooltip for="excluir" value="Excluir Serviço" showEffect="clip"
+							hideEffect="fold" />
+
+					</p:commandButton>
+					<p:separator />
+					<p:commandButton action="#{servicobean.ordemServico(s)}"
+						styleClass="ui-button-help mr-2" id="animate" icon="pi pi-print"
+						update="tabelaServico" process="@this">
+						<f:setPropertyActionListener value="#{s}"
+							target="#{servicobean.servico}" />
+						<p:tooltip for="animate" value="Imprimir O.S." showEffect="clip"
+							hideEffect="fold" />
+
+					</p:commandButton>
+					<font></font>
+
+					<font></font>
+					<p:commandButton action="#{servicobean.imprimirContrato(s)}"
+						styleClass="ui-button-warning mr-2" id="contrato"
+						icon="pi pi-book" update="tabelaServico" process="@this">
+						<f:setPropertyActionListener value="#{s}"
+							target="#{servicobean.servico}" />
+						<p:tooltip for="contrato" value="Imprimir contrato"
+							showEffect="clip" hideEffect="fold" />
+
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+		</h:body>
+	</ui:define>
+</ui:composition>
+</html>

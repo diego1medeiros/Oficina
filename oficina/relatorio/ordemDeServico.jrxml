@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ordemDeServico" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="13acf49e-4913-4d1b-bccc-113817ad15d1">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Oficina-Medeiros"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT "SERVICO"."ID_SERVICO",
+	"SERVICO"."DATA",
+	"SERVICO"."DESCRICAO",
+	"SERVICO"."DATE_ENTREGA",
+	"SERVICO"."VALOR",
+	"SERVICO"."STATUS",
+	"SERVICO"."PAGO",
+	"SERVICO"."OBSERVACOES",
+	"FUNCIONARIO"."FUNCAO",
+	"FUNCIONARIO"."NOME",
+	"FUNCIONARIO"."CPF",
+	"FUNCIONARIO"."TELEFONE",
+	"FUNCIONARIO"."EMAIL",
+	"FUNCIONARIO"."ENDERECO",
+	"CLIENTE"."NOME",
+	"CLIENTE"."CPF",
+	"CLIENTE"."TELEFONE",
+	"CLIENTE"."EMAIL",
+	"CLIENTE"."ENDERECO",
+	"VEICULO"."TIPO",
+	"VEICULO"."NOME",
+	"VEICULO"."MARCA",
+	"VEICULO"."ANO"
+FROM "SERVICO"
+	INNER JOIN "FUNCIONARIO" ON 
+	 "SERVICO"."ID_FUNCIONARIO" = "FUNCIONARIO"."ID_FUNCIONARIO" 
+	INNER JOIN "CLIENTE" ON 
+	 "SERVICO"."ID_CLIENTE" = "CLIENTE"."ID_CLIENTE" 
+	
+	INNER JOIN "VEICULO" ON 
+	 "SERVICO"."ID_VEICULO" = "VEICULO"."ID_VEICULO"]]>
+	</queryString>
+	<field name="ID_SERVICO" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="ID_SERVICO"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SERVICO"/>
+		<fieldDescription><![CDATA[idServico]]></fieldDescription>
+	</field>
+	<field name="DATA" class="java.util.Date">
+		<property name="com.jaspersoft.studio.field.label" value="DATA"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SERVICO"/>
+		<fieldDescription><![CDATA[data]]></fieldDescription>
+	</field>
+	<field name="DESCRICAO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="DESCRICAO"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SERVICO"/>
+		<fieldDescription><![CDATA[descricao]]></fieldDescription>
+	</field>
+	<field name="DATE_ENTREGA" class="java.util.Date">
+		<property name="com.jaspersoft.studio.field.label" value="DATE_ENTREGA"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SERVICO"/>
+		<fieldDescription><![CDATA[dataEntrega]]></fieldDescription>
+	</field>
+	<field name="VALOR" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="VALOR"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SERVICO"/>
+		<fieldDescription><![CDATA[valor]]></fieldDescription>
+	</field>
+	<field name="STATUS" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="STATUS"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SERVICO"/>
+		<fieldDescription><![CDATA[status]]></fieldDescription>
+	</field>
+	<field name="PAGO" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="PAGO"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SERVICO"/>
+		<fieldDescription><![CDATA[pago]]></fieldDescription>
+	</field>
+	<field name="OBSERVACOES" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="OBSERVACOES"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SERVICO"/>
+		<fieldDescription><![CDATA[observacoes]]></fieldDescription>
+	</field>
+	<field name="FUNCAO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="FUNCAO"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="FUNCIONARIO"/>
+		<fieldDescription><![CDATA[funcionario.funcao]]></fieldDescription>
+	</field>
+	<field name="NOME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="NOME"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="FUNCIONARIO"/>
+		<fieldDescription><![CDATA[funcionario.nome]]></fieldDescription>
+	</field>
+	<field name="CPF" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CPF"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="FUNCIONARIO"/>
+		<fieldDescription><![CDATA[funcionario.cpf]]></fieldDescription>
+	</field>
+	<field name="TELEFONE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="TELEFONE"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="FUNCIONARIO"/>
+		<fieldDescription><![CDATA[funcionario.telefone]]></fieldDescription>
+	</field>
+	<field name="EMAIL" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="EMAIL"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="FUNCIONARIO"/>
+		<fieldDescription><![CDATA[funcionario.email]]></fieldDescription>
+	</field>
+	<field name="ENDERECO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ENDERECO"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="FUNCIONARIO"/>
+		<fieldDescription><![CDATA[funcionario.endereco]]></fieldDescription>
+	</field>
+	<field name="COLUMN_15" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="NOME"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="CLIENTE"/>
+		<fieldDescription><![CDATA[cliente.nome]]></fieldDescription>
+	</field>
+	<field name="COLUMN_16" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CPF"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="CLIENTE"/>
+		<fieldDescription><![CDATA[cliente.cpf]]></fieldDescription>
+	</field>
+	<field name="COLUMN_17" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="TELEFONE"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="CLIENTE"/>
+		<fieldDescription><![CDATA[cliente.telefone]]></fieldDescription>
+	</field>
+	<field name="COLUMN_18" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="EMAIL"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="CLIENTE"/>
+		<fieldDescription><![CDATA[cliente.email]]></fieldDescription>
+	</field>
+	<field name="COLUMN_19" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ENDERECO"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="CLIENTE"/>
+		<fieldDescription><![CDATA[cliente.endereco]]></fieldDescription>
+	</field>
+	<field name="TIPO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="TIPO"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="VEICULO"/>
+		<fieldDescription><![CDATA[veiculo.tipo]]></fieldDescription>
+	</field>
+	<field name="COLUMN_21" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="NOME"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="VEICULO"/>
+		<fieldDescription><![CDATA[veiculo.modelo]]></fieldDescription>
+	</field>
+	<field name="MARCA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="MARCA"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="VEICULO"/>
+		<fieldDescription><![CDATA[veiculo.marca]]></fieldDescription>
+	</field>
+	<field name="ANO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ANO"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="VEICULO"/>
+		<fieldDescription><![CDATA[veiculo.ano]]></fieldDescription>
+	</field>
+	<title>
+		<band height="115" splitType="Stretch">
+			<staticText>
+				<reportElement x="110" y="10" width="360" height="30" forecolor="#381919" uuid="f6e05b0e-591f-44db-875b-5a05c964ae26"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Double"/>
+				</box>
+				<textElement>
+					<font size="18" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[    REGISTRO DE ORDEM DE SERVIÇO ]]></text>
+			</staticText>
+			<image>
+				<reportElement x="2" y="10" width="90" height="90" uuid="2b78aa7c-fc07-498b-b36d-c02f4270271e"/>
+				<imageExpression><![CDATA["C:/Users/diego/Downloads/worm-gear-icon.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="100" y="50" width="220" height="41" backcolor="#B8ADAD" uuid="30cdc0ba-637c-4745-b407-9afe72362a94"/>
+				<textElement>
+					<font size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[OFICINA MEDEIROS
+CNPJ: 12.345.678/0001-0
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="392" y="53" width="52" height="27" uuid="04838014-adbd-4ae7-be60-aeed83797310"/>
+				<textElement>
+					<font size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[O.SN°:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="445" y="52" width="68" height="18" uuid="02941547-8733-42df-97a8-58c64166f0c5"/>
+				<textElement>
+					<font size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ID_SERVICO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="345" y="69" width="125" height="21" uuid="8e2f2dde-d60c-4f2b-af0b-4eb3513977d8"/>
+				<textElement>
+					<font size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Data de abertura]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="470" y="70" width="100" height="30" uuid="54d60ebe-746b-4168-8390-1cb2b0a5153e"/>
+				<textElement>
+					<font size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DATA}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="654" splitType="Stretch">
+			<rectangle>
+				<reportElement x="2" y="5" width="551" height="135" uuid="96c65653-a548-4438-bbc1-048139b942fc"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="170" y="15" width="230" height="25" uuid="8c23e522-66d5-488e-92cd-ed11e07152c3"/>
+				<textElement>
+					<font size="16" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[DADOS DO CLIENTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="49" width="80" height="101" uuid="9702a6ea-0bbc-4483-8d0c-bcfa3cf3797b"/>
+				<textElement>
+					<font size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Nome:                                     Endereço:                                Telefone:                                 Cpf:                                          E-mail: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="92" y="49" width="188" height="22" uuid="c653e52d-3ccc-4e0a-b0dd-9ee9f4388394"/>
+				<textElement>
+					<font size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{COLUMN_15}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="86" y="102" width="100" height="30" uuid="ba48fcff-7792-428b-bc04-28eddc8d190b"/>
+				<textElement>
+					<font size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{COLUMN_16}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="89" y="86" width="191" height="30" uuid="f7d4c7f0-3b32-4809-96cd-dccbbf027740"/>
+				<textElement>
+					<font size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{COLUMN_17}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="87" y="119" width="263" height="30" uuid="3da9f112-71c4-41fb-b29b-a9637a6c44c0"/>
+				<textElement>
+					<font size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{COLUMN_18}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="90" y="68" width="200" height="30" uuid="329aa940-fefc-4b4a-883e-23bc3181778a"/>
+				<textElement>
+					<font size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{COLUMN_19}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="2" y="152" width="551" height="160" uuid="4d4f50be-a402-42d3-a6e3-d5ed9eb96172"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="317" width="551" height="148" uuid="2793aecc-f386-419f-b2a2-b763ec1b128c"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="146" y="157" width="280" height="36" uuid="0f74e441-c970-44ec-a6a7-bf96b60990d6"/>
+				<textElement>
+					<font size="16" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[INFORMAÇÕES DO SERVICO
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="194" width="126" height="130" uuid="49fe4089-0a2f-4caf-b8e2-1e5ff5290b08"/>
+				<textElement>
+					<font size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Data do Serviço:                 Data da Entrega:                                   Status:                                            Pago:                                   Descrição:                                    Observações]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="140" y="198" width="100" height="20" uuid="8094b09b-6ce2-47b7-b699-1d0c9e2fe73c"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DATA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="214" width="100" height="20" uuid="63d95c21-6838-4fe9-90fc-cab5217c1528"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DATE_ENTREGA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="232" width="220" height="20" uuid="6c0ddec5-6a63-4788-9c43-9db3f0d9f4f1"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{STATUS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="248" width="100" height="20" uuid="24b28c94-bf1f-403d-846f-b6537e3273e4"/>
+				<textElement>
+					<font size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PAGO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="265" width="260" height="30" uuid="47154575-cda4-4108-a928-11adae50dcdd"/>
+				<textElement>
+					<font size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DESCRICAO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="282" width="270" height="30" uuid="7abc3a27-e290-4874-a3a1-0a3fbaa3406a"/>
+				<textElement>
+					<font size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{OBSERVACOES}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="357" width="101" height="111" uuid="e8fa8d67-6aad-435f-98c5-ebc036c54598"/>
+				<textElement>
+					<font size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Nome:
+Funcao:
+CPF:
+Telefone:
+Email:
+Endereco:
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="140" y="324" width="270" height="30" uuid="53ff8140-60a2-4781-af09-1cd401b02165"/>
+				<textElement>
+					<font size="16" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[DADOS FUNCIONARIO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="120" y="357" width="220" height="23" uuid="467d81e1-c3c0-4af1-864e-9ada757b082b"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NOME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="377" width="210" height="20" uuid="651e1d4b-4843-44ad-81de-fbb9fb29ce66"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FUNCAO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="395" width="225" height="20" uuid="0dd792a7-d0ce-467a-ba81-cbb9df2e01c3"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CPF}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="412" width="220" height="20" uuid="9b4d5edc-2f0d-40a7-ab80-167c0c9c6b56"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TELEFONE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="430" width="250" height="18" uuid="a480972c-ef37-40a5-b0db-c76b8f284fa7"/>
+				<textElement>
+					<font size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EMAIL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="446" width="100" height="18" uuid="98ece61a-1d99-415e-b900-ae33b7a69dcb"/>
+				<textElement>
+					<font size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ENDERECO}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="10" y="490" width="551" height="160" uuid="ccda9dcd-67b0-4002-82d3-a5c2909223f2"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="30" y="520" width="101" height="21" uuid="be2e25a4-0526-4e69-bde9-dfafb06581bf"/>
+				<textElement>
+					<font size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Valor Total R$:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="134" y="520" width="100" height="21" uuid="9447afb0-aff1-4cae-8e77-722f4713b8ef"/>
+				<textElement>
+					<font size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{VALOR}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="60" y="620" width="191" height="21" uuid="0d3395b3-176d-42e3-af6a-c20af1f2dafd"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Assinatura do Cliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="620" width="221" height="21" uuid="d5a6b915-fde7-4dc7-8315-5f0949021bec"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Assinatura Responsável Técnico]]></text>
+			</staticText>
+			<line>
+				<reportElement x="280" y="620" width="245" height="1" uuid="b238335e-0d31-4879-ba7a-3ead6d309463"/>
+			</line>
+			<line>
+				<reportElement x="20" y="620" width="245" height="1" uuid="b1d226d8-4011-498b-8899-9f91ea39f37b"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="3" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="1133a906-5b71-476e-9f3e-bc97c97058c1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="1" width="555" height="24" forecolor="#D0B48E" backcolor="#000000" uuid="729c3539-f946-4d0e-a0a7-bda2815ea1b0"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="513" y="0" width="40" height="20" forecolor="#FFFFFF" uuid="4834e99c-7f6c-485a-b098-50e5187f2ab4"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="433" y="0" width="80" height="20" forecolor="#FFFFFF" uuid="9825b46e-76f1-469a-abb8-a1cc27aad685"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="1" width="197" height="20" forecolor="#FFFFFF" uuid="137d38c7-1a83-4fc5-b156-9d5f1b1a0ddc"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
