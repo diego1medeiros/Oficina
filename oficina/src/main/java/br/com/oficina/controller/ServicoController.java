@@ -50,16 +50,6 @@ public class ServicoController implements Serializable {
 
 	private List<ServicoVo> servicosPorData = new ArrayList<>();
 
-	private String servicoPago;
-
-	public String getServicoPago() {
-		return servicoPago;
-	}
-
-	public void setServicoPago(String servicoPago) {
-		this.servicoPago = servicoPago;
-	}
-
 	public List<Servico> buscarDadosDosServicos(Servico servico) {
 		return servicoServiceImpl.buscarDadosDosServicos(servico);
 	}
@@ -194,6 +184,7 @@ public class ServicoController implements Serializable {
 		List<Funcionario> funcionarios = funcionarioController.buscarDadosDosFuncionarios();
 		for (Funcionario funcionario : funcionarios) {
 			list.add(new SelectItem(funcionario.getIdFuncionario(), funcionario.getNome()));
+		
 		}
 		return list;
 	}
@@ -338,20 +329,11 @@ public class ServicoController implements Serializable {
 		this.servicosPorData = servicosPorData;
 	}
 
-	/*
-	 * public String getServicoPagoFormatado(){ for (Servico servico : servicos) {
-	 * servicoPago = Utils.formatarPagamento(servico.getPago()); } return
-	 * servicoPago;
-	 * 
-	 * }
-	 */
-
-	public String getFormatarServicoPago() {
-		if (servico.getPago() == 1) {
-			return "Sim";
-		} else {
-			return "Não";
-		}
+	public String formatarPagamento(Servico servico) {
+			return Utils.formatarPagamento(servico.getPago());	
 	}
-
+	
+	public String formatarPagamentoVo(ServicoVo servicoVo) {
+		return Utils.formatarPagamento(servicoVo.getPago());	
+}
 }

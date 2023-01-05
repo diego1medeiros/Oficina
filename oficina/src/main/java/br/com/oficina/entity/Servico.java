@@ -78,74 +78,7 @@ public class Servico implements Serializable{
 		this.funcionario = funcionario;
 	}
 
-	public Servico(Long idServico, String status, String observacoes) {
-		super();
-		this.idServico = idServico;
-		this.status = status;
-		this.observacoes = observacoes;
-	}
 
-	public Servico(Long idServico, Date data, String descricao, Date dataEntrega, String status, int pago,
-			String observacoes, Cliente cliente, Veiculo veiculo, Funcionario funcionario) {
-		super();
-		this.idServico = idServico;
-		this.data = data;
-		this.descricao = descricao;
-		this.dataEntrega = dataEntrega;
-
-		this.status = status;
-		this.pago = pago;
-		this.observacoes = observacoes;
-		this.cliente = cliente;
-		this.veiculo = veiculo;
-		this.funcionario = funcionario;
-	}
-
-	public Servico(Long idServico, Date data, String descricao, Date dataEntrega, double valor, String status, int pago,
-			String observacoes, Cliente cliente, Veiculo veiculo, Funcionario funcionario) {
-		super();
-		this.idServico = idServico;
-		this.data = data;
-		this.descricao = descricao;
-		this.dataEntrega = dataEntrega;
-		this.valor = valor;
-		this.status = status;
-		this.pago = pago;
-		this.observacoes = observacoes;
-		this.cliente = cliente;
-		this.veiculo = veiculo;
-		this.funcionario = funcionario;
-	}
-
-	public Servico(Long idServico, Date data, String descricao, Date dataEntrega, double valor, String status, int pago,
-			String observacoes) {
-		super();
-		this.idServico = idServico;
-		this.data = data;
-		this.descricao = descricao;
-		this.dataEntrega = dataEntrega;
-		this.valor = valor;
-		this.status = status;
-		this.pago = pago;
-		this.observacoes = observacoes;
-
-	}
-
-	public Servico(Date data, String descricao, Date dataEntrega, double valor, String status, int pago,
-			String observacoes, Cliente cliente, Veiculo veiculo, Funcionario funcionario) {
-		super();
-
-		this.data = data;
-		this.descricao = descricao;
-		this.dataEntrega = dataEntrega;
-		this.valor = valor;
-		this.status = status;
-		this.pago = pago;
-		this.observacoes = observacoes;
-		this.cliente = cliente;
-		this.veiculo = veiculo;
-		this.funcionario = funcionario;
-	}
 
 	public Servico() {
 	}

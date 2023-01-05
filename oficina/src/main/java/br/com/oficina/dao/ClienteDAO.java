@@ -80,23 +80,18 @@ public class ClienteDAO {
 
 			}
 			if (!"".equals(cliente.getCpf())) {
-				if (Utils.isCpfValido(cliente.getCpf())) {
 					jpql += " and c.cpf like :cpf";
-
 				}
-			}
+			
 			if (!"".equals(cliente.getEmail())) {
 				jpql += " and upper(c.email) like :email";
-
 			}
 			if (!"".equals(cliente.getTelefone())) {
-				if (Utils.isTelefoneValido(cliente.getTelefone())) {
-					jpql += " and c.telefone like :telefone";
-				}
+				jpql += " and c.telefone like :telefone";
 			}
+
 			if (!"".equals(cliente.getEndereco())) {
 				jpql += " and upper(c.endereco) like :endereco";
-
 			}
 			TypedQuery<Cliente> query = em.createQuery(jpql, Cliente.class);
 
@@ -104,17 +99,13 @@ public class ClienteDAO {
 				query.setParameter("nome", "%" + cliente.getNome().toUpperCase() + "%");
 			}
 			if (!"".equals(cliente.getCpf())) {
-				if (Utils.isCpfValido(cliente.getCpf())) {
-					query.setParameter("cpf", "%" + cliente.getCpf() + "%");
-				}
+				query.setParameter("cpf", "%" + cliente.getCpf() + "%");
 			}
 			if (!"".equals(cliente.getEmail())) {
 				query.setParameter("email", "%" + cliente.getEmail().toUpperCase() + "%");
 			}
 			if (!"".equals(cliente.getTelefone())) {
-				if (Utils.isTelefoneValido(cliente.getTelefone())) {
-					query.setParameter("telefone", "%" + cliente.getTelefone() + "%");
-				}
+				query.setParameter("telefone", "%" + cliente.getTelefone() + "%");
 			}
 			if (!"".equals(cliente.getEndereco())) {
 				query.setParameter("endereco", "%" + cliente.getEndereco().toUpperCase() + "%");
@@ -157,12 +148,12 @@ public class ClienteDAO {
 		return listaBonus;
 	}
 
-	public BonusCliente removerBonus(BonusCliente bonusCliente){
+	public BonusCliente removerBonus(BonusCliente bonusCliente) {
 		EntityManager em = JPAUtil.getConnection();
 		try {
 			em.getTransaction().begin();
-			
-			bonusCliente=em.merge(bonusCliente);
+
+			bonusCliente = em.merge(bonusCliente);
 			em.remove(bonusCliente);
 			em.getTransaction().commit();
 		} catch (Exception e) {
@@ -172,12 +163,13 @@ public class ClienteDAO {
 		}
 		return bonusCliente;
 	}
-	public List<Cliente> buscarCliente(String  nomeCliente) {
+
+	public List<Cliente> buscarCliente(String nomeCliente) {
 		EntityManager em = JPAUtil.getConnection();
 		List<Cliente> listaClientes = null;
 		try {
 			String jpql = "select c from Cliente c  where c.nome = :nome";
-			listaClientes = em.createQuery(jpql, Cliente.class).setParameter("nome", nomeCliente).getResultList();	
+			listaClientes = em.createQuery(jpql, Cliente.class).setParameter("nome", nomeCliente).getResultList();
 		} catch (Exception e) {
 			em.getTransaction().rollback();
 		} finally {

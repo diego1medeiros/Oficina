@@ -37,36 +37,7 @@ public class Veiculo implements Serializable {
 	public Veiculo() {
 	}
 
-	public Veiculo(Long idVeiculo, String tipo, String modelo, String marca, String ano) {
-		super();
-		this.idVeiculo = idVeiculo;
-		this.tipo = tipo;
-		this.setModelo(modelo);
-		this.marca = marca;
-		this.ano = ano;
-
-	}
-
-	public Veiculo(String tipo, String modelo, String marca, String ano, Cliente cliente) {
-		super();
-
-		this.tipo = tipo;
-		this.setModelo(modelo);
-		this.marca = marca;
-		this.ano = ano;
-		this.cliente = cliente;
-	}
-
-	public Veiculo(Long idVeiculo, String tipo, String modelo, String marca, String ano, Cliente cliente) {
-		super();
-		this.idVeiculo = idVeiculo;
-		this.tipo = tipo;
-		this.setModelo(modelo);
-		this.marca = marca;
-		this.ano = ano;
-		this.cliente = cliente;
-	}
-
+	
 	public Long getIdVeiculo() {
 		return idVeiculo;
 	}

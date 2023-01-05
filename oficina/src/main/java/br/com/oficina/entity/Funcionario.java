@@ -67,26 +67,12 @@ public class Funcionario extends Pessoa  implements Serializable{
 
 	}
 
-	public Funcionario(Long idFuncionario,String funcao,String nome, String cpf, String telefone, String email, String endereco, String login, String senha ) {
-		super(nome, cpf, telefone, email, endereco);
-		
-		this.funcao = funcao;
-		this.login = login;
-		this.senha = senha;
-		this.idFuncionario = idFuncionario;
-	}
+	
    public Funcionario () {
 	
 }
 
-public Funcionario( String funcao,String nome, String cpf, String telefone, String email, String endereco, String login,
-		String senha) {
-	super(nome, cpf, telefone, email, endereco);
-	
-	this.funcao = funcao;
-	this.login = login;
-	this.senha = senha;
-}
+
    
 @Override
 public int hashCode() {

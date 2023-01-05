@@ -7,11 +7,20 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<h:outputStylesheet library="css" name="estilo.css" />
-   <link rel="stylesheet" type="text/css"  href="css/estilo.css"/>  
+<h:outputStylesheet library="css" name="file.css" />
+        <link rel="stylesheet" type="text/css"  href="css/file.css"/>  
+
+
+
 <title>Sistema de Oficina</title>
 </head>
-
+<style>
+    .cheap {
+        background-color: #54a90a !important;
+        background-image: none !important;
+        color: #ffffff !important;
+    }
+</style>
 
 <ui:composition template="/_template.html">
 	<ui:define name="titulo">
@@ -57,7 +66,7 @@
 						</p:selectOneMenu>
 
 						<p:outputLabel for="dataServico" value="Data do Serviço" />
-						<p:datePicker id="dataServico" value="#{servicobean.servico.data}" 
+						<p:datePicker id="dataServico" value="#{servicobean.servico.data}"
 							showIcon="true" />
 
 						<p:outputLabel for="dataEntrega" value="Data do Entrega" />
@@ -209,10 +218,10 @@
 				<h1>Lista de Serviço</h1>
 			</center>
 
-			<p:dataTable value="#{servicobean.servicos}" var="s" headerClass="cabecalho" styleClass="tabela"
+			<p:dataTable value="#{servicobean.servicos}" var="s"
 				id="tabelaServico" paginator="true" rows="5" stickyHeader="true"
 				stickyTopAt=".layout-topbar">
-				<p:column headerText="Funcionario">
+				<p:column headerText="Funcionario" headerClass="cabecalho">
 					<h:outputText value="#{s.funcionario.nome}" />
 				</p:column>
 				<p:column headerText="Cliente">
@@ -239,7 +248,7 @@
 					</h:outputText>
 				</p:column>
 				<p:column headerText="Pago">
-					<h:outputText value="#{servicobean.formatarServicoPago}" />
+					<h:outputText value="#{servicobean.formatarPagamento(s)}" />
 				</p:column>
 				<p:column headerText="Status" width="100">
 					<h:outputText value="#{s.status}" />

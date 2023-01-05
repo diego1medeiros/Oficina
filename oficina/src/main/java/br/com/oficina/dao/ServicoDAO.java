@@ -85,8 +85,8 @@ public class ServicoDAO {
 		List<Servico> listaServicos = new ArrayList<Servico>();
 		EntityManager em = JPAUtil.getConnection();
 		try {
-			String jpql = " SELECT s FROM Servico s INNER JOIN  s.funcionario f where f.nome = :nome ";
-			listaServicos = em.createQuery(jpql, Servico.class).setParameter("nome", nomeFuncionario).getResultList();
+			String jpql = " SELECT s FROM Servico s INNER JOIN  s.funcionario f where upper (f.nome) like :nome ";
+			listaServicos = em.createQuery(jpql, Servico.class).setParameter("nome", nomeFuncionario.toUpperCase()).getResultList();
 		} catch (Exception e) {
 			em.getTransaction().rollback();
 		} finally {

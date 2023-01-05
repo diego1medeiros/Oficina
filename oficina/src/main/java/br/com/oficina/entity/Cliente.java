@@ -47,22 +47,6 @@ public class Cliente extends Pessoa implements Serializable{
 		this.idCliente = idCliente;
 	}
 
-	public Cliente(String nome) {
-
-	}
-
-	public Cliente(String nome, String cpf, String telefone, String email, String endereco) {
-		super(nome, cpf, telefone, email, endereco);
-	}
-
-	public Cliente() {
-	}
-
-	public Cliente(String nome, String cpf, String telefone, String email, String endereco, Long idCliente) {
-		super(nome, cpf, telefone, email, endereco);
-		this.idCliente = idCliente;
-	}
-
 	@Override
 	public String toString() {
 		return "Cliente [idCliente=" + idCliente + "]";

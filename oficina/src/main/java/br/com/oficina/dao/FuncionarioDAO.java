@@ -101,21 +101,17 @@ public class FuncionarioDAO {
 				jpql += " and upper(f.nome) like :nome";
 			}
 			if (!"".equals(funcionario.getCpf())) {
-				if (Utils.isCpfValido(funcionario.getCpf())) {
-					jpql += " and f.cpf like :cpf";
-				}
+				jpql += " and f.cpf like :cpf";
 			}
 			if (!"".equals(funcionario.getEmail())) {
 				jpql += " and upper(f.email) like :email";
 			}
 			if (!"".equals(funcionario.getTelefone())) {
-				if (Utils.isTelefoneValido(funcionario.getTelefone())) {
 					jpql += " and f.telefone like :telefone";
 				}
-			}
+			
 			if (!"".equals(funcionario.getEndereco())) {
 				jpql += " and upper(f.endereco) like :endereco";
-
 			}
 			TypedQuery<Funcionario> query = em.createQuery(jpql, Funcionario.class);
 
@@ -127,18 +123,16 @@ public class FuncionarioDAO {
 				query.setParameter("nome", "%" + funcionario.getNome().toUpperCase() + "%");
 			}
 			if (!"".equals(funcionario.getCpf())) {
-				if (Utils.isCpfValido(funcionario.getCpf())) {
 				query.setParameter("cpf", "%" + funcionario.getCpf() + "%");
 			}
-			}
+			
 			if (!"".equals(funcionario.getEmail())) {
 				query.setParameter("email", "%" + funcionario.getEmail().toUpperCase() + "%");
 			}
 			if (!"".equals(funcionario.getTelefone())) {
-				if (Utils.isTelefoneValido(funcionario.getTelefone())) {
 				query.setParameter("telefone", "%" + funcionario.getTelefone() + "%");
 			}
-			}
+			
 			if (!"".equals(funcionario.getEndereco())) {
 				query.setParameter("endereco", "%" + funcionario.getEndereco().toUpperCase() + "%");
 			}
