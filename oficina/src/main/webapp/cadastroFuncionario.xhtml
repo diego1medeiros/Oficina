@@ -40,7 +40,7 @@
 						<p:inputText id="nome" required="true"
 							requiredMessage="O nome e Obrigatorio!!"
 							placeholder="Insira o Nome" value="#{bean.funcionario.nome}"
-							size="25" />
+							size="30" />
 						<p:outputLabel value="Cpf" for="cpf" />
 						<p:inputMask id="cpf" required="true" mask="999.999.999-99"
 							validateMask="true" requiredMessage="O cpf e obrigatório !!"
@@ -55,7 +55,7 @@
 						<p:inputText id="endereco" required="true"
 							requiredMessage="O enderenço e obrigatório !!"
 							placeholder="Insira o Endereço"
-							value="#{bean.funcionario.endereco}" size="25" />
+							value="#{bean.funcionario.endereco}" size="30" />
 
 						<p:outputLabel value="Email" for="email" />
 						<p:inputText id="email" required="true" validateMask="true"
@@ -169,20 +169,36 @@
 				</h:form>
 			</p:dialog>
 			<center>
-				<h1>Lista de Funcionario</h1>
+				<h1>Lista de Funcionarios</h1>
 			</center>
 
-			<p:dataTable value="#{bean.funcionarios}" var="f"
+			<p:dataTable value="#{bean.funcionarios}" var="f" tableStyleClass="cabecalho"
 				id="tabelaFuncionario" paginator="true" rows="7"  stickyHeader="true" stickyTopAt=".layout-topbar">
 				<p:messages autoUpdate="true" id="msg" />
-				<p:column headerText="FUNÇÃO">#{f.funcao}</p:column>
-				<p:column headerText="NOME" sortBy="#{f.nome}">#{f.nome}</p:column>
-				<p:column headerText="CPF">#{f.cpf}</p:column>
-				<p:column headerText="TELEFONE">#{f.telefone}</p:column>
-				<p:column headerText="ENDERENÇO">#{f.endereco}</p:column>
-				<p:column headerText="EMAIL">#{f.email}</p:column>
-				<p:column headerText="LOGIN">#{f.login}</p:column>
-				<p:column headerText="SENHA">#{f.senha}</p:column>
+				<p:column headerText="FUNÇÃO">
+				<h:outputText value="#{f.funcao}"/>
+				</p:column>
+				<p:column headerText="NOME" sortBy="#{f.nome}">
+				<h:outputText value="#{f.nome}"/>
+				</p:column>
+				<p:column headerText="CPF">
+				<h:outputText value="#{f.cpf}"/>
+				</p:column>
+				<p:column headerText="TELEFONE" >
+				<h:outputText value="#{f.telefone}"/>
+				</p:column>
+				<p:column headerText="ENDERENÇO">
+				<h:outputText value="#{f.endereco}"/>
+				</p:column>
+				<p:column headerText="EMAIL">
+				<h:outputText value="#{f.email}"/>
+				</p:column>
+				<p:column headerText="LOGIN">
+				<h:outputText value="#{f.login}"/>
+				</p:column>
+				<p:column headerText="SENHA">
+				<h:outputText value="#{f.senha}"/>
+				</p:column>
 				<p:column headerText="" width="100">
 					<p:commandButton icon="pi pi-pencil" id="editar"
 						update="form tabelaFuncionario" process="@this">

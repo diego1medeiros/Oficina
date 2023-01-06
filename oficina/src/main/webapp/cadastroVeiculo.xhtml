@@ -135,16 +135,26 @@
 				</h:form>
 			</p:dialog>
 			<center>
-				<h1>Lista de Veiculo</h1>
+				<h1>Lista de Veiculos</h1>
 			</center>
 
-			<p:dataTable value="#{veiculobean.veiculos}" var="v"
+			<p:dataTable value="#{veiculobean.veiculos}" var="v" tableStyleClass="cabecalho"
 				id="tabelaVeiculo" paginator="true" rows="7"  stickyHeader="true" stickyTopAt=".layout-topbar">
-				<p:column headerText="CLIENTE" sortBy="#{v.cliente.nome}">#{v.cliente.nome}</p:column>
-				<p:column headerText="TIPO">#{v.tipo}</p:column>
-				<p:column headerText="MODELO">#{v.modelo}</p:column>
-				<p:column headerText="MARCA">#{v.marca}</p:column>
-				<p:column headerText="ANO">#{v.ano}</p:column>
+				<p:column headerText="CLIENTE" sortBy="#{v.cliente.nome}">
+				<h:outputText value="#{v.cliente.nome}"/>
+				</p:column>
+				<p:column headerText="TIPO">
+				<h:outputText value="#{v.tipo}"/>
+				</p:column>
+				<p:column headerText="MODELO">
+				<h:outputText value="#{v.modelo}"/>
+				</p:column>
+				<p:column headerText="MARCA">
+				<h:outputText value="#{v.marca}"/>
+				</p:column>
+				<p:column headerText="ANO">
+				<h:outputText value="#{v.ano}"/>
+				</p:column>
 
 				<p:column headerText="" width="100">
 					<p:commandButton id="editar" icon="pi pi-pencil" update="form tabelaVeiculo"

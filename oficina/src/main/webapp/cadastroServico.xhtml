@@ -215,17 +215,17 @@
 				</h:form>
 			</p:dialog>
 			<center>
-				<h1>Lista de Serviço</h1>
+				<h1>Lista de Serviços</h1>
 			</center>
 
-			<p:dataTable value="#{servicobean.servicos}" var="s"
+			<p:dataTable value="#{servicobean.servicos}" var="s" tableStyleClass="cabecalho" 
 				id="tabelaServico" paginator="true" rows="5" stickyHeader="true"
 				stickyTopAt=".layout-topbar"  rowStyleClass="#{s.pago == 1 ? 'cheap' : null}" >
 				<p:column headerText="Funcionario" >
-					<h:outputText value="#{s.funcionario.nome}" />
+					<h:outputText value="#{s.funcionario.nome}"   />
 				</p:column>
 				<p:column headerText="Cliente">
-					<h:outputText value="#{s.cliente.nome}" />
+					<h:outputText value="#{s.cliente.nome}"  />
 				</p:column>
 				<p:column headerText="Modelo">
 					<h:outputText value="#{s.veiculo.modelo}" />

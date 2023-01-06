@@ -12,23 +12,34 @@
 	<link rel="stylesheet" href="css/file.css" />
 
 	<style>
+	
 .cheap {
 	background-color: #6495ED !important;
 	background-image: none !important;
 	color: #ffffff !important;
 }
 
+
+body {
+	font-weight: bold;
+	font-size:12px;
+	font-family: "Helvetica Nelvetica", Arial, sans-serif;
+	margin:20px
+	
+}
+
+
+
 .cabecalho {
 
-   text-align: center;
-
-   font: 11px Arial, sans-serif;
+  
+   font: 13px Arial, sans-serif;
 
    font-weight: bold;
 
    color: Snow;
 
-   background:  #008B45;
+   background-color:  #008B45;
 
 }
 </style>
@@ -43,31 +54,31 @@
 			<p:growl id="messages" />
 			<font></font>
 			<font></font>
-			<p:menubar>
+			<p:menubar >
 				<font></font>
-				<p:submenu label="Cadastrar" icon="pi pi-bars">
+				<p:submenu label="Cadastrar" icon="pi pi-bars"  style=" font-weight: bold;" >
 					<font> </font>
-					<p:menuitem value="Funcionario" icon="pi pi-pencil"
+					<p:menuitem value="Funcionario" icon="pi pi-pencil" style=" font-weight: bold;"
 						url="http://localhost:8080/oficina/cadastroFuncionario.xhtml" />
 					<font></font>
 					<p:separator />
 					<font></font>
-					<p:menuitem value="Cliente" icon="pi pi-pencil"
+					<p:menuitem value="Cliente" icon="pi pi-pencil" style=" font-weight: bold;"
 						url="http://localhost:8080/oficina/cadastroCliente.xhtml" />
 					<font></font>
 					<p:separator />
 					<font></font>
-					<p:menuitem value="Veiculo" icon="pi pi-pencil"
+					<p:menuitem value="Veiculo" icon="pi pi-pencil" style=" font-weight: bold;"
 						url="http://localhost:8080/oficina/cadastroVeiculo.xhtml" />
 					<font></font>
 					<p:separator />
 					<font></font>
-					<p:menuitem value="Serviço" icon="pi pi-pencil"
+					<p:menuitem value="Serviço" icon="pi pi-pencil" style=" font-weight: bold;"
 						url="http://localhost:8080/oficina/cadastroServico.xhtml" />
 					<font></font>
 					<p:separator />
 					<font></font>
-					<p:menuitem value="Menu Principal" icon="pi pi-bars"
+					<p:menuitem value="Menu Principal" icon="pi pi-bars" style=" font-weight: bold;"
 						url="http://localhost:8080/oficina/menu.xhtml" />
 					<font></font>
 					<p:separator />
@@ -75,17 +86,17 @@
 				</p:submenu>
 				<font></font>
 				<font></font>
-				<p:submenu label="Relatorios" icon="pi pi-book">
+				<p:submenu label="Relatorios" icon="pi pi-book"  style=" font-weight: bold;">
 					<font></font>
-					<p:menuitem value="Qtd Serviços Por Funcionario" icon="pi pi-book"
+					<p:menuitem value="Qtd Serviços Por Funcionario" icon="pi pi-book" style=" font-weight: bold;"
 						url="http://localhost:8080/oficina/qdtServicoPorFuncionario.xhtml" />
 					<font></font>
 					<font></font>
-					<p:menuitem value="Buscar Serviço Pela Data do Serviço"
+					<p:menuitem value="Buscar Serviço Pela Data do Serviço" style=" font-weight: bold;"
 						icon="pi pi-book"
 						url="http://localhost:8080/oficina/relatorioPorDataServico.xhtml" />
 					<font></font>
-					<p:menuitem value="Buscar Serviço Pelo Funcionario"
+					<p:menuitem value="Buscar Serviço Pelo Funcionario" style=" font-weight: bold;"
 						icon="pi pi-book"
 						url="http://localhost:8080/oficina/buscarServicoPorFuncionario.xhtml" />
 				</p:submenu>
