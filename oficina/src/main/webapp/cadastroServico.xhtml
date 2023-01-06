@@ -220,8 +220,8 @@
 
 			<p:dataTable value="#{servicobean.servicos}" var="s"
 				id="tabelaServico" paginator="true" rows="5" stickyHeader="true"
-				stickyTopAt=".layout-topbar">
-				<p:column headerText="Funcionario" headerClass="cabecalho">
+				stickyTopAt=".layout-topbar"  rowStyleClass="#{s.pago == 1 ? 'cheap' : null}" >
+				<p:column headerText="Funcionario" >
 					<h:outputText value="#{s.funcionario.nome}" />
 				</p:column>
 				<p:column headerText="Cliente">

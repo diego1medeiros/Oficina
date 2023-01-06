@@ -15,8 +15,17 @@ body {
 }
 
 
- .cheap {
-        background-color: #54a90a !important;
-        background-image: none !important;
-        color: #ffffff !important;
-    }
+ 
+.cabecalho {
+
+   text-align: center;
+
+   font: 11px Arial, sans-serif;
+
+   font-weight: bold;
+
+   color: Snow;
+
+   background:  #008B45;
+
+}

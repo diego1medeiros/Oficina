@@ -63,7 +63,7 @@
 			</center>
 
 			<p:dataTable value="#{servicobean.servicoPorFuncionario}" var="s"
-				id="tabelaServico" paginator="true" rows="5">
+				id="tabelaServico" paginator="true" rows="5"  rowStyleClass="#{s.pago == 1 ? 'cheap' : null}">
 				<p:column headerText="Funcionario">
 					<h:outputText value="#{s.funcionario.nome}" />
 				</p:column>

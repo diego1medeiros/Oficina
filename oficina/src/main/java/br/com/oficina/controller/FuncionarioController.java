@@ -121,7 +121,7 @@ public class FuncionarioController implements Serializable {
 
 	public Funcionario imprimir() {
 
-		RelatorioUtil.criarRelatorio("C:/dev/worspace/oficina/relatorio/relatorioFuncionario.jrxml",
+		RelatorioUtil.criarRelatorio("C:/Users/diego/git/oficinaWeb/oficina/relatorio/relatorioFuncionario.jrxml",
 				buscarDadosDosFuncionarios());
 		Message.info("Impressão Reliazada com Sucesso!!!");
 		return funcionario;
@@ -129,8 +129,8 @@ public class FuncionarioController implements Serializable {
 	}
 	
 	public Funcionario gerarPdf() {
-		String pathJasper = "C:\\dev\\worspace\\oficina\\relatorio\\relatorioFuncionario.jasper";
-		String saida = "C:\\dev\\worspace\\oficina\\relatorio\\relatorioFuncionario.pdf";
+		String pathJasper = "C:\\Users\\diego\\git\\oficinaWeb\\oficina\\relatorio\\relatorioFuncionario.jasper";
+		String saida = "C:\\Users\\diego\\git\\oficinaWeb\\oficina\\relatorio\\relatorioFuncionario.pdf";
 		RelatorioUtil.gerarArquivoPdf(pathJasper, buscarDadosDosFuncionarios(), saida);
 		Message.info("Download Reliazada com Sucesso!!!");
 		return funcionario;

@@ -184,7 +184,7 @@ public class ServicoController implements Serializable {
 		List<Funcionario> funcionarios = funcionarioController.buscarDadosDosFuncionarios();
 		for (Funcionario funcionario : funcionarios) {
 			list.add(new SelectItem(funcionario.getIdFuncionario(), funcionario.getNome()));
-		
+
 		}
 		return list;
 	}
@@ -200,48 +200,50 @@ public class ServicoController implements Serializable {
 	}
 
 	public Servico ordemServico(Servico servico) {
-		RelatorioUtil.criarRelatorio("C:/dev/worspace/oficina/relatorio/ordemDeServico.jrxml",
+		RelatorioUtil.criarRelatorio("C:/Users/diego/git/oficinaWeb/oficina/relatorio/ordemDeServico.jrxml",
 				buscarServicosPorNomeFuncionario(servico.getFuncionario().getNome()));
 		Message.info("Impressão Reliazada com Sucesso!!!");
 		return servico;
 	}
 
 	public Servico imprimirRelatorioServico() {
-		RelatorioUtil.criarRelatorio("C:/dev/worspace/oficina/relatorio/relatorioServico.jrxml",
+		RelatorioUtil.criarRelatorio("C:/Users/diego/git/oficinaWeb/oficina/relatorio/relatorioServico.jrxml",
 				buscaDadosdosServicos());
 		Message.info("Impressão Reliazada com Sucesso!!!");
 		return servico;
 	}
 
 	public Servico imprimirServicoPorFuncionario() {
-		RelatorioUtil.criarRelatorio("C:/dev/worspace/oficina/relatorio/teste.jrxml",
+		RelatorioUtil.criarRelatorio("C:/Users/diego/git/oficinaWeb/oficina/relatorio/teste.jrxml",
 				buscaQdtDosServicosPorFuncionarios());
 		Message.info("Impressão Reliazada com Sucesso!!!");
 		return servico;
 	}
 
 	public Servico imprimirServicoPorData() {
-		RelatorioUtil.criarRelatorio("C:/dev/worspace/oficina/relatorio/valorTotalServicos.jrxml", servicosPorData);
+		RelatorioUtil.criarRelatorio("C:/Users/diego/git/oficinaWeb/oficina/relatorio/valorTotalServicos.jrxml",
+				servicosPorData);
 		Message.info("Impressão Reliazada com Sucesso!!!");
 		return servico;
 	}
 
 	public Servico imprimirServicoPeloFuncioanrio() {
-		RelatorioUtil.criarRelatorio("C:/dev/worspace/oficina/relatorio/relatorioServico.jrxml", servicoPorFuncionario);
+		RelatorioUtil.criarRelatorio("C:/Users/diego/git/oficinaWeb/oficina/relatorio/relatorioServico.jrxml",
+				servicoPorFuncionario);
 		Message.info("Impressão Reliazada com Sucesso!!!");
 		return servico;
 	}
 
 	public Servico imprimirContrato(Servico servico) {
-		RelatorioUtil.criarRelatorio("C:/dev/worspace/oficina/relatorio/cartaDeServico.jrxml",
+		RelatorioUtil.criarRelatorio("C:/Users/diego/git/oficinaWeb/oficina/relatorio/cartaDeServico.jrxml",
 				buscarServicosPorNomeFuncionario(servico.getFuncionario().getNome()));
 		Message.info("Impressão Reliazada com Sucesso!!!");
 		return servico;
 	}
 
 	public Servico gerarPdf() {
-		String pathJasper = "C:\\dev\\worspace\\oficina\\relatorio\\relatorioServico.jasper";
-		String saida = "C:\\dev\\worspace\\oficina\\relatorio\\relatorioServico.pdf";
+		String pathJasper = "C:\\Users\\diego\\git\\oficinaWeb\\oficina\\relatorio\\relatorioServico.jasper";
+		String saida = "C:\\Users\\diego\\git\\oficinaWeb\\oficina\\relatorio\\relatorioServico.pdf";
 		RelatorioUtil.gerarArquivoPdf(pathJasper, buscaDadosdosServicos(), saida);
 		return servico;
 	}
@@ -330,10 +332,10 @@ public class ServicoController implements Serializable {
 	}
 
 	public String formatarPagamento(Servico servico) {
-			return Utils.formatarPagamento(servico.getPago());	
+		return Utils.formatarPagamento(servico.getPago());
 	}
-	
+
 	public String formatarPagamentoVo(ServicoVo servicoVo) {
-		return Utils.formatarPagamento(servicoVo.getPago());	
-}
+		return Utils.formatarPagamento(servicoVo.getPago());
+	}
 }

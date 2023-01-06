@@ -9,7 +9,7 @@
 
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<h:outputScript library="js" name="locale-primefaces.js"/>
+	<h:outputScript library="js" name="locale-primefaces.js" />
 	<title>Sistema de Oficina</title>
 </h:head>
 
@@ -22,17 +22,18 @@
 				<h1>Buscar Serviços</h1>
 			</center>
 			<h:form id="form">
-				<p:growl  showDetail="true" />
+				<p:growl showDetail="true" />
 				<p:panel>
 					<p:panelGrid columns="8" layout="grid" styleClass="ui-fluid"
 						columnClasses="ui-grid-col-1,ui-grid-col-3, ui-grid-col-1,ui-grid-col-3,ui-grid-col-1,ui-grid-col-3,ui-grid-col-1,ui-grid-col-3">
 						<p:outputLabel for="dataServico" value="Data do Serviço" />
-						<p:datePicker id="dataServico" showIcon="true" 
+						<p:datePicker id="dataServico" showIcon="true"
 							value="#{servicobean.servico.data}" locale="pt_BR" />
 
 						<p:outputLabel for="dataEntrega" value="Data do Entrega" />
 						<p:datePicker id="dataEntrega" showIcon="true"
-							value="#{servicobean.servico.dataEntrega}"  pattern="dd/MM/yyyy" locale="pt_BR" />
+							value="#{servicobean.servico.dataEntrega}" pattern="dd/MM/yyyy"
+							locale="pt_BR" />
 
 
 
@@ -64,7 +65,8 @@
 					<h1>Lista de Serviço</h1>
 				</center>
 				<p:dataTable value="#{servicobean.servicosPorData}" var="s"
-					id="tabelaServico" paginator="true" rows="7"  stickyHeader="true" stickyTopAt=".layout-topbar">
+					id="tabelaServico" paginator="true" rows="7" stickyHeader="true"
+					stickyTopAt=".layout-topbar"  rowStyleClass="#{s.pago == 1 ? 'cheap' : null}">
 					<p:column headerText="Funcionario">
 						<h:outputText value="#{s.nomeFuncionario}" />
 					</p:column>

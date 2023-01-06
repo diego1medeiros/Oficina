@@ -129,7 +129,7 @@ public class ClienteController implements Serializable {
 
 	public Cliente imprimir() {
 
-		RelatorioUtil.criarRelatorio("C:/dev/worspace/oficina/relatorio/relatorioClientes.jrxml",
+		RelatorioUtil.criarRelatorio("C:/Users/diego/git/oficinaWeb/oficina/relatorio/relatorioClientes.jrxml",
 				buscarDadosDosClientes());
 		Message.info("Impressão Reliazada com Sucesso!!!");
 		return cliente;
@@ -137,8 +137,8 @@ public class ClienteController implements Serializable {
 	}
 
 	public Cliente gerarPdf() {
-		String pathJasper = "C:\\dev\\worspace\\oficina\\relatorio\\relatorioClientes.jasper";
-		String saida = "C:\\dev\\worspace\\oficina\\relatorio\\relatorioClientes.pdf";
+		String pathJasper = "C:\\Users\\diego\\git\\oficinaWeb\\oficina\\relatorio\\relatorioClientes.jasper";
+		String saida = "C:\\Users\\diego\\git\\oficinaWeb\\oficina\\relatorio\\relatorioClientes.pdf";
 		RelatorioUtil.gerarArquivoPdf(pathJasper, buscarDadosDosClientes(), saida);
 		Message.info("Download Reliazada com Sucesso!!!");
 		return cliente;

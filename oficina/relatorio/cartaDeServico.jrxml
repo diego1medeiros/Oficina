@@ -188,7 +188,7 @@ FROM "SERVICO"
 	<background>
 		<band height="802">
 			<image>
-				<reportElement x="300" y="470" width="253" height="270" uuid="5735ff62-7a25-45a6-8bb7-849aa2b3415d"/>
+				<reportElement x="293" y="470" width="244" height="270" uuid="5735ff62-7a25-45a6-8bb7-849aa2b3415d"/>
 				<imageExpression><![CDATA["C:/Users/diego/Downloads/oficina.jpeg"]]></imageExpression>
 			</image>
 		</band>
@@ -198,14 +198,14 @@ FROM "SERVICO"
 			<frame>
 				<reportElement mode="Opaque" x="0" y="0" width="451" height="95" backcolor="#000000" uuid="6c6ca4e1-17cd-4913-93d6-5e670ea9ae8a"/>
 				<staticText>
-					<reportElement style="Title" x="0" y="0" width="440" height="66" uuid="a2a2cac8-5a7d-4487-8c54-dab235ce4e21"/>
+					<reportElement style="Title" x="0" y="0" width="440" height="60" uuid="a2a2cac8-5a7d-4487-8c54-dab235ce4e21"/>
 					<textElement>
 						<font size="40" isBold="false"/>
 					</textElement>
 					<text><![CDATA[OFICINA MEDEIROS]]></text>
 				</staticText>
 				<staticText>
-					<reportElement style="SubTitle" x="157" y="67" width="249" height="29" uuid="8978eac3-c578-41c9-837e-48d2b0184642"/>
+					<reportElement style="SubTitle" x="157" y="64" width="249" height="31" uuid="8978eac3-c578-41c9-837e-48d2b0184642"/>
 					<textElement>
 						<font size="22" isBold="false"/>
 					</textElement>
@@ -230,7 +230,7 @@ FROM "SERVICO"
 	<columnHeader>
 		<band height="585" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="0" width="320" height="79" uuid="aef06086-ceed-4682-a397-bb4710342ef6"/>
+				<reportElement x="6" y="6" width="320" height="79" uuid="aef06086-ceed-4682-a397-bb4710342ef6"/>
 				<textElement textAlignment="Left">
 					<font fontName="Tahoma" size="16" isBold="true" isItalic="true"/>
 				</textElement>
@@ -263,7 +263,7 @@ oficinamedeiros@gmail.com
 				<text><![CDATA[Atenciosamente]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="77" y="446" width="100" height="30" uuid="6fe02199-1c19-47e2-92e4-35611f555034"/>
+				<reportElement x="77" y="448" width="100" height="30" uuid="6fe02199-1c19-47e2-92e4-35611f555034"/>
 				<textElement>
 					<font size="14" isBold="true" isItalic="true"/>
 				</textElement>
@@ -297,7 +297,7 @@ oficinamedeiros@gmail.com
 				<reportElement x="6" y="555" width="279" height="1" uuid="c4675a2a-7e8f-4e8d-a65a-97dc7361d3d7"/>
 			</line>
 			<image>
-				<reportElement x="280" y="0" width="175" height="98" uuid="d24792a6-2ab5-4852-afb2-b7dfbe000cee"/>
+				<reportElement x="340" y="0" width="175" height="98" uuid="d24792a6-2ab5-4852-afb2-b7dfbe000cee"/>
 				<imageExpression><![CDATA["C:/Users/diego/Downloads/worm-gear-icon (1).png"]]></imageExpression>
 			</image>
 		</band>

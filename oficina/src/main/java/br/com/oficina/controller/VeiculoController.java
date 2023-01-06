@@ -151,15 +151,15 @@ public class VeiculoController implements Serializable {
 	}
 
 	public Veiculo imprimir() {
-		RelatorioUtil.criarRelatorio("C:/dev/worspace/oficina/relatorio/relatorioVeiculos.jrxml",
+		RelatorioUtil.criarRelatorio("C:/Users/diego/git/oficinaWeb/oficina/relatorio/relatorioVeiculos.jrxml",
 				buscarDadosDosVeiculos());
 		Message.info("Impressão Reliazada com Sucesso!!!");
 		return veiculo;
 	}
 
 	public Veiculo gerarPdf() {
-		String pathJasper = "C:\\dev\\worspace\\oficina\\relatorio\\relatorioVeiculos.jasper";
-		String saida = "C:\\dev\\worspace\\oficina\\relatorio\\relatorioVeiculos.pdf";
+		String pathJasper = "C:\\Users\\diego\\git\\oficinaWeb\\oficina\\relatorio\\relatorioVeiculos.jasper";
+		String saida = "C:\\Users\\diego\\git\\oficinaWeb\\oficina\\relatorio\\relatorioVeiculos.pdf";
 		RelatorioUtil.gerarArquivoPdf(pathJasper, buscarDadosDosVeiculos(), saida);
 		Message.info("Download Reliazada com Sucesso!!!");
 		return veiculo;
