@@ -19,6 +19,12 @@
 	color: #ffffff !important;
 }
 
+.barra {
+	background-color:#87CEFA!important;
+	background-image: none !important;
+	color: #ffffff !important;
+}
+
 
 body {
 	font-weight: bold;
@@ -27,8 +33,6 @@ body {
 	margin:20px
 	
 }
-
-
 
 .cabecalho {
 
@@ -54,9 +58,9 @@ body {
 			<p:growl id="messages" />
 			<font></font>
 			<font></font>
-			<p:menubar >
+			<p:menubar styleClass="barra">
 				<font></font>
-				<p:submenu label="Cadastrar" icon="pi pi-bars"  style=" font-weight: bold;" >
+				<p:submenu label="Cadastrar" icon="pi pi-bars" >
 					<font> </font>
 					<p:menuitem value="Funcionario" icon="pi pi-pencil" style=" font-weight: bold;"
 						url="http://localhost:8080/oficina/cadastroFuncionario.xhtml" />
@@ -80,13 +84,13 @@ body {
 					<font></font>
 					<p:menuitem value="Menu Principal" icon="pi pi-bars" style=" font-weight: bold;"
 						url="http://localhost:8080/oficina/menu.xhtml" />
-					<font></font>
+					<font ></font>
 					<p:separator />
 					<font></font>
 				</p:submenu>
 				<font></font>
 				<font></font>
-				<p:submenu label="Relatorios" icon="pi pi-book"  style=" font-weight: bold;">
+				<p:submenu label="Relatorios" icon="pi pi-book"  >
 					<font></font>
 					<p:menuitem value="Qtd Serviços Por Funcionario" icon="pi pi-book" style=" font-weight: bold;"
 						url="http://localhost:8080/oficina/qdtServicoPorFuncionario.xhtml" />
@@ -102,7 +106,7 @@ body {
 				</p:submenu>
 				<font></font>
 				<font></font>
-				<f:facet name="options">
+				<f:facet name="options" >
 					<font></font>
 					<p:commandLink value="SAIR" icon="pi pi-home"
 						action="#{bean.deslogar}" />

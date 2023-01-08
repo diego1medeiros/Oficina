@@ -1,9 +1,5 @@
 package br.com.oficina.enumeradores;
 
-/**
- *
- *
- */
 public enum BonusParaCliente {
 
 	LAVAGEM_GRATIS(" Lavagem Gratis"), TROCA_DE_OLEO("Troca de oleo"), POLIMENTO_GRATIS("Polimento Gratis");

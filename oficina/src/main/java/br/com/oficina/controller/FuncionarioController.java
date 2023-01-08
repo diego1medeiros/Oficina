@@ -8,9 +8,6 @@ import br.com.oficina.entity.Funcionario;
 import br.com.oficina.service.FuncionarioServiceImpl;
 import br.com.oficina.util.Message;
 import br.com.oficina.util.RelatorioUtil;
-import net.sf.jasperreports.engine.JRException;
-
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;

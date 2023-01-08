@@ -3,14 +3,12 @@ package br.com.oficina.controller;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import br.com.oficina.entity.BonusCliente;
 import br.com.oficina.entity.Cliente;
-import br.com.oficina.entity.Funcionario;
 import br.com.oficina.entity.Veiculo;
 import br.com.oficina.service.ClienteServiceImpl;
 import br.com.oficina.util.Message;

@@ -175,8 +175,8 @@
 			<p:dataTable value="#{bean.funcionarios}" var="f" tableStyleClass="cabecalho"
 				id="tabelaFuncionario" paginator="true" rows="7"  stickyHeader="true" stickyTopAt=".layout-topbar">
 				<p:messages autoUpdate="true" id="msg" />
-				<p:column headerText="FUNÇÃO">
-				<h:outputText value="#{f.funcao}"/>
+				<p:column headerText="FUNÇÃO" >
+				<h:outputText value="#{f.funcao}" />
 				</p:column>
 				<p:column headerText="NOME" sortBy="#{f.nome}">
 				<h:outputText value="#{f.nome}"/>
@@ -199,7 +199,7 @@
 				<p:column headerText="SENHA">
 				<h:outputText value="#{f.senha}"/>
 				</p:column>
-				<p:column headerText="" width="100">
+				<p:column headerText="" width="100" >
 					<p:commandButton icon="pi pi-pencil" id="editar"
 						update="form tabelaFuncionario" process="@this">
 						<f:setPropertyActionListener value="#{f}"

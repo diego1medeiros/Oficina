@@ -23,23 +23,23 @@
 			<h:form id="form">
 				<p:growl showDetail="true" />
 				<p:separator />
-
-				<p:panelGrid columns="8" layout="grid" style="margin-tpo:10pix">
+<p:panel>
+				<p:panelGrid columns="14" layout="grid" style="margin-tpo:10pix">
 					<p:outputLabel value="Nome" for="nome" />
 					<p:inputText id="nome" required="true"
 						requiredMessage="O nome e Obrigatorio!!"
 						placeholder="Insira o Nome" value="#{clientebean.cliente.nome}"
-						size="25" />
+						size="40" />
 					<p:outputLabel value="Cpf" for="cpf" />
 					<p:inputMask id="cpf" required="true" mask="999.999.999-99"
 						validateMask="true" requiredMessage="O cpf e obrigatório !!"
 						placeholder="Insira o cpf" value="#{clientebean.cliente.cpf}"
-						size="15" />
+						size="25" />
 					<p:outputLabel value="Telefone" for="telefone" />
 					<p:inputMask id="telefone" required="true" mask="(99) 99999-9999"
 						validateMask="true" requiredMessage="O telefone e obrigatório !!"
 						placeholder="Insira o telefone"
-						value="#{clientebean.cliente.telefone}" size="15" />
+						value="#{clientebean.cliente.telefone}" size="25" />
 					<p:outputLabel value="Endereço" for="endereco" />
 					<p:inputText id="endereco" required="true"
 						requiredMessage="O enderenço e obrigatório !!"
@@ -51,7 +51,7 @@
 						placeholder="Insira o email" value="#{clientebean.cliente.email}"
 						size="30" />
 				</p:panelGrid>
-
+</p:panel>
 				<p:separator />
 				<p:commandButton value="Salvar" id="salvar" icon="pi pi-save"
 					action="#{clientebean.cadastrarCliente}"

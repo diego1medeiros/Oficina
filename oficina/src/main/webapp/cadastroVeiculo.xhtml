@@ -22,6 +22,7 @@
 			<h:form id="form">
 				<p:growl  showDetail="true" />
 				<p:separator />
+				<p:panel>
 				<p:panelGrid columns="8" layout="grid" style="margin-bottom:10px">
 					<p:outputLabel value="Cliente" for="cliente" />
 					<p:selectOneMenu value="#{veiculobean.veiculo.cliente.idCliente}"
@@ -62,6 +63,7 @@
 						placeholder="Insira o ano" value="#{veiculobean.veiculo.ano}"
 						size="10" />
 				</p:panelGrid>
+				</p:panel>
 				<p:separator />
 				<p:commandButton value="Salvar" id="salvar" icon="pi pi-save" 
 					action="#{veiculobean.cadastrarVeiculo}"

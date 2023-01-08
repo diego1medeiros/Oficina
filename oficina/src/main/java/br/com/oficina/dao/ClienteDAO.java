@@ -2,15 +2,13 @@ package br.com.oficina.dao;
 
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
-
 import br.com.oficina.entity.BonusCliente;
 import br.com.oficina.entity.BonusClienteId;
 import br.com.oficina.entity.Cliente;
 import br.com.oficina.entity.Veiculo;
 import br.com.oficina.util.JPAUtil;
-import br.com.oficina.util.Utils;
+
 
 public class ClienteDAO {
 

@@ -3,16 +3,12 @@ package br.com.oficina.controller;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
-
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 import javax.inject.Named;
-
 import br.com.oficina.Vo.ServicoVo;
 import br.com.oficina.entity.Cliente;
 import br.com.oficina.entity.Funcionario;

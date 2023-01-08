@@ -64,7 +64,7 @@
 				<center>
 					<h1>Lista de Serviço</h1>
 				</center>
-				<p:dataTable value="#{servicobean.servicosPorData}" var="s"
+				<p:dataTable value="#{servicobean.servicosPorData}" var="s" tableStyleClass="cabecalho"
 					id="tabelaServico" paginator="true" rows="7" stickyHeader="true"
 					stickyTopAt=".layout-topbar"  rowStyleClass="#{s.pago == 1 ? 'cheap' : null}">
 					<p:column headerText="Funcionario">

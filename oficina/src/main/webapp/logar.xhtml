@@ -24,12 +24,12 @@
 			<p:growl  showDetail="true" />
 
 			<p:panelGrid columns="2">
-				<p:outputLabel value="Login" for="login" />
+				<p:outputLabel value="Login" for="login" style=" font-weight: bold;" />
 				<p:inputText value="#{login}" id="login"
 					placeholder="digite o login"
 					requiredMessage="O login é obrigatoria" />
 
-				<p:outputLabel value="Senha" for="senha" />
+				<p:outputLabel value="Senha" for="senha" style=" font-weight: bold;"/>
 				<p:password value="#{senha}" id="senha" placeholder="digite o senha"
 					requiredMessage="A senha e obrigatoria" />
 			</p:panelGrid>
@@ -53,7 +53,7 @@
 						<p:messages autoUpdate="true" id="msg" />
 						<p:separator />
 						<p:panel style="margin-tpo:10pix">
-							<p:panelGrid columns="8" layout="grid">
+							<p:panelGrid columns="8" layout="grid" tableStyleClass="cabecalho">
 								<p:outputLabel value="Função" for="funcao" />
 								<p:selectOneMenu id="funcao" required="true"
 									requiredMessage="A funcão e obrigatório !!"

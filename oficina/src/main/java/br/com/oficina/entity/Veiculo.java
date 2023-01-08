@@ -1,8 +1,6 @@
 package br.com.oficina.entity;
 
 import java.io.Serializable;
-
-import javax.inject.Inject;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
