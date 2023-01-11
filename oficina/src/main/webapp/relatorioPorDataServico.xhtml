@@ -26,18 +26,18 @@
 				<p:panel>
 					<p:panelGrid columns="8" layout="grid" styleClass="ui-fluid"
 						columnClasses="ui-grid-col-1,ui-grid-col-3, ui-grid-col-1,ui-grid-col-3,ui-grid-col-1,ui-grid-col-3,ui-grid-col-1,ui-grid-col-3">
-						<p:outputLabel for="dataServico" value="Data do Serviço" />
+						<p:outputLabel for="dataServico" value="#{bundle['servico.dataServico']}"  />
 						<p:datePicker id="dataServico" showIcon="true"
 							value="#{servicobean.servico.data}" locale="pt_BR" />
 
-						<p:outputLabel for="dataEntrega" value="Data do Entrega" />
+						<p:outputLabel for="dataEntrega" value="#{bundle['servico.dataEntrega']}"  />
 						<p:datePicker id="dataEntrega" showIcon="true"
 							value="#{servicobean.servico.dataEntrega}" pattern="dd/MM/yyyy"
 							locale="pt_BR" />
 
 
 
-						<p:outputLabel for="pago" value="Pago" />
+						<p:outputLabel for="pago" value="#{bundle['servico.pago']}"  />
 						<p:selectOneMenu id="pago" value="#{servicobean.servico.pago}">
 							<f:selectItem itemLabel="Todos" itemValue="2" />
 							<f:selectItem itemLabel="Sim" itemValue="1" />
@@ -45,7 +45,7 @@
 						</p:selectOneMenu>
 					</p:panelGrid>
 				</p:panel>
-				<p:commandButton value="Pesquisar" icon="pi pi-search"
+				<p:commandButton value="#{bundle.pesquisar}"  icon="pi pi-search"
 					id="pesquisar"
 					actionListener="#{servicobean.buscarServicosPorData}"
 					update="form tabelaServico" process="@form" />
@@ -55,14 +55,14 @@
 				<font></font>
 				<font></font>
 				<font></font>
-				<p:commandButton value="Imprimir"
+				<p:commandButton value="#{bundle.imprimir}" 
 					action="#{servicobean.imprimirServicoPorData}" id="imprimir"
 					icon="pi pi-print" update="tabelaServico" process="@this">
 					<p:tooltip for="imprimir" value="Imprimir Relatorio"
 						showEffect="clip" hideEffect="fold" />
 				</p:commandButton>
 				<center>
-					<h1>Lista de Serviço</h1>
+					<h1>#{bundle['lista.servico']} </h1>
 				</center>
 				<p:dataTable value="#{servicobean.servicosPorData}" var="s" tableStyleClass="cabecalho"
 					id="tabelaServico" paginator="true" rows="7" stickyHeader="true"

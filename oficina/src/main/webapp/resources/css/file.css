@@ -3,24 +3,7 @@ body {
   background-color: rgb(0, 255, 255);
 }
 
-body {
-	font-weight: bold;
-	font-size:12px;
-	font-family: "Helvetica Nelvetica", Arial, sans-serif;
-	margin:20px
-	
-}
 
-.cabecalho {
 
-   text-align: center;
 
-   font: 11px Arial, sans-serif;
 
-   font-weight: bold;
-
-   color: Snow;
-
-   background-color:  #008B45;
-
-}

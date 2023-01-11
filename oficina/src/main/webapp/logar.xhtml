@@ -6,13 +6,15 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-
 <h:head>
 	<h:outputStylesheet library="css" name="file.css" />
+
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Sistema de Oficina</title>
 </h:head>
+
+
 <h:body>
 
 	<center>
@@ -53,7 +55,7 @@
 						<p:messages autoUpdate="true" id="msg" />
 						<p:separator />
 						<p:panel style="margin-tpo:10pix">
-							<p:panelGrid columns="8" layout="grid" tableStyleClass="cabecalho">
+							<p:panelGrid columns="16" layout="grid" tableStyleClass="cabecalho">
 								<p:outputLabel value="Função" for="funcao" />
 								<p:selectOneMenu id="funcao" required="true"
 									requiredMessage="A funcão e obrigatório !!"
@@ -109,7 +111,7 @@
 						<p:separator />
 						<p:commandButton value="Cadastrar"
 							action="#{bean.cadastrarFuncionario}" update="form" 
-							process="@form" oncomplete="PF('cadastroNovoFuncionario').hide()"/>
+							process="@form" />
 						<p:separator />
 					</h:form>
 				</h:body>

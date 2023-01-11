@@ -21,7 +21,7 @@
 		<h:body>
 			<h:form id="form">
 				<p:growl  showDetail="true" />
-				<p:commandButton value="Pesquisar"
+				<p:commandButton value="#{bundle.pesquisar}"
 					oncomplete="PF('pesquisarServico').show()" icon="pi pi-search"
 					id="pesquisar" />
 				<p:tooltip for="pesquisar" value="Pesquisar Serviço"
@@ -29,7 +29,7 @@
 				<font></font>
 				<font></font>
 				<font></font>
-				<p:commandButton value="Imprimir"
+				<p:commandButton value="#{bundle.imprimir}"
 					action="#{servicobean.imprimirServicoPeloFuncioanrio}" id="imprimir"
 					icon="pi pi-print" update="form tabelaServico" process="@this">
 					<p:tooltip for="imprimir" value="Imprimir Relatorio"

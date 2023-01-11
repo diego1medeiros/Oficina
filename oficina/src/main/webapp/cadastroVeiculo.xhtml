@@ -8,13 +8,13 @@
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Sistema de Oficina</title>
+<title>#{bundle.title}</title>
 </head>
 
 
 <ui:composition template="/_template.html">
 	<ui:define name="titulo">
-		<h1>Cadastro de Veiculo</h1>
+		<h1>#{bundle['cadastro.veiculo']}</h1>
 	</ui:define>
 
 	<ui:define name="conteudo">
@@ -24,7 +24,7 @@
 				<p:separator />
 				<p:panel>
 				<p:panelGrid columns="8" layout="grid" style="margin-bottom:10px">
-					<p:outputLabel value="Cliente" for="cliente" />
+					<p:outputLabel value="#{bundle['veiculo.cliente']}" for="cliente" />
 					<p:selectOneMenu value="#{veiculobean.veiculo.cliente.idCliente}"
 						id="cliente" converter="#{veiculoConverter}" required="true"
 						requiredMessage="O cliente e Obrigatorio!!" size="30">
@@ -32,7 +32,7 @@
 							noSelectionOption="true" />
 						<f:selectItems value="#{veiculobean.lista}" />
 					</p:selectOneMenu>
-					<p:outputLabel value="Tipo" for="tipo" />
+					<p:outputLabel value="#{bundle['veiculo.tipo']}" for="tipo" />
 					<p:selectOneMenu value="#{veiculobean.veiculo.tipo}"
 						required="true" requiredMessage="O tipo e obrigatório !!"
 						size="30">
@@ -41,13 +41,13 @@
 						<f:selectItems value="#{veiculobean.tipo}" id="tipo" var="v"
 							itemValue="#{v}" itemLabel="#{v}" />
 					</p:selectOneMenu>
-					<p:outputLabel value="Modelo" for="modelo" />
+					<p:outputLabel value="#{bundle['veiculo.modelo']}" for="modelo" />
 					<p:inputMask id="modelo" required="true"
 						requiredMessage="O modelo e obrigatório !!"
 						placeholder="Insira o modelo"
 						value="#{veiculobean.veiculo.modelo}" size="15" />
 
-					<p:outputLabel value="Marca" for="marca" />
+					<p:outputLabel value="#{bundle['veiculo.marca']}" for="marca" />
 					<p:selectOneMenu value="#{veiculobean.veiculo.marca}"
 						required="true" requiredMessage="O marca e Obrigatorio!!"
 						size="30">
@@ -57,7 +57,7 @@
 							itemValue="#{v}" itemLabel="#{v}" />
 					</p:selectOneMenu>
 
-					<p:outputLabel value="Ano" for="ano" />
+					<p:outputLabel value="#{bundle['veiculo.ano']}" for="ano" />
 					<p:inputText id="ano" required="true"
 						requiredMessage="O ano e obrigatório !!"
 						placeholder="Insira o ano" value="#{veiculobean.veiculo.ano}"
@@ -65,27 +65,27 @@
 				</p:panelGrid>
 				</p:panel>
 				<p:separator />
-				<p:commandButton value="Salvar" id="salvar" icon="pi pi-save" 
+				<p:commandButton value="#{bundle.salvar}" id="salvar" icon="pi pi-save" 
 					action="#{veiculobean.cadastrarVeiculo}"
 					update="form tabelaVeiculo" />
 					<p:tooltip for="salvar" value="Salvar Veiculo"
 					showEffect="clip" hideEffect="fold" />
 				<font></font>
 				<font></font>
-				<p:commandButton value="Pesquisar" id="pesquisar"
+				<p:commandButton value="#{bundle.pesquisar}" id="pesquisar"
 					oncomplete="PF('pesquisarVeiculo').show()" icon="pi pi-search" />
 				<p:tooltip for="pesquisar" value="Pesquisar Veiculo"
 					showEffect="clip" hideEffect="fold" />
 				<font></font>
 				<font></font>
-				<p:commandButton value="Imprimir" action="#{veiculobean.imprimir}" id="imprimir"
+				<p:commandButton value="#{bundle.imprimir}" action="#{veiculobean.imprimir}" id="imprimir"
 					icon="pi pi-print" update="form tabelaVeiculo" process="@this">
 					<p:tooltip for="imprimir" value="Imprimir Relatorio"
 						showEffect="clip" hideEffect="fold" />
 				</p:commandButton>
 				<font></font>
 				<font></font>
-				<p:commandButton value="Download" icon="pi pi-arrow-down"
+				<p:commandButton value="#{bundle.download}" icon="pi pi-arrow-down"
 					action="#{veiculobean.gerarPdf}" id="download"
 					update="form tabelaVeiculo" process="@this">
 					<p:tooltip for="download" value="Download Relatorio"
@@ -101,27 +101,27 @@
 					<p:messages autoUpdate="true" id="msg" />
 					<p:separator />
 					<p:panelGrid columns="8" layout="grid" style="margin-bottom:10px">
-						<p:outputLabel value="Cliente" for="cliente" />
+						<p:outputLabel value="#{bundle['veiculo.cliente']}" for="cliente" />
 						<p:inputMask id="cliente" placeholder="Insira o nome"
 							value="#{veiculobean.veiculo.cliente.nome}" size="15" />
 
-						<p:outputLabel value="Tipo" for="tipo1" />
+						<p:outputLabel value="#{bundle['veiculo.tipo']}" for="tipo1" />
 						<p:selectOneMenu value="#{veiculobean.veiculo.tipo}" size="30">
 							<f:selectItem itemLabel="Selecione o tipo"
 								noSelectionOption="true" />
 							<f:selectItems value="#{veiculobean.tipo}" id="tipo1" />
 						</p:selectOneMenu>
-						<p:outputLabel value="Modelo" for="modelo1" />
+						<p:outputLabel value="#{bundle['veiculo.modelo']}" for="modelo1" />
 						<p:inputMask id="modelo1" placeholder="Insira o modelo"
 							value="#{veiculobean.veiculo.modelo}" size="15" />
 
-						<p:outputLabel value="Marca" for="marca1" />
+						<p:outputLabel value="#{bundle['veiculo.marca']}" for="marca1" />
 						<p:selectOneMenu value="#{veiculobean.veiculo.marca}" size="30">
 							<f:selectItem itemLabel="Selecione o marca"
 								noSelectionOption="true" />
 							<f:selectItems value="#{veiculobean.marca}" id="marca1" />
 						</p:selectOneMenu>
-						<p:outputLabel value="Ano" for="ano1" />
+						<p:outputLabel value="#{bundle['veiculo.ano']}" for="ano1" />
 						<p:inputText id="ano1" placeholder="Insira o ano"
 							value="#{veiculobean.veiculo.ano}" size="10" />
 					</p:panelGrid>
@@ -137,12 +137,12 @@
 				</h:form>
 			</p:dialog>
 			<center>
-				<h1>Lista de Veiculos</h1>
+				<h1>#{bundle['lista.veiculo']}</h1>
 			</center>
 
 			<p:dataTable value="#{veiculobean.veiculos}" var="v" tableStyleClass="cabecalho"
 				id="tabelaVeiculo" paginator="true" rows="7"  stickyHeader="true" stickyTopAt=".layout-topbar">
-				<p:column headerText="CLIENTE" sortBy="#{v.cliente.nome}">
+				<p:column headerText="CLIENTE" sortBy="#{v.cliente.nome}" >
 				<h:outputText value="#{v.cliente.nome}"/>
 				</p:column>
 				<p:column headerText="TIPO">

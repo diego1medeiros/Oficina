@@ -7,20 +7,10 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<h:outputStylesheet library="css" name="file.css" />
-        <link rel="stylesheet" type="text/css"  href="css/file.css"/>  
-
-
 
 <title>Sistema de Oficina</title>
 </head>
-<style>
-    .cheap {
-        background-color: #54a90a !important;
-        background-image: none !important;
-        color: #ffffff !important;
-    }
-</style>
+
 
 <ui:composition template="/_template.html">
 	<ui:define name="titulo">
@@ -37,7 +27,7 @@
 					<p:panelGrid columns="6" layout="grid" styleClass="ui-fluid"
 						columnClasses="ui-grid-col-1,ui-grid-col-3,ui-grid-col-1,ui-grid-col-3,ui-grid-col-1,ui-grid-col-3">
 
-						<p:outputLabel value="Funcionario" for="funcionario" />
+						<p:outputLabel value="#{bundle['servico.funcionario']}" for="funcionario" />
 						<p:selectOneMenu id="funcionario" required="true"
 							requiredMessage="A funcionario e obrigatório !!"
 							value="#{servicobean.servico.funcionario.idFuncionario}"
@@ -47,7 +37,7 @@
 							<f:selectItems value="#{servicobean.lista}" />
 						</p:selectOneMenu>
 
-						<p:outputLabel value="Cliente" for="cliente" />
+						<p:outputLabel value="#{bundle['servico.cliente']}" for="cliente" />
 						<p:selectOneMenu value="#{servicobean.servico.cliente.idCliente}"
 							id="cliente" converter="#{veiculoConverter}" required="true"
 							requiredMessage="O cliente e Obrigatorio!!" size="30">
@@ -56,7 +46,7 @@
 							<f:selectItems value="#{veiculobean.lista}" />
 						</p:selectOneMenu>
 
-						<p:outputLabel value="Modelo" for="modelo" />
+						<p:outputLabel value="#{bundle['servico.veiculo']}" for="modelo" />
 						<p:selectOneMenu value="#{servicobean.servico.veiculo.idVeiculo}"
 							required="true" requiredMessage="O veiculo e Obrigatorio!!"
 							size="30">
@@ -65,26 +55,26 @@
 							<f:selectItems value="#{servicobean.modelo}" id="modelo" />
 						</p:selectOneMenu>
 
-						<p:outputLabel for="dataServico" value="Data do Serviço" />
+						<p:outputLabel for="dataServico" value="#{bundle['servico.dataServico']}"  />
 						<p:datePicker id="dataServico" value="#{servicobean.servico.data}"
 							showIcon="true" />
 
-						<p:outputLabel for="dataEntrega" value="Data do Entrega" />
+						<p:outputLabel for="dataEntrega" value="#{bundle['servico.dataEntrega']}"  />
 						<p:datePicker id="dataEntrega"
 							value="#{servicobean.servico.dataEntrega}" showIcon="true" />
 
-						<p:outputLabel for="valor" value="Valor" />
+						<p:outputLabel for="valor" value="#{bundle['servico.valor']}" />
 						<p:inputNumber id="valor" value="#{servicobean.servico.valor}"
 							roundMethod="S" decimalPlaces="2" symbol="R$" required="true"
 							requiredMessage="O valor e Obrigatorio!!" decimalSeparator=","
 							thousandSeparator="." readonly="false" />
 
-						<p:outputLabel for="pago" value="Pago" />
+						<p:outputLabel for="pago" value="#{bundle['servico.pago']}"  />
 						<p:selectBooleanButton onLabel="Sim" offLabel="Não" id="pago"
 							value="#{servicobean.checked}" onIcon="pi pi-check"
 							offIcon="pi pi-times" style="width:6rem" />
 
-						<p:outputLabel value="Status" for="status" />
+						<p:outputLabel value="#{bundle['servico.status']}"  for="status" />
 						<p:selectOneMenu value="#{servicobean.servico.status}"
 							required="true" requiredMessage="O status e Obrigatorio!!"
 							size="30">
@@ -93,7 +83,7 @@
 							<f:selectItems value="#{servicobean.carregarStatus}" id="status" />
 						</p:selectOneMenu>
 
-						<p:outputLabel value="Descrição do Serviço" for="descricao" />
+						<p:outputLabel value="#{bundle['servico.descricao']}"  for="descricao" />
 						<p:selectOneMenu value="#{servicobean.servico.descricao}"
 							required="true" requiredMessage="O descrição e Obrigatorio!!">
 							<f:selectItem itemLabel="Selecione o descrição"
@@ -102,13 +92,13 @@
 								var="v" itemValue="#{s}" itemLabel="#{s}" />
 						</p:selectOneMenu>
 
-						<p:outputLabel value="Observação" for="obs" />
+						<p:outputLabel value="#{bundle['servico.observacao']}" for="obs" />
 						<p:inputTextarea id="obs"
 							value="#{servicobean.servico.observacoes}" />
 					</p:panelGrid>
 				</p:panel>
 				<p:separator />
-				<p:commandButton value="Salvar" icon="pi pi-save" id="salvar"
+				<p:commandButton value="#{bundle.salvar}"  icon="pi pi-save" id="salvar"
 					action="#{servicobean.cadastrarServico}"
 					update="form tabelaServico" style="margin-tpo:10pix"
 					process="@form" />
@@ -118,7 +108,7 @@
 				<font></font>
 				<font></font>
 				<font></font>
-				<p:commandButton value="Pesquisar"
+				<p:commandButton value="#{bundle.pesquisar}" 
 					oncomplete="PF('pesquisarServico').show()" icon="pi pi-search"
 					id="pesquisar" />
 				<p:tooltip for="pesquisar" value="Pesquisar Serviço"
@@ -126,7 +116,7 @@
 				<font></font>
 				<font></font>
 				<font></font>
-				<p:commandButton value="Imprimir"
+				<p:commandButton value="#{bundle.imprimir}" 
 					action="#{servicobean.imprimirRelatorioServico}" id="imprimir"
 					icon="pi pi-print" update="form tabelaServico" process="@this">
 					<p:tooltip for="imprimir" value="Imprimir Relatorio"
@@ -135,7 +125,7 @@
 				<font></font>
 				<font></font>
 
-				<p:commandButton value="Download" icon="pi pi-arrow-down"
+				<p:commandButton value="#{bundle.download}"  icon="pi pi-arrow-down"
 					action="#{servicobean.gerarPdf}" id="download"
 					update="form tabelaServico" process="@this">
 					<p:tooltip for="download" value="Download Relatorio"
@@ -152,44 +142,44 @@
 						<p:panelGrid columns="8" layout="grid" styleClass="ui-fluid"
 							columnClasses="ui-grid-col-1,ui-grid-col-3,ui-grid-col-1,ui-grid-col-3,ui-grid-col-1,ui-grid-col-3">
 
-							<p:outputLabel value="Funcionario" for="funcionario" />
+							<p:outputLabel value="#{bundle['servico.funcionario']}"  for="funcionario" />
 							<p:inputMask id="funcionario" placeholder="Insira o funcionario"
 								value="#{servicobean.servico.funcionario.nome}" size="15" />
 
-							<p:outputLabel value="Cliente" for="cliente" />
+							<p:outputLabel value="#{bundle['servico.cliente']}"  for="cliente" />
 							<p:inputMask id="cliente" placeholder="Insira o cliente"
 								value="#{servicobean.servico.cliente.nome}" size="15" />
 
-							<p:outputLabel value="Modelo" for="modelo" />
+							<p:outputLabel value="#{bundle['servico.veiculo']}"  for="modelo" />
 							<p:inputMask id="modelo" placeholder="Insira o modelo"
 								value="#{servicobean.servico.veiculo.modelo}" size="15" />
 
-							<p:outputLabel for="dataServico" value="Data do Serviço" />
+							<p:outputLabel for="dataServico" value="#{bundle['servico.dataServico']}"  />
 							<p:datePicker id="dataServico"
 								value="#{servicobean.servico.data}" showIcon="true" />
 
-							<p:outputLabel for="dataEntrega" value="Data do Entrega" />
+							<p:outputLabel for="dataEntrega" value="#{bundle['servico.dataEntrega']}"  />
 							<p:datePicker id="dataEntrega"
 								value="#{servicobean.servico.dataEntrega}" showIcon="true" />
 
-							<p:outputLabel for="valor" value="Valor" />
+							<p:outputLabel for="valor" value="#{bundle['servico.valor']}"  />
 							<p:inputNumber id="valor" value="#{servicobean.servico.valor}"
 								symbol=" R$" symbolPosition="s" decimalSeparator=","
 								thousandSeparator="." />
 
-							<p:outputLabel for="pago" value="Pago" />
+							<p:outputLabel for="pago" value="#{bundle['servico.pago']}" />
 							<p:selectBooleanButton onLabel="Sim" offLabel="Não" id="pago"
 								value="#{servicobean.checked}" onIcon="pi pi-check"
 								offIcon="pi pi-times" style="width:6rem" />
 
-							<p:outputLabel value="Status" for="status" />
+							<p:outputLabel value="#{bundle['servico.status']}" for="status" />
 							<p:selectOneMenu value="#{servicobean.servico.status}" size="30">
 								<f:selectItem itemLabel="Selecione o status"
 									noSelectionOption="true" />
 								<f:selectItems value="#{servicobean.carregarStatus}" id="status" />
 							</p:selectOneMenu>
 
-							<p:outputLabel value="Descrição do Serviço" for="descricao" />
+							<p:outputLabel value="#{bundle['servico.descricao']}"  for="descricao" />
 							<p:selectOneMenu value="#{servicobean.servico.descricao}">
 								<f:selectItem itemLabel="Selecione o descrição"
 									noSelectionOption="true" />
@@ -197,7 +187,7 @@
 									var="v" itemValue="#{s}" itemLabel="#{s}" />
 							</p:selectOneMenu>
 
-							<p:outputLabel value="Observação" for="obs" />
+							<p:outputLabel value="#{bundle['servico.observacao']}"  for="obs" />
 							<p:inputTextarea id="obs"
 								value="#{servicobean.servico.observacoes}" />
 						</p:panelGrid>
@@ -215,7 +205,7 @@
 				</h:form>
 			</p:dialog>
 			<center>
-				<h1>Lista de Serviços</h1>
+				<h1>#{bundle['lista.servico']} </h1>
 			</center>
 
 			<p:dataTable value="#{servicobean.servicos}" var="s" tableStyleClass="cabecalho" 

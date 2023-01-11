@@ -8,7 +8,7 @@
 <h:head>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Sistema de Oficina</title>
+	<title>"#{bundle.title}" </title>
 </h:head>
 <body>
 
@@ -22,7 +22,7 @@
 			<center>
 				<h1>Quantidade de Serviço Por Funcionario</h1>
 			</center>
-			<p:commandButton value="Imprimir" action="#{servicobean.imprimirServicoPorFuncionario}" id="imprimir"
+			<p:commandButton value="#{bundle.imprimir}" action="#{servicobean.imprimirServicoPorFuncionario}" id="imprimir"
 				icon="pi pi-print" update="form tabelaServico" process="@this">
 				<p:tooltip for="imprimir" value="Imprimir Relatorio"
 					showEffect="clip" hideEffect="fold" />
@@ -38,7 +38,7 @@
 				<p:column headerText="FUNCIONARIO">
 					<h:outputText value="#{s.nomeFuncionario}" />
 				</p:column>
-				<p:column headerText="QTD SERVIÇOS">
+				<p:column headerText="QUANTIDADE SERVIÇOS">
 					<h:outputText value="#{s.qtdeServico}" />
 				</p:column>
 			</p:dataTable>

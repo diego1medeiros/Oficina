@@ -5,172 +5,174 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	
 <h:head>
 	<h:outputStylesheet library="css" name="file.css" />
-
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Cadastro de Cliente</title>
-
+	<title>#{bundle['title']}</title>
+	
 </h:head>
 
 <ui:composition template="/_template.html">
+
 	<ui:define name="titulo">
-		<h1>Cadastro de Cliente</h1>
+		<h1>#{bundle['cadastro.cliente']}</h1>
 	</ui:define>
 
 	<ui:define name="conteudo">
 		<h:body>
-			<h:form id="form">
-				<p:growl showDetail="true" />
-				<p:separator />
-<p:panel>
-				<p:panelGrid columns="14" layout="grid" style="margin-tpo:10pix">
-					<p:outputLabel value="Nome" for="nome" />
-					<p:inputText id="nome" required="true"
-						requiredMessage="O nome e Obrigatorio!!"
-						placeholder="Insira o Nome" value="#{clientebean.cliente.nome}"
-						size="40" />
-					<p:outputLabel value="Cpf" for="cpf" />
-					<p:inputMask id="cpf" required="true" mask="999.999.999-99"
-						validateMask="true" requiredMessage="O cpf e obrigatório !!"
-						placeholder="Insira o cpf" value="#{clientebean.cliente.cpf}"
-						size="25" />
-					<p:outputLabel value="Telefone" for="telefone" />
-					<p:inputMask id="telefone" required="true" mask="(99) 99999-9999"
-						validateMask="true" requiredMessage="O telefone e obrigatório !!"
-						placeholder="Insira o telefone"
-						value="#{clientebean.cliente.telefone}" size="25" />
-					<p:outputLabel value="Endereço" for="endereco" />
-					<p:inputText id="endereco" required="true"
-						requiredMessage="O enderenço e obrigatório !!"
-						placeholder="Insira o Endereço"
-						value="#{clientebean.cliente.endereco}" size="25" />
-					<p:outputLabel value="Email" for="email" />
-					<p:inputText id="email" required="true" validateMask="true"
-						requiredMessage="O email e obrigatório !!"
-						placeholder="Insira o email" value="#{clientebean.cliente.email}"
-						size="30" />
-				</p:panelGrid>
-</p:panel>
-				<p:separator />
-				<p:commandButton value="Salvar" id="salvar" icon="pi pi-save"
-					action="#{clientebean.cadastrarCliente}"
-					update="form tabelaCliente" style="margin-tpo:10pix" />
-				<p:tooltip for="salvar" value="Salvar Cliente" showEffect="clip"
-					hideEffect="fold" />
-
-				<font></font>
-				<font></font>
-				<font></font>
-				<p:commandButton value="Pesquisar" id="pesquisar"
-					oncomplete="PF('pesquisarCliente').show()" icon="pi pi-search" />
-				<p:tooltip for="pesquisar" value="Pesquisar Cliente"
-					showEffect="clip" hideEffect="fold" />
-				<font></font>
-				<font></font>
-				<font></font>
-				<p:commandButton value="Imprimir" action="#{clientebean.imprimir}"
-					id="imprimir" icon="pi pi-print" update="form tabelaCliente"
-					process="@this">
-					<p:tooltip for="imprimir" value="Imprimir Relatorio"
-						showEffect="clip" hideEffect="fold" />
-				</p:commandButton>
-				<font></font>
-				<font></font>
-				<p:commandButton value="Download" icon="pi pi-arrow-down"
-					action="#{clientebean.gerarPdf}" id="download"
-					update="form tabelaCliente" process="@this">
-					<p:tooltip for="download" value="Download Relatorio"
-						showEffect="clip" hideEffect="fold" />
-				</p:commandButton>
-			</h:form>
-			<p:dialog header="Pesquisar Cliente" widgetVar="pesquisarCliente"
-				modal="true" resizable="false" closeOnEscape="true">
-				<p:separator />
-				<h:form id="form1">
-					<p:messages autoUpdate="true" id="msg" />
+				<h:form id="form">
+					<p:growl showDetail="true" />
 					<p:separator />
-					<p:panelGrid columns="8" layout="grid" style="margin-tpo:10pix">
-						<p:outputLabel value="Nome" for="nome1" />
-						<p:inputText id="nome1" placeholder="Insira o Nome"
-							value="#{clientebean.cliente.nome}" size="25" />
-
-						<p:outputLabel value="Cpf" for="cpf1" />
-						<p:inputMask id="cpf1" mask="999.999.999-99" validateMask="true"
-							placeholder="Insira o cpf" value="#{clientebean.cliente.cpf}"
-							size="15" />
-
-						<p:outputLabel value="Telefone" for="telefone1" />
-						<p:inputMask id="telefone1" mask="(99) 99999-9999"
-							validateMask="true" placeholder="Insira o telefone"
-							value="#{clientebean.cliente.telefone}" size="15" />
-
-						<p:outputLabel value="Endereço" for="endereco1" />
-						<p:inputText id="endereco1" placeholder="Insira o Endereço"
-							value="#{clientebean.cliente.endereco}" size="25" />
-
-						<p:outputLabel value="Email" for="email1" />
-						<p:inputText id="email1" validateMask="true"
-							placeholder="Insira o email" value="#{clientebean.cliente.email}"
-							size="15" />
-					</p:panelGrid>
-
+					<p:panel>
+						<p:panelGrid columns="14" layout="grid" style="margin-tpo:10pix">
+							<p:outputLabel value="#{bundle['cliente.nome']}" for="nome" />
+							<p:inputText id="nome" required="true"
+								requiredMessage="O nome e Obrigatorio!!"
+								placeholder="Insira o Nome" value="#{clientebean.cliente.nome}"
+								size="40" />
+							<p:outputLabel value="#{bundle['cliente.cpf']}" for="cpf" />
+							<p:inputMask id="cpf" required="true" mask="999.999.999-99"
+								validateMask="true" requiredMessage="O cpf e obrigatório !!"
+								placeholder="Insira o cpf" value="#{clientebean.cliente.cpf}"
+								size="25" />
+							<p:outputLabel value="#{bundle['cliente.telefone']}" for="telefone" />
+							<p:inputMask id="telefone" required="true" mask="(99) 99999-9999"
+								validateMask="true"
+								requiredMessage="O telefone e obrigatório !!"
+								placeholder="Insira o telefone"
+								value="#{clientebean.cliente.telefone}" size="25" />
+							<p:outputLabel value="#{bundle['cliente.endereco']}" for="endereco" />
+							<p:inputText id="endereco" required="true"
+								requiredMessage="O enderenço e obrigatório !!"
+								placeholder="Insira o Endereço"
+								value="#{clientebean.cliente.endereco}" size="25" />
+							<p:outputLabel value="#{bundle['cliente.email']}" for="email" />
+							<p:inputText id="email" required="true" validateMask="true"
+								requiredMessage="O email e obrigatório !!"
+								placeholder="Insira o email"
+								value="#{clientebean.cliente.email}" size="30" />
+						</p:panelGrid>
+					</p:panel>
 					<p:separator />
+					<p:commandButton value="#{bundle.salvar}" id="salvar" icon="pi pi-save"
+						action="#{clientebean.cadastrarCliente}"
+						update="form tabelaCliente" style="margin-tpo:10pix" />
+					<p:tooltip for="salvar" value="Salvar Cliente" showEffect="clip"
+						hideEffect="fold" />
+
 					<font></font>
 					<font></font>
-					<p:commandButton id="pesquisar" icon="pi pi-search"
-						actionListener="#{clientebean.pesquisarCliente}"
-						update="form tabelaCliente" process="@form"
-						oncomplete="PF('pesquisarCliente').hide()" />
+					<font></font>
+					<p:commandButton value="#{bundle.pesquisar}" id="pesquisar"
+						oncomplete="PF('pesquisarCliente').show()" icon="pi pi-search" />
 					<p:tooltip for="pesquisar" value="Pesquisar Cliente"
 						showEffect="clip" hideEffect="fold" />
-				</h:form>
-			</p:dialog>
-			<center>
-				<h1>Lista de Clientes</h1>
-			</center>
-
-			<p:dataTable value="#{clientebean.clientes}" var="c" tableStyleClass="cabecalho"
-				id="tabelaCliente" paginator="true" rows="7" stickyHeader="true"
-				stickyTopAt=".layout-topbar">
-				<p:column headerText="NOME" sortBy="#{c.nome}">
-					<h:outputText value="#{c.nome}"/>
-				</p:column>
-				<p:column headerText="CPF">
-				<h:outputText value="#{c.cpf}"/>
-				</p:column>
-				<p:column headerText="TELEFONE">
-				<h:outputText value="#{c.telefone}"/>
-				</p:column>
-				<p:column headerText="ENDERENÇO">
-				<h:outputText value="#{c.endereco}"/>
-				</p:column>
-				<p:column headerText="EMAIL">
-				<h:outputText value="#{c.email}"/>
-				</p:column>
-
-				<p:column headerText="" width="100">
-					<p:commandButton id="editar" icon="pi pi-pencil"
+					<font></font>
+					<font></font>
+					<font></font>
+					<p:commandButton value="#{bundle.imprimir}" action="#{clientebean.imprimir}"
+						id="imprimir" icon="pi pi-print" update="form tabelaCliente"
+						process="@this">
+						<p:tooltip for="imprimir" value="Imprimir Relatorio"
+							showEffect="clip" hideEffect="fold" />
+					</p:commandButton>
+					<font></font>
+					<font></font>
+					<p:commandButton value="#{bundle.download}" icon="pi pi-arrow-down"
+						action="#{clientebean.gerarPdf}" id="download"
 						update="form tabelaCliente" process="@this">
-						<f:setPropertyActionListener value="#{c}"
-							target="#{clientebean.cliente}" />
-						<p:tooltip for="editar" value="Editar Cliente" showEffect="clip"
-							hideEffect="fold" />
+						<p:tooltip for="download" value="Download Relatorio"
+							showEffect="clip" hideEffect="fold" />
 					</p:commandButton>
-					<font></font>
-					<font></font>
-					<p:commandButton id="excluir" styleClass="ui-button-danger"
-						action="#{clientebean.excluirCliente(c)}" icon="pi pi-trash"
-						update="tabelaCliente" process="@this">
-						<f:setPropertyActionListener value="#{c}"
-							target="#{clientebean.cliente}" />
-						<p:tooltip for="excluir" value="Excluir Cliente" showEffect="clip"
-							hideEffect="fold" />
-					</p:commandButton>
+				</h:form>
+				<p:dialog header="Pesquisar Cliente" widgetVar="pesquisarCliente"
+					modal="true" resizable="false" closeOnEscape="true">
+					<p:separator />
+					<h:form id="form1">
+						<p:messages autoUpdate="true" id="msg" />
+						<p:separator />
+						<p:panelGrid columns="8" layout="grid" style="margin-tpo:10pix">
+							<p:outputLabel value="#{bundle['cliente.nome']}" for="nome1" />
+							<p:inputText id="nome1" placeholder="Insira o Nome"
+								value="#{clientebean.cliente.nome}" size="25" />
 
-				</p:column>
-			</p:dataTable>
+							<p:outputLabel value="#{bundle['cliente.cpf']}" for="cpf1" />
+							<p:inputMask id="cpf1" mask="999.999.999-99" validateMask="true"
+								placeholder="Insira o cpf" value="#{clientebean.cliente.cpf}"
+								size="15" />
 
+							<p:outputLabel value="#{bundle['cliente.telefone']}" for="telefone1" />
+							<p:inputMask id="telefone1" mask="(99) 99999-9999"
+								validateMask="true" placeholder="Insira o telefone"
+								value="#{clientebean.cliente.telefone}" size="15" />
+
+							<p:outputLabel value="#{bundle['cliente.endereco']}" for="endereco1" />
+							<p:inputText id="endereco1" placeholder="Insira o Endereço"
+								value="#{clientebean.cliente.endereco}" size="25" />
+
+							<p:outputLabel value="#{bundle['cliente.email']}" for="email1" />
+							<p:inputText id="email1" validateMask="true"
+								placeholder="Insira o email"
+								value="#{clientebean.cliente.email}" size="15" />
+						</p:panelGrid>
+
+						<p:separator />
+						<font></font>
+						<font></font>
+						<p:commandButton id="pesquisar" icon="pi pi-search"
+							actionListener="#{clientebean.pesquisarCliente}"
+							update="form tabelaCliente" process="@form"
+							oncomplete="PF('pesquisarCliente').hide()" />
+						<p:tooltip for="pesquisar" value="Pesquisar Cliente"
+							showEffect="clip" hideEffect="fold" />
+					</h:form>
+				</p:dialog>
+				<center>
+					<h1>#{bundle['lista.cliente']}</h1>
+				</center>
+
+				<p:dataTable value="#{clientebean.clientes}" var="c"
+					tableStyleClass="cabecalho" id="tabelaCliente" paginator="true"
+					rows="7" stickyHeader="true" stickyTopAt=".layout-topbar">
+					<p:column headerText="NOME" sortBy="#{c.nome}">
+						<h:outputText value="#{c.nome}" />
+					</p:column>
+					<p:column headerText="CPF">
+						<h:outputText value="#{c.cpf}" />
+					</p:column>
+					<p:column headerText="TELEFONE">
+						<h:outputText value="#{c.telefone}" />
+					</p:column>
+					<p:column headerText="ENDERENÇO">
+						<h:outputText value="#{c.endereco}" />
+					</p:column>
+					<p:column headerText="EMAIL">
+						<h:outputText value="#{c.email}" />
+					</p:column>
+
+					<p:column headerText="" width="100">
+						<p:commandButton id="editar" icon="pi pi-pencil"
+							update="form tabelaCliente" process="@this">
+							<f:setPropertyActionListener value="#{c}"
+								target="#{clientebean.cliente}" />
+							<p:tooltip for="editar" value="Editar Cliente" showEffect="clip"
+								hideEffect="fold" />
+						</p:commandButton>
+						<font></font>
+						<font></font>
+						<p:commandButton id="excluir" styleClass="ui-button-danger"
+							action="#{clientebean.excluirCliente(c)}" icon="pi pi-trash"
+							update="tabelaCliente" process="@this">
+							<f:setPropertyActionListener value="#{c}"
+								target="#{clientebean.cliente}" />
+							<p:tooltip for="excluir" value="Excluir Cliente"
+								showEffect="clip" hideEffect="fold" />
+						</p:commandButton>
+
+					</p:column>
+				</p:dataTable>
+		
 		</h:body>
 	</ui:define>
 </ui:composition>
