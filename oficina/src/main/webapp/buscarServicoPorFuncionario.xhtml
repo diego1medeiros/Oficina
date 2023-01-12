@@ -114,7 +114,7 @@
 					</p:commandButton>
 					<font></font>
 
-					<p:commandButton action="#{servicobean.excluirServico(s)}"
+					<p:commandButton action="#{servicobean.excluirServico(s)}" styleClass="ui-button-danger"
 						id="excluir" icon="pi pi-trash" update="tabelaServico"
 						process="@this">
 						<f:setPropertyActionListener value="#{s}"
@@ -124,7 +124,7 @@
 
 					</p:commandButton>
 					<p:separator />
-					<p:commandButton action="#{servicobean.ordemServico(s)}"
+					<p:commandButton action="#{servicobean.ordemServico(s)}" styleClass="ui-button-help mr-2"
 						id="animate" icon="pi pi-print" update="tabelaServico"
 						process="@this">
 						<f:setPropertyActionListener value="#{s}"
@@ -136,7 +136,7 @@
 					<font></font>
 
 					<font></font>
-					<p:commandButton action="#{servicobean.imprimirContrato(s)}"
+					<p:commandButton action="#{servicobean.imprimirContrato(s)}" styleClass="ui-button-warning mr-2"
 						id="contrato" icon="pi pi-book" update="tabelaServico"
 						process="@this">
 						<f:setPropertyActionListener value="#{s}"

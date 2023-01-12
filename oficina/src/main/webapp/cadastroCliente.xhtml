@@ -72,11 +72,14 @@
 					<font></font>
 					<font></font>
 					<p:commandButton value="#{bundle.imprimir}" action="#{clientebean.imprimir}"
+						
 						id="imprimir" icon="pi pi-print" update="form tabelaCliente"
 						process="@this">
+					<p:printer action ="#{clientebean.imprimir}"/>
 						<p:tooltip for="imprimir" value="Imprimir Relatorio"
 							showEffect="clip" hideEffect="fold" />
 					</p:commandButton>
+					
 					<font></font>
 					<font></font>
 					<p:commandButton value="#{bundle.download}" icon="pi pi-arrow-down"

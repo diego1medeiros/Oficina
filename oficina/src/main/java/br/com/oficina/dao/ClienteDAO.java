@@ -1,5 +1,6 @@
 package br.com.oficina.dao;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -9,8 +10,9 @@ import br.com.oficina.entity.Cliente;
 import br.com.oficina.entity.Veiculo;
 import br.com.oficina.util.JPAUtil;
 
+public class ClienteDAO implements Serializable {
 
-public class ClienteDAO {
+	private static final long serialVersionUID = 1L;
 
 	public Cliente cadastrarCliente(Cliente cliente) {
 		EntityManager em = JPAUtil.getConnection();

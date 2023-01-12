@@ -20,7 +20,7 @@
 	<center>
 		<p:graphicImage library="imagens" name="logo.png" width="100" />
 		<p:outputPanel>
-			<h1>Logar no Sistema</h1>
+			<h1>Login</h1>
 		</p:outputPanel>
 		<h:form id="login">
 			<p:growl  showDetail="true" />
@@ -47,7 +47,7 @@
 			<p:commandLink value="Cadastrar Funcionario"
 				onclick="PF('cadastroNovoFuncionario').show()" />
 
-			<p:dialog header="Cadastro de Login"
+			<p:dialog header="Cadastro de Funcionario"
 				widgetVar="cadastroNovoFuncionario" modal="true" resizable="false"
 				closeOnEscape="true">
 				<h:body>
@@ -71,7 +71,7 @@
 								<p:inputText id="nome" required="true"
 									requiredMessage="O nome e Obrigatorio!!"
 									placeholder="Insira o Nome" value="#{bean.funcionario.nome}"
-									size="25" />
+									size="30" />
 								<p:outputLabel value="Cpf" for="cpf" />
 								<p:inputMask id="cpf" required="true" mask="999.999.999-99"
 									validateMask="true" requiredMessage="O cpf e obrigatório !!"
@@ -109,7 +109,7 @@
 							</p:panelGrid>
 						</p:panel>
 						<p:separator />
-						<p:commandButton value="Cadastrar"
+						<p:commandButton value="Cadastrar" 
 							action="#{bean.cadastrarFuncionario}" update="form" 
 							process="@form" />
 						<p:separator />

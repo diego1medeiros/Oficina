@@ -6,7 +6,7 @@
 RlVOQ0lPTkFSSU8iIEFTICwyNDYsLTIsODhkN2M0YjgtMDUyNS00YzU2LWIyOWEtZDRmMzdjYTk4
 NjAwOw==]]>
 	</property>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Oficina-Medeiros"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false"/>
 	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true"/>
@@ -89,7 +89,7 @@ GROUP BY "FUNCIONARIO"."ID_FUNCIONARIO"]]>
 				<textElement>
 					<font isBold="false"/>
 				</textElement>
-				<text><![CDATA[ID_SERVICO]]></text>
+				<text><![CDATA[QUANTIDADE DE SERVICO]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -98,7 +98,7 @@ GROUP BY "FUNCIONARIO"."ID_FUNCIONARIO"]]>
 			<frame>
 				<reportElement style="Row" mode="Opaque" x="0" y="0" width="555" height="18" uuid="b50221b5-8254-440b-8c6f-1f0b138c9259"/>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" positionType="Float" x="0" y="0" width="277" height="18" uuid="2b1df112-4b9f-459c-be43-002993763392">
+					<reportElement style="Detail" positionType="Float" x="0" y="22" width="277" height="18" uuid="2b1df112-4b9f-459c-be43-002993763392">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ba43b027-cc7b-4cba-b042-3574f624ce8f"/>
 					</reportElement>
 					<textElement>
