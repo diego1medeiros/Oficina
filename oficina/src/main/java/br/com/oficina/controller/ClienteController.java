@@ -7,6 +7,9 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import org.jboss.weld.context.ejb.Ejb;
+
 import br.com.oficina.entity.BonusCliente;
 import br.com.oficina.entity.Cliente;
 import br.com.oficina.entity.Veiculo;
