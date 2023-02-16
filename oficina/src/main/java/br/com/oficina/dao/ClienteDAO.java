@@ -8,7 +8,6 @@ import br.com.oficina.util.JPAUtil;
 
 public class ClienteDAO {
 
-
 	public Cliente cadastrarCliente(Cliente cliente) {
 		EntityManager em = JPAUtil.getConnection();
 		try {

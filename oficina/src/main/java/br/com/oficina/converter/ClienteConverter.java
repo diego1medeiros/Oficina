@@ -8,7 +8,6 @@ import javax.faces.convert.FacesConverter;
 import br.com.oficina.controller.ClienteController;
 import br.com.oficina.dao.ClienteDAO;
 import br.com.oficina.entity.Cliente;
-import br.com.oficina.entity.Veiculo;
 
 
 @FacesConverter(value="clienteConverter", forClass = ClienteController.class)
