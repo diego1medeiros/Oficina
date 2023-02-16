@@ -7,27 +7,22 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
 <title>Sistema de Oficina</title>
 </head>
-
-
 <ui:composition template="/_template.html">
-	<ui:define name="titulo">
-		<h1>Cadastro de Serviço</h1>
-	</ui:define>
-
 	<ui:define name="conteudo">
-
 		<h:body>
 			<h:form id="form">
 				<p:growl showDetail="true" />
 				<p:separator />
-				<p:panel>
+				<p:panel style="opacity:0.8">
+					<center>
+						<h1>Cadastro de Serviço</h1>
+					</center>
 					<p:panelGrid columns="6" layout="grid" styleClass="ui-fluid"
 						columnClasses="ui-grid-col-1,ui-grid-col-3,ui-grid-col-1,ui-grid-col-3,ui-grid-col-1,ui-grid-col-3">
-
-						<p:outputLabel value="#{bundle['servico.funcionario']}" for="funcionario" />
+						<p:outputLabel value="#{bundle['servico.funcionario']}"
+							for="funcionario" />
 						<p:selectOneMenu id="funcionario" required="true"
 							requiredMessage="A funcionario e obrigatório !!"
 							value="#{servicobean.servico.funcionario.idFuncionario}"
@@ -36,7 +31,6 @@
 								noSelectionOption="true" />
 							<f:selectItems value="#{servicobean.lista}" />
 						</p:selectOneMenu>
-
 						<p:outputLabel value="#{bundle['servico.cliente']}" for="cliente" />
 						<p:selectOneMenu value="#{servicobean.servico.cliente.idCliente}"
 							id="cliente" converter="#{veiculoConverter}" required="true"
@@ -45,7 +39,6 @@
 								noSelectionOption="true" />
 							<f:selectItems value="#{veiculobean.lista}" />
 						</p:selectOneMenu>
-
 						<p:outputLabel value="#{bundle['servico.veiculo']}" for="modelo" />
 						<p:selectOneMenu value="#{servicobean.servico.veiculo.idVeiculo}"
 							required="true" requiredMessage="O veiculo e Obrigatorio!!"
@@ -54,27 +47,24 @@
 								noSelectionOption="true" />
 							<f:selectItems value="#{servicobean.modelo}" id="modelo" />
 						</p:selectOneMenu>
-
-						<p:outputLabel for="dataServico" value="#{bundle['servico.dataServico']}"  />
+						<p:outputLabel for="dataServico"
+							value="#{bundle['servico.dataServico']}" />
 						<p:datePicker id="dataServico" value="#{servicobean.servico.data}"
 							showIcon="true" />
-
-						<p:outputLabel for="dataEntrega" value="#{bundle['servico.dataEntrega']}"  />
+						<p:outputLabel for="dataEntrega"
+							value="#{bundle['servico.dataEntrega']}" />
 						<p:datePicker id="dataEntrega"
 							value="#{servicobean.servico.dataEntrega}" showIcon="true" />
-
 						<p:outputLabel for="valor" value="#{bundle['servico.valor']}" />
 						<p:inputNumber id="valor" value="#{servicobean.servico.valor}"
 							roundMethod="S" decimalPlaces="2" symbol="R$" required="true"
 							requiredMessage="O valor e Obrigatorio!!" decimalSeparator=","
 							thousandSeparator="." readonly="false" />
-
-						<p:outputLabel for="pago" value="#{bundle['servico.pago']}"  />
+						<p:outputLabel for="pago" value="#{bundle['servico.pago']}" />
 						<p:selectBooleanButton onLabel="Sim" offLabel="Não" id="pago"
 							value="#{servicobean.checked}" onIcon="pi pi-check"
 							offIcon="pi pi-times" style="width:6rem" />
-
-						<p:outputLabel value="#{bundle['servico.status']}"  for="status" />
+						<p:outputLabel value="#{bundle['servico.status']}" for="status" />
 						<p:selectOneMenu value="#{servicobean.servico.status}"
 							required="true" requiredMessage="O status e Obrigatorio!!"
 							size="30">
@@ -82,8 +72,8 @@
 								noSelectionOption="true" />
 							<f:selectItems value="#{servicobean.carregarStatus}" id="status" />
 						</p:selectOneMenu>
-
-						<p:outputLabel value="#{bundle['servico.descricao']}"  for="descricao" />
+						<p:outputLabel value="#{bundle['servico.descricao']}"
+							for="descricao" />
 						<p:selectOneMenu value="#{servicobean.servico.descricao}"
 							required="true" requiredMessage="O descrição e Obrigatorio!!">
 							<f:selectItem itemLabel="Selecione o descrição"
@@ -91,15 +81,14 @@
 							<f:selectItems value="#{servicobean.descricao}" id="descricao"
 								var="v" itemValue="#{s}" itemLabel="#{s}" />
 						</p:selectOneMenu>
-
 						<p:outputLabel value="#{bundle['servico.observacao']}" for="obs" />
 						<p:inputTextarea id="obs"
 							value="#{servicobean.servico.observacoes}" />
 					</p:panelGrid>
 				</p:panel>
 				<p:separator />
-				<p:commandButton value="#{bundle.salvar}"  icon="pi pi-save" id="salvar"
-					action="#{servicobean.cadastrarServico}"
+				<p:commandButton value="#{bundle.salvar}" icon="pi pi-save"
+					id="salvar" action="#{servicobean.cadastrarServico}"
 					update="form tabelaServico" style="margin-tpo:10pix"
 					process="@form" />
 				<p:tooltip for="salvar" value="Salvar Serviço" showEffect="clip"
@@ -108,7 +97,7 @@
 				<font></font>
 				<font></font>
 				<font></font>
-				<p:commandButton value="#{bundle.pesquisar}" 
+				<p:commandButton value="#{bundle.pesquisar}"
 					oncomplete="PF('pesquisarServico').show()" icon="pi pi-search"
 					id="pesquisar" />
 				<p:tooltip for="pesquisar" value="Pesquisar Serviço"
@@ -116,7 +105,7 @@
 				<font></font>
 				<font></font>
 				<font></font>
-				<p:commandButton value="#{bundle.imprimir}" 
+				<p:commandButton value="#{bundle.imprimir}"
 					action="#{servicobean.imprimirRelatorioServico}" id="imprimir"
 					icon="pi pi-print" update="form tabelaServico" process="@this">
 					<p:tooltip for="imprimir" value="Imprimir Relatorio"
@@ -124,8 +113,7 @@
 				</p:commandButton>
 				<font></font>
 				<font></font>
-
-				<p:commandButton value="#{bundle.download}"  icon="pi pi-arrow-down"
+				<p:commandButton value="#{bundle.download}" icon="pi pi-arrow-down"
 					action="#{servicobean.gerarPdf}" id="download"
 					update="form tabelaServico" process="@this">
 					<p:tooltip for="download" value="Download Relatorio"
@@ -133,61 +121,55 @@
 				</p:commandButton>
 				<p:separator />
 			</h:form>
-
 			<p:dialog header="Pesquisar Serviço" widgetVar="pesquisarServico"
-				modal="true" resizable="false" closeOnEscape="true">
+				modal="true" resizable="false" closeOnEscape="true"
+				style="opacity:0.8">
 				<h:form id="form1">
 					<p:messages autoUpdate="true" id="msg" />
 					<p:panel>
 						<p:panelGrid columns="8" layout="grid" styleClass="ui-fluid"
 							columnClasses="ui-grid-col-1,ui-grid-col-3,ui-grid-col-1,ui-grid-col-3,ui-grid-col-1,ui-grid-col-3">
-
-							<p:outputLabel value="#{bundle['servico.funcionario']}"  for="funcionario" />
+							<p:outputLabel value="#{bundle['servico.funcionario']}"
+								for="funcionario" />
 							<p:inputMask id="funcionario" placeholder="Insira o funcionario"
 								value="#{servicobean.servico.funcionario.nome}" size="15" />
-
-							<p:outputLabel value="#{bundle['servico.cliente']}"  for="cliente" />
+							<p:outputLabel value="#{bundle['servico.cliente']}" for="cliente" />
 							<p:inputMask id="cliente" placeholder="Insira o cliente"
 								value="#{servicobean.servico.cliente.nome}" size="15" />
-
-							<p:outputLabel value="#{bundle['servico.veiculo']}"  for="modelo" />
+							<p:outputLabel value="#{bundle['servico.veiculo']}" for="modelo" />
 							<p:inputMask id="modelo" placeholder="Insira o modelo"
 								value="#{servicobean.servico.veiculo.modelo}" size="15" />
-
-							<p:outputLabel for="dataServico" value="#{bundle['servico.dataServico']}"  />
+							<p:outputLabel for="dataServico"
+								value="#{bundle['servico.dataServico']}" />
 							<p:datePicker id="dataServico"
 								value="#{servicobean.servico.data}" showIcon="true" />
-
-							<p:outputLabel for="dataEntrega" value="#{bundle['servico.dataEntrega']}"  />
+							<p:outputLabel for="dataEntrega"
+								value="#{bundle['servico.dataEntrega']}" />
 							<p:datePicker id="dataEntrega"
 								value="#{servicobean.servico.dataEntrega}" showIcon="true" />
-
-							<p:outputLabel for="valor" value="#{bundle['servico.valor']}"  />
+							<p:outputLabel for="valor" value="#{bundle['servico.valor']}" />
 							<p:inputNumber id="valor" value="#{servicobean.servico.valor}"
 								symbol=" R$" symbolPosition="s" decimalSeparator=","
 								thousandSeparator="." />
-
 							<p:outputLabel for="pago" value="#{bundle['servico.pago']}" />
 							<p:selectBooleanButton onLabel="Sim" offLabel="Não" id="pago"
 								value="#{servicobean.checked}" onIcon="pi pi-check"
 								offIcon="pi pi-times" style="width:6rem" />
-
 							<p:outputLabel value="#{bundle['servico.status']}" for="status" />
 							<p:selectOneMenu value="#{servicobean.servico.status}" size="30">
 								<f:selectItem itemLabel="Selecione o status"
 									noSelectionOption="true" />
 								<f:selectItems value="#{servicobean.carregarStatus}" id="status" />
 							</p:selectOneMenu>
-
-							<p:outputLabel value="#{bundle['servico.descricao']}"  for="descricao" />
+							<p:outputLabel value="#{bundle['servico.descricao']}"
+								for="descricao" />
 							<p:selectOneMenu value="#{servicobean.servico.descricao}">
 								<f:selectItem itemLabel="Selecione o descrição"
 									noSelectionOption="true" />
 								<f:selectItems value="#{servicobean.descricao}" id="descricao"
 									var="v" itemValue="#{s}" itemLabel="#{s}" />
 							</p:selectOneMenu>
-
-							<p:outputLabel value="#{bundle['servico.observacao']}"  for="obs" />
+							<p:outputLabel value="#{bundle['servico.observacao']}" for="obs" />
 							<p:inputTextarea id="obs"
 								value="#{servicobean.servico.observacoes}" />
 						</p:panelGrid>
@@ -201,99 +183,91 @@
 						oncomplete="PF('pesquisarServico').hide()" />
 					<p:tooltip for="pesquisar" value="Pesquisar Serviço"
 						showEffect="clip" hideEffect="fold" />
-
 				</h:form>
 			</p:dialog>
-			<center>
-				<h1>#{bundle['lista.servico']} </h1>
-			</center>
 
-			<p:dataTable value="#{servicobean.servicos}" var="s" tableStyleClass="cabecalho" 
-				id="tabelaServico" paginator="true" rows="5" stickyHeader="true"
-				stickyTopAt=".layout-topbar"  rowStyleClass="#{s.pago == 1 ? 'cheap' : null}" >
-				<p:column headerText="Funcionario" >
-					<h:outputText value="#{s.funcionario.nome}"   />
-				</p:column>
-				<p:column headerText="Cliente">
-					<h:outputText value="#{s.cliente.nome}"  />
-				</p:column>
-				<p:column headerText="Modelo">
-					<h:outputText value="#{s.veiculo.modelo}" />
-				</p:column>
-
-				<p:column headerText="Data do Serviço">
-					<h:outputText value="#{s.data}">
-						<f:convertDateTime pattern="dd/MM/yyyy" />
-					</h:outputText>
-				</p:column>
-				<p:column headerText="Data da Entrega">
-					<h:outputText value="#{s.dataEntrega}">
-						<f:convertDateTime pattern="dd/MM/yyyy" />
-					</h:outputText>
-				</p:column>
-
-				<p:column headerText="Valor">
-					<h:outputText value="#{s.valor}">
-						<f:convertNumber type="currency" />
-					</h:outputText>
-				</p:column>
-				<p:column headerText="Pago">
-					<h:outputText value="#{servicobean.formatarPagamento(s)}" />
-				</p:column>
-				<p:column headerText="Status" width="100">
-					<h:outputText value="#{s.status}" />
-				</p:column>
-				<p:column headerText="Descrição">
-					<h:outputText value="#{s.descricao}" />
-				</p:column>
-				<p:column headerText="Observação">
-					<h:outputText value="#{s.observacoes}" />
-				</p:column>
-
-				<p:column headerText="" width="100">
-					<p:commandButton icon="pi pi-pencil" update="form tabelaServico"
-						id="atualizar" process="@this">
-						<f:setPropertyActionListener value="#{s}"
-							target="#{servicobean.servico}" />
-						<p:tooltip for="atualizar" value="Editar Serviço"
-							showEffect="clip" hideEffect="fold" />
-
-					</p:commandButton>
-					<font></font>
-
-					<p:commandButton action="#{servicobean.excluirServico(s)}"
-						styleClass="ui-button-danger" id="excluir" icon="pi pi-trash"
-						update="tabelaServico" process="@this">
-						<f:setPropertyActionListener value="#{s}"
-							target="#{servicobean.servico}" />
-						<p:tooltip for="excluir" value="Excluir Serviço" showEffect="clip"
-							hideEffect="fold" />
-
-					</p:commandButton>
-					<p:separator />
-					<p:commandButton action="#{servicobean.ordemServico(s)}"
-						styleClass="ui-button-help mr-2" id="animate" icon="pi pi-print"
-						update="tabelaServico" process="@this">
-						<f:setPropertyActionListener value="#{s}"
-							target="#{servicobean.servico}" />
-						<p:tooltip for="animate" value="Imprimir O.S." showEffect="clip"
-							hideEffect="fold" />
-
-					</p:commandButton>
-					<font></font>
-
-					<font></font>
-					<p:commandButton action="#{servicobean.imprimirContrato(s)}"
-						styleClass="ui-button-warning mr-2" id="contrato"
-						icon="pi pi-book" update="tabelaServico" process="@this">
-						<f:setPropertyActionListener value="#{s}"
-							target="#{servicobean.servico}" />
-						<p:tooltip for="contrato" value="Imprimir contrato"
-							showEffect="clip" hideEffect="fold" />
-
-					</p:commandButton>
-				</p:column>
-			</p:dataTable>
+			<p:panel style="opacity:0.8">
+				<center>
+					<h1>#{bundle['lista.servico']}</h1>
+				</center>
+				<p:dataTable value="#{servicobean.servicos}" var="s"
+					tableStyleClass="cabecalho" id="tabelaServico" paginator="true"
+					rows="5" stickyHeader="true" stickyTopAt=".layout-topbar"
+					rowStyleClass="#{s.pago == 1 ? 'cheap' : null}">
+					<p:column headerText="Funcionario">
+						<h:outputText value="#{s.funcionario.nome}" />
+					</p:column>
+					<p:column headerText="Cliente">
+						<h:outputText value="#{s.cliente.nome}" />
+					</p:column>
+					<p:column headerText="Modelo">
+						<h:outputText value="#{s.veiculo.modelo}" />
+					</p:column>
+					<p:column headerText="Data do Serviço">
+						<h:outputText value="#{s.data}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</h:outputText>
+					</p:column>
+					<p:column headerText="Data da Entrega">
+						<h:outputText value="#{s.dataEntrega}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</h:outputText>
+					</p:column>
+					<p:column headerText="Valor">
+						<h:outputText value="#{s.valor}">
+							<f:convertNumber type="currency" />
+						</h:outputText>
+					</p:column>
+					<p:column headerText="Pago">
+						<h:outputText value="#{servicobean.formatarPagamento(s)}" />
+					</p:column>
+					<p:column headerText="Status" width="100">
+						<h:outputText value="#{s.status}" />
+					</p:column>
+					<p:column headerText="Descrição">
+						<h:outputText value="#{s.descricao}" />
+					</p:column>
+					<p:column headerText="Observação">
+						<h:outputText value="#{s.observacoes}" />
+					</p:column>
+					<p:column headerText="" width="100">
+						<p:commandButton icon="pi pi-pencil" update="form tabelaServico"
+							id="atualizar" process="@this">
+							<f:setPropertyActionListener value="#{s}"
+								target="#{servicobean.servico}" />
+							<p:tooltip for="atualizar" value="Editar Serviço"
+								showEffect="clip" hideEffect="fold" />
+						</p:commandButton>
+						<font></font>
+						<p:commandButton action="#{servicobean.excluirServico(s)}"
+							styleClass="ui-button-danger" id="excluir" icon="pi pi-trash"
+							update="form tabelaServico" process="@this">
+							
+							<p:tooltip for="excluir" value="Excluir Serviço"
+								showEffect="clip" hideEffect="fold" />
+						</p:commandButton>
+						<p:separator />
+						<p:commandButton action="#{servicobean.ordemServico(s)}"
+							styleClass="ui-button-help mr-2" id="animate" icon="pi pi-print"
+							update="tabelaServico" process="@this">
+							<f:setPropertyActionListener value="#{s}"
+								target="#{servicobean.servico}" />
+							<p:tooltip for="animate" value="Imprimir O.S." showEffect="clip"
+								hideEffect="fold" />
+						</p:commandButton>
+						<font></font>
+						<font></font>
+						<p:commandButton action="#{servicobean.imprimirContrato(s)}"
+							styleClass="ui-button-warning mr-2" id="contrato"
+							icon="pi pi-book" update="tabelaServico" process="@this">
+							<f:setPropertyActionListener value="#{s}"
+								target="#{servicobean.servico}" />
+							<p:tooltip for="contrato" value="Imprimir contrato"
+								showEffect="clip" hideEffect="fold" />
+						</p:commandButton>
+					</p:column>
+				</p:dataTable>
+			</p:panel>
 		</h:body>
 	</ui:define>
 </ui:composition>

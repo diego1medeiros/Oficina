@@ -15,7 +15,9 @@ import br.com.oficina.entity.Funcionario;
 import br.com.oficina.entity.Servico;
 import br.com.oficina.entity.Veiculo;
 import br.com.oficina.enumeradores.StatusServicos;
+import br.com.oficina.service.FuncionarioServiceImpl;
 import br.com.oficina.service.ServicoServiceImpl;
+import br.com.oficina.service.VeiculoServiceImpl;
 import br.com.oficina.util.Message;
 import br.com.oficina.util.RelatorioUtil;
 import br.com.oficina.util.Utils;
@@ -46,53 +48,18 @@ public class ServicoController implements Serializable {
 
 	private List<ServicoVo> servicosPorData = new ArrayList<>();
 
-	public List<Servico> buscarDadosDosServicos(Servico servico) {
-		return servicoServiceImpl.buscarDadosDosServicos(servico);
-	}
-
-	public Servico atualizarStatusServico(Servico servico) {
-		return servicoServiceImpl.atualizarStatusServico(servico);
-	}
-
-	public Servico cadastrarServico(Servico servico) {
-		return servicoServiceImpl.cadastrarServico(servico);
-	}
-
-	public Servico removerServico(Servico servico) {
-		return servicoServiceImpl.removerServico(servico);
-	}
-
-	public List<Servico> buscaDadosdosServicos() {
-		return servicoServiceImpl.buscaDadosdosServicos();
-	}
-
-	public Servico editarServico(Servico servico) {
-		return servicoServiceImpl.editarServico(servico);
-	}
-
-	public List<Servico> buscarServicosPorNomeFuncionario(String nomeFuncionario) {
-		return servicoServiceImpl.buscarServicosPorNomeFuncionario(nomeFuncionario);
-	}
-
-	public List<ServicoVo> buscaQdtDosServicosPorFuncionarios() {
-		return servicoServiceImpl.buscaQdtDosServicosPorFuncionarios();
-	}
-
-	public List<ServicoVo> relatorioValorTotalDeServicos(Servico servico) {
-		return servicoServiceImpl.relatorioValorTotalDeServicos(servico);
-	}
-
 	public String cadastrarServico() {
 		try {
 			if (servico.getIdServico() == null) {
-				cadastrarServico(servico);
+				servicoServiceImpl.cadastrarServico(servico);
 				carregarServicos();
 				limpar();
 				Message.info("Serviço Cadastro com Sucesso!!!");
 			} else {
-				updateServico(servico);
+				servicoServiceImpl.editarServico(servico);
 				carregarServicos();
 				limpar();
+				Message.info("Serviço atualizado com Sucesso!!!");
 			}
 		} catch (Exception e) {
 			Message.erro(" Serviço não foi Cadastro!!!");
@@ -102,28 +69,16 @@ public class ServicoController implements Serializable {
 
 	public void excluirServico(Servico servico) {
 		try {
-			removerServico(servico);
+			servicoServiceImpl.removerServico(servico);
 			carregarServicos();
-			Message.info("Serviço excluido com Sucesso!!!");
-
+			Message.erro("Serviço excluido com Sucesso!!!");
 		} catch (Exception e) {
 			Message.erro(" Serviço não foi excluido!!!");
 		}
 	}
 
-	public void updateServico(Servico servico) {
-		try {
-			editarServico(servico);
-			carregarServicos();
-			Message.info("Serviço atualizado com Sucesso!!!");
-
-		} catch (Exception e) {
-			Message.erro(" Serviço não foi atualizado!!!");
-		}
-	}
-
 	public void pesquisarServico() {
-		servicos = buscarDadosDosServicos(servico);
+		servicos = servicoServiceImpl.buscarDadosDosServicos(servico);
 		limpar();
 		if (!servicos.isEmpty()) {
 			Message.info("Serviço foi encontrado !!!");
@@ -134,7 +89,7 @@ public class ServicoController implements Serializable {
 
 	public void pesquisarServicoPorFuncioanario() {
 
-		servicoPorFuncionario = buscarServicosPorNomeFuncionario(servico.getFuncionario().getNome());
+		servicoPorFuncionario = servicoServiceImpl.buscarServicosPorNomeFuncionario(servico.getFuncionario().getNome());
 		limpar();
 		if (!servicoPorFuncionario.isEmpty()) {
 			Message.info("Serviço foi encontrado !!!");
@@ -153,15 +108,15 @@ public class ServicoController implements Serializable {
 
 	@PostConstruct
 	public void carregarServicos() {
-		servicos = buscaDadosdosServicos();
+		servicos = servicoServiceImpl.buscaDadosdosServicos();
 	}
 
 	public List<ServicoVo> getQtdServicosPorFuncionario() {
-		return qtdServicos = buscaQdtDosServicosPorFuncionarios();
+		return qtdServicos = servicoServiceImpl.buscaQdtDosServicosPorFuncionarios();
 	}
 
 	public void buscarServicosPorData() {
-		servicosPorData = relatorioValorTotalDeServicos(servico);
+		servicosPorData = servicoServiceImpl.relatorioValorTotalDeServicos(servico);
 		limpar();
 		if (!servicosPorData.isEmpty()) {
 			Message.info("Serviço foi encontrado !!!");
@@ -175,20 +130,19 @@ public class ServicoController implements Serializable {
 	}
 
 	public List<SelectItem> getLista() {
-		FuncionarioController funcionarioController = new FuncionarioController();
+		FuncionarioServiceImpl funcionarioServiceImpl = new FuncionarioServiceImpl();
 		List<SelectItem> list = new ArrayList<SelectItem>();
-		List<Funcionario> funcionarios = funcionarioController.buscarDadosDosFuncionarios();
+		List<Funcionario> funcionarios = funcionarioServiceImpl.buscarDadosDosFuncionarios();
 		for (Funcionario funcionario : funcionarios) {
 			list.add(new SelectItem(funcionario.getIdFuncionario(), funcionario.getNome()));
-
 		}
 		return list;
 	}
 
 	public List<SelectItem> getModelo() {
-		VeiculoController controller = new VeiculoController();
+		VeiculoServiceImpl veiculoServiceImpl = new VeiculoServiceImpl();
 		List<SelectItem> list = new ArrayList<SelectItem>();
-		List<Veiculo> veiculos = controller.buscarDadosDosVeiculos();
+		List<Veiculo> veiculos = veiculoServiceImpl.buscarDadosDosVeiculos();
 		for (Veiculo veiculo : veiculos) {
 			list.add(new SelectItem(veiculo.getIdVeiculo(), veiculo.getModelo()));
 		}
@@ -197,21 +151,21 @@ public class ServicoController implements Serializable {
 
 	public Servico ordemServico(Servico servico) {
 		RelatorioUtil.criarRelatorio("C:/Users/diego/git/oficinaWeb/oficina/relatorio/ordemDeServico.jrxml",
-				buscarServicosPorNomeFuncionario(servico.getFuncionario().getNome()));
+				servicoServiceImpl.buscarServicosPorNomeFuncionario(servico.getFuncionario().getNome()));
 		Message.info("Impressão Reliazada com Sucesso!!!");
 		return servico;
 	}
 
 	public Servico imprimirRelatorioServico() {
 		RelatorioUtil.criarRelatorio("C:/Users/diego/git/oficinaWeb/oficina/relatorio/relatorioServico.jrxml",
-				buscaDadosdosServicos());
+				servicoServiceImpl.buscaDadosdosServicos());
 		Message.info("Impressão Reliazada com Sucesso!!!");
 		return servico;
 	}
 
 	public Servico imprimirServicoPorFuncionario() {
 		RelatorioUtil.criarRelatorio("C:/Users/diego/git/oficinaWeb/oficina/relatorio/teste.jrxml",
-				buscaQdtDosServicosPorFuncionarios());
+				servicoServiceImpl.buscaQdtDosServicosPorFuncionarios());
 		Message.info("Impressão Reliazada com Sucesso!!!");
 		return servico;
 	}
@@ -232,7 +186,7 @@ public class ServicoController implements Serializable {
 
 	public Servico imprimirContrato(Servico servico) {
 		RelatorioUtil.criarRelatorio("C:/Users/diego/git/oficinaWeb/oficina/relatorio/cartaDeServico.jrxml",
-				buscarServicosPorNomeFuncionario(servico.getFuncionario().getNome()));
+				servicoServiceImpl.buscarServicosPorNomeFuncionario(servico.getFuncionario().getNome()));
 		Message.info("Impressão Reliazada com Sucesso!!!");
 		return servico;
 	}
@@ -240,7 +194,7 @@ public class ServicoController implements Serializable {
 	public Servico gerarPdf() {
 		String pathJasper = "C:\\Users\\diego\\git\\oficinaWeb\\oficina\\relatorio\\relatorioServico.jasper";
 		String saida = "C:\\Users\\diego\\git\\oficinaWeb\\oficina\\relatorio\\relatorioServico.pdf";
-		RelatorioUtil.gerarArquivoPdf(pathJasper, buscaDadosdosServicos(), saida);
+		RelatorioUtil.gerarArquivoPdf(pathJasper, servicoServiceImpl.buscaDadosdosServicos(), saida);
 		return servico;
 	}
 

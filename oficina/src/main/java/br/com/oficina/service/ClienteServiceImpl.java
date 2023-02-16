@@ -40,19 +40,6 @@ public class ClienteServiceImpl implements ClienteService {
 		return clienteDAO.buscarDadosDosClientes(cliente);
 	}
 
-	@Override
-	public BonusCliente cadastrarBonusCliente(BonusCliente bonusCliente , Cliente cliente, Veiculo veiculo) {
-		return clienteDAO.cadastrarBonusCliente(bonusCliente, cliente, veiculo);
-	}
-
-	@Override
-	public List<BonusCliente> buscarBonusDosClientes() {
-		return clienteDAO.buscarBonusDosClientes();
-	}
-
-	@Override
-	public BonusCliente removerBonus(BonusCliente bonusCliente) {
-		return clienteDAO.removerBonus(bonusCliente);
-	}
+	
 
 }

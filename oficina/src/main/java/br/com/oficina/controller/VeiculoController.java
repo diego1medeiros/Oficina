@@ -11,6 +11,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import br.com.oficina.entity.Cliente;
 import br.com.oficina.entity.Veiculo;
+import br.com.oficina.service.ClienteServiceImpl;
 import br.com.oficina.service.VeiculoServiceImpl;
 import br.com.oficina.util.Message;
 import br.com.oficina.util.RelatorioUtil;
@@ -26,64 +27,24 @@ public class VeiculoController implements Serializable {
 	private Veiculo veiculo;
 	@Inject
 	private Cliente cliente;
-	
+
 	private List<Veiculo> veiculos = new ArrayList<>();
 
 	private List<Veiculo> listaVeiculos = new ArrayList<>();
-
-	public List<Veiculo> buscarDadosDosVeiculos(Veiculo veiculo) {
-		return veiculoServiceImpl.buscarDadosDosVeiculos(veiculo);
-	}
-
-	public Veiculo cadastrarVeiculo(Veiculo veiculo) {
-		return veiculoServiceImpl.cadastrarVeiculo(veiculo);
-	}
-
-	public Veiculo editarVeiculo(Veiculo veiculo) {
-		return veiculoServiceImpl.editarVeiculo(veiculo);
-	}
-
-	public List<Veiculo> buscarDadosDosVeiculos() {
-		return veiculoServiceImpl.buscarDadosDosVeiculos();
-	}
-
-	public Veiculo removerVeiculo(Veiculo veiculo) {
-		return veiculoServiceImpl.removerVeiculo(veiculo);
-	}
-
-	public List<Veiculo> buscarVeiculos(String nomeCliente) {
-		return veiculoServiceImpl.buscarVeiculos(nomeCliente);
-	}
-
-	public Veiculo buscarVeiculoPorId(Long id) {
-		return veiculoServiceImpl.buscarVeiculoPorId(id);
-	}
-
-	public Veiculo excluirBonusVeiculoPorId(Long id) {
-		return veiculoServiceImpl.excluirBonusVeiculoPorId(id);
-	}
-
-	public Veiculo getVeiculo() {
-		return veiculo;
-	}
-
-	public void setVeiculo(Veiculo veiculo) {
-		this.veiculo = veiculo;
-	}
 
 	public String cadastrarVeiculo() {
 		try {
 
 			if (veiculo.getIdVeiculo() == null) {
-				cadastrarVeiculo(veiculo);
+				veiculoServiceImpl.cadastrarVeiculo(veiculo);
 				carregarVeiculo();
 				limpar();
 				Message.info("Veiculo cadastrado com Sucesso!!!");
 			} else {
-				updateVeiculo(veiculo);
+				veiculoServiceImpl.editarVeiculo(veiculo);
 				carregarVeiculo();
 				limpar();
-
+				Message.info("Veiculo atualizado com Sucesso!!!");
 			}
 		} catch (Exception e) {
 			Message.erro("Veiculo não foi cadastrado!!!");
@@ -93,31 +54,19 @@ public class VeiculoController implements Serializable {
 
 	public void excluirVeiculo(Veiculo veiculo) {
 		try {
-			removerVeiculo(veiculo);
+			veiculoServiceImpl.removerVeiculo(veiculo);
 			carregarVeiculo();
 			limpar();
-			Message.info("Veiculo excluido com Sucesso!!!");
+			Message.erro("Veiculo excluido com Sucesso!!!");
 
 		} catch (Exception e) {
 			Message.erro("Veiculo não foi excluido!!!");
 		}
 	}
 
-	public void updateVeiculo(Veiculo veiculo) {
-		try {
-			editarVeiculo(veiculo);
-			carregarVeiculo();
-			limpar();
-			Message.info("Veiculo atualizado com Sucesso!!!");
-
-		} catch (Exception e) {
-			Message.erro("Veiculo não foi atualizado!!!");
-		}
-	}
-
 	public void pesquisarVeiculo() {
 		System.out.println(veiculo.getCliente().getNome());
-		veiculos = buscarDadosDosVeiculos(veiculo);
+		veiculos = veiculoServiceImpl.buscarDadosDosVeiculos(veiculo);
 		limpar();
 		if (!veiculos.isEmpty()) {
 			Message.info("Veiculo foi encontrado !!!");
@@ -128,21 +77,19 @@ public class VeiculoController implements Serializable {
 
 	@PostConstruct
 	public void carregarVeiculo() {
-		veiculos = buscarDadosDosVeiculos();
-	
+		veiculos = veiculoServiceImpl.buscarDadosDosVeiculos();
+
 	}
 
 	public List<SelectItem> getLista() {
-		ClienteController clienteController = new ClienteController();
+		ClienteServiceImpl clienteServiceImpl = new ClienteServiceImpl();
 		List<SelectItem> list = new ArrayList<SelectItem>();
-		List<Cliente> clientes = clienteController.buscarDadosDosClientes();
+		List<Cliente> clientes = clienteServiceImpl.buscarDadosDosClientes();
 		for (Cliente cliente : clientes) {
 			list.add(new SelectItem(cliente.getIdCliente(), cliente.getNome()));
 		}
 		return list;
 	}
-	
-	
 
 	private void limpar() {
 		veiculo = new Veiculo();
@@ -150,7 +97,7 @@ public class VeiculoController implements Serializable {
 
 	public Veiculo imprimir() {
 		RelatorioUtil.criarRelatorio("C:/Users/diego/git/oficinaWeb/oficina/relatorio/relatorioVeiculos.jrxml",
-				buscarDadosDosVeiculos());
+				veiculoServiceImpl.buscarDadosDosVeiculos());
 		Message.info("Impressão Reliazada com Sucesso!!!");
 		return veiculo;
 	}
@@ -158,7 +105,7 @@ public class VeiculoController implements Serializable {
 	public Veiculo gerarPdf() {
 		String pathJasper = "C:\\Users\\diego\\git\\oficinaWeb\\oficina\\relatorio\\relatorioVeiculos.jasper";
 		String saida = "C:\\Users\\diego\\git\\oficinaWeb\\oficina\\relatorio\\relatorioVeiculos.pdf";
-		RelatorioUtil.gerarArquivoPdf(pathJasper, buscarDadosDosVeiculos(), saida);
+		RelatorioUtil.gerarArquivoPdf(pathJasper, veiculoServiceImpl.buscarDadosDosVeiculos(), saida);
 		Message.info("Download Reliazada com Sucesso!!!");
 		return veiculo;
 
@@ -172,6 +119,14 @@ public class VeiculoController implements Serializable {
 
 	public String[] getTipo() {
 		return new String[] { "Carro", "Caminhão", "Ônibus" };
+	}
+
+	public Veiculo getVeiculo() {
+		return veiculo;
+	}
+
+	public void setVeiculo(Veiculo veiculo) {
+		this.veiculo = veiculo;
 	}
 
 	public List<Veiculo> getVeiculos() {

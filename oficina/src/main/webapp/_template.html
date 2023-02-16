@@ -5,17 +5,23 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	
 <h:head>
-	<h:outputStylesheet library="css" name="file.css" />
 	<h:outputScript library="js" name="locale-primefaces.js" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link rel="stylesheet" href="css/file.css" />
 	<f:loadBundle basename="messages" var="bundle"/>
 	
-
-
-
 	<style>
+	
+	html {
+	background-image: url("oficina1.png.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+}
+	
 .cabecalho {
 	text-align: left;
 	font: 14px Arial, sans-serif;
@@ -45,11 +51,12 @@
 <h:body >
 	<div id="cabecalho" >
 		<h:form >
+		
 			<font></font>
 			<p:growl id="messages" />
 			<font></font>
 			<font></font>
-			<p:menubar styleClass="barra" >
+			<p:menubar styleClass="barra" style="opacity:0.8" >
 				<font></font>
 				<p:submenu label="Cadastrar" icon="pi pi-bars">
 					<font> </font>
@@ -112,8 +119,16 @@
 				<font></font>
 			</p:menubar>
 			<font></font>
+			<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
 		</h:form>
-		<p:graphicImage library="imagens" name="logo.png" width="100" />
 		<h1>
 			<ui:insert name="titulo">
 			</ui:insert>

@@ -7,115 +7,121 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
 <h:head>
-	<h:outputStylesheet library="css" name="file.css" />
-
-
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Sistema de Oficina</title>
+	<style>
+html {
+	background-image: url("oficina1.png.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+}
+</style>
 </h:head>
 
 
 <h:body>
 
 	<center>
-		<p:graphicImage library="imagens" name="logo.png" width="100" />
-		<p:outputPanel>
-			<h1>Login</h1>
-		</p:outputPanel>
+		<br /> <br /> <br /> <br />
 		<h:form id="login">
-			<p:growl  showDetail="true" />
+			<p:growl showDetail="true" />
+			<p:panelGrid columns="5" style="opacity:0.8">
 
-			<p:panelGrid columns="2">
 				<p:outputLabel value="Login" for="login" style=" font-weight: bold;" />
 				<p:inputText value="#{login}" id="login"
 					placeholder="digite o login"
 					requiredMessage="O login é obrigatoria" />
 
-				<p:outputLabel value="Senha" for="senha" style=" font-weight: bold;"/>
+				<p:outputLabel value="Senha" for="senha" style=" font-weight: bold;" />
 				<p:password value="#{senha}" id="senha" placeholder="digite o senha"
 					requiredMessage="A senha e obrigatoria" />
 			</p:panelGrid>
+
 			<br />
 			<p:commandButton value="Efetue Login"
 				action="#{bean.isLoginSenhaValida(login,senha)}" update="@form"
 				process="@form" />
 			<br />
-</h:form>
-			<font></font>
-			<font></font>
-			<h3>Não tenho cadastro ?</h3>
-			<p:commandLink value="Cadastrar Funcionario"
-				onclick="PF('cadastroNovoFuncionario').show()" />
+		</h:form>
+		<font></font> <font></font>
+		<h2>Não tenho cadastro ?</h2>
+		<p:commandLink value="Cadastrar Funcionario"
+			onclick="PF('cadastroNovoFuncionario').show()" />
 
-			<p:dialog header="Cadastro de Funcionario"
-				widgetVar="cadastroNovoFuncionario" modal="true" resizable="false"
-				closeOnEscape="true">
-				<h:body>
-					<h:form id="form">
-						<p:messages autoUpdate="true" id="msg" />
-						<p:separator />
-						<p:panel style="margin-tpo:10pix">
-							<p:panelGrid columns="16" layout="grid" tableStyleClass="cabecalho">
-								<p:outputLabel value="Função" for="funcao" />
-								<p:selectOneMenu id="funcao" required="true"
-									requiredMessage="A funcão e obrigatório !!"
-									value="#{bean.funcionario.funcao}" size="19">
-									<f:selectItem itemLabel="Selecine a Função"
-										noSelectionOption="true" />
-									<f:selectItem itemLabel="Mecânico" itemValue="Mecânico" />
-									<f:selectItem itemLabel="Atendente" itemValue="Atendente" />
-									<f:selectItem itemLabel="Gerente" itemValue="Gerente" />
-								</p:selectOneMenu>
+		<p:dialog header="Cadastro de Funcionario"
+			widgetVar="cadastroNovoFuncionario" modal="true" resizable="false"
+			closeOnEscape="true">
 
-								<p:outputLabel value="Nome" for="nome" />
-								<p:inputText id="nome" required="true"
-									requiredMessage="O nome e Obrigatorio!!"
-									placeholder="Insira o Nome" value="#{bean.funcionario.nome}"
-									size="30" />
-								<p:outputLabel value="Cpf" for="cpf" />
-								<p:inputMask id="cpf" required="true" mask="999.999.999-99"
-									validateMask="true" requiredMessage="O cpf e obrigatório !!"
-									placeholder="Insira a cpf" value="#{bean.funcionario.cpf}"
-									size="15" />
-								<p:outputLabel value="Telefone" for="telefone" />
-								<p:inputMask id="telefone" required="true"
-									mask="(99) 99999-9999" validateMask="true"
-									requiredMessage="O telefone e obrigatório !!"
-									placeholder="Insira o telefone"
-									value="#{bean.funcionario.telefone}" size="15" />
-								<p:outputLabel value="Endereço" for="endereco" />
-								<p:inputText id="endereco" required="true"
-									requiredMessage="O enderenço e obrigatório !!"
-									placeholder="Insira o Endereço"
-									value="#{bean.funcionario.endereco}" size="25" />
 
-								<p:outputLabel value="Email" for="email" />
-								<p:inputText id="email" required="true" validateMask="true"
-									requiredMessage="O email e obrigatório !!"
-									placeholder="Insira o email" value="#{bean.funcionario.email}"
-									size="15" />
+			<h:body>
+				<h:form id="form">
+					<p:messages autoUpdate="true" id="msg" />
+					<p:separator />
+					<p:panel style="margin-tpo:10pix">
+						<p:panelGrid columns="16" layout="grid"
+							tableStyleClass="cabecalho">
+							<p:outputLabel value="Função" for="funcao" />
+							<p:selectOneMenu id="funcao" required="true"
+								requiredMessage="A funcão e obrigatório !!"
+								value="#{bean.funcionario.funcao}" size="19">
+								<f:selectItem itemLabel="Selecine a Função"
+									noSelectionOption="true" />
+								<f:selectItem itemLabel="Mecânico" itemValue="Mecânico" />
+								<f:selectItem itemLabel="Atendente" itemValue="Atendente" />
+								<f:selectItem itemLabel="Gerente" itemValue="Gerente" />
+							</p:selectOneMenu>
 
-								<p:outputLabel value="Login" for="login" />
-								<p:inputText id="login" required="true"
-									requiredMessage="O Login e obrigatório !!"
-									placeholder="Insira o Login" value="#{bean.funcionario.login}"
-									size="15" />
-								<p:outputLabel value="Senha" for="senha" />
-								<p:password weakLabel="Muita fraca" goodLabel="Senha razoavel"
-									strongLabel="Senha forte" inline="true" id="senha"
-									required="true" requiredMessage="A senha e obrigatório !!"
-									placeholder="Insira a Senha" value="#{bean.funcionario.senha}"
-									size="15" />
-							</p:panelGrid>
-						</p:panel>
-						<p:separator />
-						<p:commandButton value="Cadastrar" 
-							action="#{bean.cadastrarFuncionario}" update="form" 
-							process="@form" />
-						<p:separator />
-					</h:form>
-				</h:body>
-			</p:dialog>
+							<p:outputLabel value="Nome" for="nome" />
+							<p:inputText id="nome" required="true"
+								requiredMessage="O nome e Obrigatorio!!"
+								placeholder="Insira o Nome" value="#{bean.funcionario.nome}"
+								size="30" />
+							<p:outputLabel value="Cpf" for="cpf" />
+							<p:inputMask id="cpf" required="true" mask="999.999.999-99"
+								validateMask="true" requiredMessage="O cpf e obrigatório !!"
+								placeholder="Insira a cpf" value="#{bean.funcionario.cpf}"
+								size="15" />
+							<p:outputLabel value="Telefone" for="telefone" />
+							<p:inputMask id="telefone" required="true" mask="(99) 99999-9999"
+								validateMask="true"
+								requiredMessage="O telefone e obrigatório !!"
+								placeholder="Insira o telefone"
+								value="#{bean.funcionario.telefone}" size="15" />
+							<p:outputLabel value="Endereço" for="endereco" />
+							<p:inputText id="endereco" required="true"
+								requiredMessage="O enderenço e obrigatório !!"
+								placeholder="Insira o Endereço"
+								value="#{bean.funcionario.endereco}" size="25" />
+
+							<p:outputLabel value="Email" for="email" />
+							<p:inputText id="email" required="true" validateMask="true"
+								requiredMessage="O email e obrigatório !!"
+								placeholder="Insira o email" value="#{bean.funcionario.email}"
+								size="15" />
+
+							<p:outputLabel value="Login" for="login" />
+							<p:inputText id="login" required="true"
+								requiredMessage="O Login e obrigatório !!"
+								placeholder="Insira o Login" value="#{bean.funcionario.login}"
+								size="15" />
+							<p:outputLabel value="Senha" for="senha" />
+							<p:password weakLabel="Muita fraca" goodLabel="Senha razoavel"
+								strongLabel="Senha forte" inline="true" id="senha"
+								required="true" requiredMessage="A senha e obrigatório !!"
+								placeholder="Insira a Senha" value="#{bean.funcionario.senha}"
+								size="15" />
+						</p:panelGrid>
+					</p:panel>
+					<p:separator />
+					<p:commandButton value="Cadastrar"
+						action="#{bean.cadastrarFuncionario}" update="form"
+						process="@form" />
+					<p:separator />
+				</h:form>
+			</h:body>
+		</p:dialog>
 	</center>
 </h:body>
 </html>

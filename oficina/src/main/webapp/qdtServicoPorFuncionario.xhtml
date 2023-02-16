@@ -19,18 +19,16 @@
 		<ui:define name="conteudo">
 		<h:form id="form">
 		<p:growl  showDetail="true" />
-			<center>
-				<h1>Quantidade de Serviço Por Funcionario</h1>
-			</center>
-			<p:commandButton value="#{bundle.imprimir}" action="#{servicobean.imprimirServicoPorFuncionario}" id="imprimir"
-				icon="pi pi-print" update="form tabelaServico" process="@this">
-				<p:tooltip for="imprimir" value="Imprimir Relatorio"
-					showEffect="clip" hideEffect="fold" />
-			</p:commandButton>
+			
+		
 		<font></font>
 				<font></font>
 				<font></font>
 				<font></font>
+		<p:panel style="opacity:0.8">
+		<center>
+				<h1>Quantidade de Serviço Por Funcionario</h1>
+		
 		
 			<p:dataTable value="#{servicobean.qtdServicosPorFuncionario}" var="s"
 				id="tabelaServico" paginator="true" rows="5">
@@ -42,6 +40,14 @@
 					<h:outputText value="#{s.qtdeServico}" />
 				</p:column>
 			</p:dataTable>
+			
+				<p:commandButton value="#{bundle.imprimir}" action="#{servicobean.imprimirServicoPorFuncionario}" id="imprimir"
+				icon="pi pi-print" update="form tabelaServico" process="@this">
+				<p:tooltip for="imprimir" value="Imprimir Relatorio"
+					showEffect="clip" hideEffect="fold" />
+			</p:commandButton>
+				</center>
+			</p:panel>
 		</h:form>	
 		</ui:define>
 	</ui:composition>

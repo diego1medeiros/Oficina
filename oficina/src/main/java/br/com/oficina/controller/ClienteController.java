@@ -7,12 +7,7 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-
-import org.jboss.weld.context.ejb.Ejb;
-
-import br.com.oficina.entity.BonusCliente;
 import br.com.oficina.entity.Cliente;
-import br.com.oficina.entity.Veiculo;
 import br.com.oficina.service.ClienteServiceImpl;
 import br.com.oficina.util.Message;
 import br.com.oficina.util.RelatorioUtil;
@@ -29,57 +24,18 @@ public class ClienteController implements Serializable {
 	private List<Cliente> clientes = new ArrayList<>();
 	private List<Cliente> listaclientes = new ArrayList<>();
 
-	public Cliente cadastrarCliente(Cliente cliente) {
-		return clienteServiceImpl.cadastrarCliente(cliente);
-	}
-
-	public Cliente editarCliente(Cliente cliente) {
-		return clienteServiceImpl.editarCliente(cliente);
-	}
-
-	public List<Cliente> buscarDadosDosClientes() {
-		return clienteServiceImpl.buscarDadosDosClientes();
-	}
-
-	public Cliente removerCliente(Cliente cliente) {
-		return clienteServiceImpl.removerCliente(cliente);
-	}
-
-	public List<Cliente> buscarDadosDosClientes(Cliente cliente) {
-		return clienteServiceImpl.buscarDadosDosClientes(cliente);
-	}
-
-	public BonusCliente cadastrarBonusCliente(BonusCliente bonusCliente, Cliente cliente, Veiculo veiculo) {
-		return clienteServiceImpl.cadastrarBonusCliente(bonusCliente, cliente, veiculo);
-	}
-
-	public List<BonusCliente> buscarBonusDosClientes() {
-		return clienteServiceImpl.buscarBonusDosClientes();
-	}
-
-	public BonusCliente removerBonus(BonusCliente bonusCliente) {
-		return clienteServiceImpl.removerBonus(bonusCliente);
-	}
-
-	public Cliente getCliente() {
-		return cliente;
-	}
-
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
-
 	public String cadastrarCliente() {
 		try {
 			if (cliente.getIdCliente() == null) {
-				cadastrarCliente(cliente);
+				clienteServiceImpl.cadastrarCliente(cliente);
 				carregarCliente();
 				limpar();
 				Message.info("Cliente cadastrado com Sucesso!!!");
 			} else {
-				updateCliente(cliente);
+				clienteServiceImpl.editarCliente(cliente);
 				carregarCliente();
 				limpar();
+				Message.info("Cliente atualizado com Sucesso!!!");
 
 			}
 		} catch (Exception e) {
@@ -90,30 +46,18 @@ public class ClienteController implements Serializable {
 
 	public void excluirCliente(Cliente cliente) {
 		try {
-			removerCliente(cliente);
+			clienteServiceImpl.removerCliente(cliente);
 			carregarCliente();
 			limpar();
-			Message.info("Cliente excluido com Sucesso!!!");
+			Message.erro("Cliente excluido com Sucesso!!!");
 
 		} catch (Exception e) {
 			Message.erro("Cliente não foi excluido!!!");
 		}
 	}
 
-	public void updateCliente(Cliente cliente) {
-		try {
-			editarCliente(cliente);
-			carregarCliente();
-			limpar();
-			Message.info("Cliente atualizado com Sucesso!!!");
-
-		} catch (Exception e) {
-			Message.erro("Cliente não foi atualizado!!!");
-		}
-	}
-
 	public void pesquisarCliente() {
-		clientes = buscarDadosDosClientes(cliente);
+		clientes = clienteServiceImpl.buscarDadosDosClientes(cliente);
 		limpar();
 		if (!clientes.isEmpty()) {
 			Message.info("Cliente foi encontrado !!!");
@@ -124,14 +68,14 @@ public class ClienteController implements Serializable {
 
 	@PostConstruct
 	public void carregarCliente() {
-		clientes = buscarDadosDosClientes();
+		clientes = clienteServiceImpl.buscarDadosDosClientes();
 
 	}
 
 	public Cliente imprimir() {
 
 		RelatorioUtil.criarRelatorio("C:/Users/diego/git/oficinaWeb/oficina/relatorio/relatorioClientes.jrxml",
-				buscarDadosDosClientes());
+				clienteServiceImpl.buscarDadosDosClientes());
 		Message.info("Impressão Reliazada com Sucesso!!!");
 		return cliente;
 
@@ -140,9 +84,17 @@ public class ClienteController implements Serializable {
 	public Cliente gerarPdf() {
 		String pathJasper = "C:\\Users\\diego\\git\\oficinaWeb\\oficina\\relatorio\\relatorioClientes.jasper";
 		String saida = "C:\\Users\\diego\\git\\oficinaWeb\\oficina\\relatorio\\relatorioClientes.pdf";
-		RelatorioUtil.gerarArquivoPdf(pathJasper, buscarDadosDosClientes(), saida);
+		RelatorioUtil.gerarArquivoPdf(pathJasper, clienteServiceImpl.buscarDadosDosClientes(), saida);
 		Message.info("Download Reliazada com Sucesso!!!");
 		return cliente;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
 	private void limpar() {

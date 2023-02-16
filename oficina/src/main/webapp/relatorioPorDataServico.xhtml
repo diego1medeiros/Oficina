@@ -18,12 +18,13 @@
 	</ui:define>
 	<ui:define name="conteudo">
 		<h:body>
-			<center>
-				<h1>Buscar Serviços</h1>
-			</center>
+		
 			<h:form id="form">
 				<p:growl showDetail="true" />
-				<p:panel>
+				<p:panel style="opacity:0.8">
+					<center>
+				<h1>Buscar Serviços</h1>
+				</center>
 					<p:panelGrid columns="8" layout="grid" styleClass="ui-fluid"
 						columnClasses="ui-grid-col-1,ui-grid-col-3, ui-grid-col-1,ui-grid-col-3,ui-grid-col-1,ui-grid-col-3,ui-grid-col-1,ui-grid-col-3">
 						<p:outputLabel for="dataServico" value="#{bundle['servico.dataServico']}"  />
@@ -45,6 +46,7 @@
 						</p:selectOneMenu>
 					</p:panelGrid>
 				</p:panel>
+				<center>
 				<p:commandButton value="#{bundle.pesquisar}"  icon="pi pi-search"
 					id="pesquisar"
 					actionListener="#{servicobean.buscarServicosPorData}"
@@ -61,6 +63,8 @@
 					<p:tooltip for="imprimir" value="Imprimir Relatorio"
 						showEffect="clip" hideEffect="fold" />
 				</p:commandButton>
+			</center>
+			<p:panel style="opacity:0.8">
 				<center>
 					<h1>#{bundle['lista.servico']} </h1>
 				</center>
@@ -103,10 +107,10 @@
 					<p:column headerText="Observação">
 						<h:outputText value="#{s.observacoes}" />
 					</p:column>
-
-
 				</p:dataTable>
-			</h:form>
+				</p:panel>
+							</h:form>
+							
 		</h:body>
 	</ui:define>
 </ui:composition>

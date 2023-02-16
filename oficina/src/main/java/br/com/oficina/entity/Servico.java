@@ -78,8 +78,6 @@ public class Servico implements Serializable{
 		this.funcionario = funcionario;
 	}
 
-
-
 	public Servico() {
 	}
 

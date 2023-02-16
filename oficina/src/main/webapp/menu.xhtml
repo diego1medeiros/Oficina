@@ -6,22 +6,26 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <h:head>
-	<h:outputStylesheet library="css" name="file.css" />
+	<style>
+	html {
+	background-image: url("oficina1.png.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+}
+	</style>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Sistema de Oficina</title>
 </h:head>
 <h:body>
-
-
 	<center>
-
-		<p:graphicImage library="imagens" name="logo.png" width="100" />
-
 		<h:form>
+		<br /> <br /> <br /> <br />
 			<p:growl>
 				<p:autoUpdate />
 			</p:growl>
-			<p:panelMenu style="width:400px">
+			<p:panelMenu style="width:400px ;opacity:0.8">
 				<p:submenu label="Menu de Cadastros">
 					<p:menuitem value="Cadastrar Funcionario" icon="pi pi-pencil" style=" font-weight: bold;"
 						url="http://localhost:8080/oficina/cadastroFuncionario.xhtml" />

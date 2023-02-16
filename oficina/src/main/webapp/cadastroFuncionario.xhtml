@@ -6,26 +6,22 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <h:head>
-
 	<title>#{bundle.title}</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </h:head>
-
-
 <ui:composition template="/_template.html">
-	<ui:define name="titulo">
-		<h1>#{bundle[cadastro.funcionario]}</h1>
-	</ui:define>
-
 	<ui:define name="conteudo">
-
 		<h:body>
 			<h:form id="form">
 				<p:growl showDetail="true" />
 				<p:separator />
-				<p:panel style="margin-tpo:10pix">
+				<p:panel style="opacity:0.8">
+					<center>
+						<h1>#{bundle['cadastro.funcionario']}</h1>
+					</center>
 					<p:panelGrid columns="8" layout="grid">
-						<p:outputLabel value="#{bundle['funcionario.funcao']}" for="funcao" />
+						<p:outputLabel value="#{bundle['funcionario.funcao']}"
+							for="funcao" />
 						<p:selectOneMenu id="funcao" required="true"
 							requiredMessage="A funcão e obrigatório !!"
 							value="#{bean.funcionario.funcao}" size="19">
@@ -35,7 +31,6 @@
 							<f:selectItem itemLabel="Atendente" itemValue="Atendente" />
 							<f:selectItem itemLabel="Gerente" itemValue="Gerente" />
 						</p:selectOneMenu>
-
 						<p:outputLabel value="#{bundle['funcionario.nome']}" for="nome" />
 						<p:inputText id="nome" required="true"
 							requiredMessage="O nome e Obrigatorio!!"
@@ -46,23 +41,23 @@
 							validateMask="true" requiredMessage="O cpf e obrigatório !!"
 							placeholder="Insira a cpf" value="#{bean.funcionario.cpf}"
 							size="15" />
-						<p:outputLabel value="#{bundle['funcionario.telefone']}" for="telefone" />
+						<p:outputLabel value="#{bundle['funcionario.telefone']}"
+							for="telefone" />
 						<p:inputMask id="telefone" required="true" mask="(99) 99999-9999"
 							validateMask="true" requiredMessage="O telefone e obrigatório !!"
 							placeholder="Insira o telefone"
 							value="#{bean.funcionario.telefone}" size="15" />
-						<p:outputLabel value="#{bundle['funcionario.endereco']}" for="endereco" />
+						<p:outputLabel value="#{bundle['funcionario.endereco']}"
+							for="endereco" />
 						<p:inputText id="endereco" required="true"
 							requiredMessage="O enderenço e obrigatório !!"
 							placeholder="Insira o Endereço"
 							value="#{bean.funcionario.endereco}" size="30" />
-
 						<p:outputLabel value="#{bundle['funcionario.email']}" for="email" />
 						<p:inputText id="email" required="true" validateMask="true"
 							requiredMessage="O email e obrigatório !!"
 							placeholder="Insira o email" value="#{bean.funcionario.email}"
 							size="15" />
-
 						<p:outputLabel value="#{bundle['funcionario.login']}" for="login" />
 						<p:inputText id="login" required="true"
 							requiredMessage="O Login e obrigatório !!"
@@ -77,9 +72,9 @@
 					</p:panelGrid>
 				</p:panel>
 				<p:separator />
-				<p:commandButton value="#{bundle.salvar}" id="salvar" icon="pi pi-save"
-					action="#{bean.cadastrarFuncionario}" update="form"
-					style="margin-tpo:10pix" />
+				<p:commandButton value="#{bundle.salvar}" id="salvar"
+					icon="pi pi-save" action="#{bean.cadastrarFuncionario}"
+					update="form tabelaFuncionario" style="margin-tpo:10pix" />
 				<p:tooltip for="salvar" value="Salvar Serviço" showEffect="clip"
 					hideEffect="fold" />
 				<font></font>
@@ -91,9 +86,9 @@
 					showEffect="clip" hideEffect="fold" />
 				<font></font>
 				<font></font>
-				<p:commandButton value="#{bundle.imprimir}" action="#{bean.imprimir}"
-					id="imprimir" icon="pi pi-print" update="form tabelaFuncionario"
-					process="@this">
+				<p:commandButton value="#{bundle.imprimir}"
+					action="#{bean.imprimir}" id="imprimir" icon="pi pi-print"
+					update="form tabelaFuncionario" process="@this">
 					<p:tooltip for="imprimir" value="Imprimir Relatorio"
 						showEffect="clip" hideEffect="fold" />
 				</p:commandButton>
@@ -105,18 +100,17 @@
 					<p:tooltip for="download" value="Download Relatorio"
 						showEffect="clip" hideEffect="fold" />
 				</p:commandButton>
-
 				<p:separator />
 			</h:form>
-			<p:dialog header="Pesquisar Funcionario"
+			<p:dialog header="Pesquisar Funcionario" style="opacity:0.8"
 				widgetVar="pesquisarFuncionario" modal="true" resizable="false"
 				closeOnEscape="true">
 				<h:form id="form1">
-
 					<p:separator />
-					<p:panel>
+					<p:panel style="opacity:0.8">
 						<p:panelGrid columns="8" layout="grid">
-							<p:outputLabel value="#{bundle['funcionario.funcao']}" for="funcao" />
+							<p:outputLabel value="#{bundle['funcionario.funcao']}"
+								for="funcao" />
 							<p:selectOneMenu id="funcao" value="#{bean.funcionario.funcao}"
 								size="19">
 								<f:selectItem itemLabel="Selecine a Função"
@@ -125,7 +119,6 @@
 								<f:selectItem itemLabel="Atendente" itemValue="Atendente" />
 								<f:selectItem itemLabel="Gerente" itemValue="Gerente" />
 							</p:selectOneMenu>
-
 							<p:outputLabel value="#{bundle['funcionario.nome']}" for="nome" />
 							<p:inputText id="nome" placeholder="Insira o Nome"
 								value="#{bean.funcionario.nome}" size="25" />
@@ -133,24 +126,22 @@
 							<p:inputMask id="cpf" mask="999.999.999-99" validateMask="true"
 								placeholder="Insira a cpf" value="#{bean.funcionario.cpf}"
 								size="15" />
-							<p:outputLabel value="#{bundle['funcionario.telefone']}" for="telefone" />
+							<p:outputLabel value="#{bundle['funcionario.telefone']}"
+								for="telefone" />
 							<p:inputMask id="telefone" mask="(99) 99999-9999"
 								validateMask="true" placeholder="Insira o telefone"
 								value="#{bean.funcionario.telefone}" size="15" />
-
-							<p:outputLabel value="#{bundle['funcionario.endereco']}" for="endereco" />
+							<p:outputLabel value="#{bundle['funcionario.endereco']}"
+								for="endereco" />
 							<p:inputText id="endereco" placeholder="Insira o Endereço"
 								value="#{bean.funcionario.endereco}" size="25" />
-
 							<p:outputLabel value="#{bundle['funcionario.email']}" for="email" />
 							<p:inputText id="email" validateMask="true"
 								placeholder="Insira o email" value="#{bean.funcionario.email}"
 								size="15" />
-
 							<p:outputLabel value="#{bundle['funcionario.login']}" for="login" />
 							<p:inputText id="login" size="15"
 								value="#{bean.funcionario.login}" placeholder="Insira a Login" />
-
 							<p:outputLabel value="#{bundle['funcionario.senha']}" for="senha" />
 							<p:password weakLabel="Muita fraca" goodLabel="Senha razoavel"
 								strongLabel="Senha forte" inline="true" id="senha"
@@ -168,59 +159,58 @@
 					<p:separator />
 				</h:form>
 			</p:dialog>
-			<center>
-				<h1>#{bundle[lista.funcionario]}</h1>
-			</center>
-
-			<p:dataTable value="#{bean.funcionarios}" var="f" tableStyleClass="cabecalho"
-				id="tabelaFuncionario" paginator="true" rows="7"  stickyHeader="true" stickyTopAt=".layout-topbar">
-				<p:messages autoUpdate="true" id="msg" />
-				<p:column headerText="FUNÇÃO" >
-				<h:outputText value="#{f.funcao}" />
-				</p:column>
-				<p:column headerText="NOME" sortBy="#{f.nome}">
-				<h:outputText value="#{f.nome}"/>
-				</p:column>
-				<p:column headerText="CPF">
-				<h:outputText value="#{f.cpf}"/>
-				</p:column>
-				<p:column headerText="TELEFONE" >
-				<h:outputText value="#{f.telefone}"/>
-				</p:column>
-				<p:column headerText="ENDERENÇO">
-				<h:outputText value="#{f.endereco}"/>
-				</p:column>
-				<p:column headerText="EMAIL">
-				<h:outputText value="#{f.email}"/>
-				</p:column>
-				<p:column headerText="LOGIN">
-				<h:outputText value="#{f.login}"/>
-				</p:column>
-				<p:column headerText="SENHA">
-				<h:outputText value="#{f.senha}"/>
-				</p:column>
-				<p:column headerText="" width="100" >
-					<p:commandButton icon="pi pi-pencil" id="editar"
-						update="form tabelaFuncionario" process="@this">
-						<f:setPropertyActionListener value="#{f}"
-							target="#{bean.funcionario}" />
-						<p:tooltip for="editar" value="Editar Funcionario"
-							showEffect="clip" hideEffect="fold" />
-					</p:commandButton>
-					<font></font>
-					<font></font>
-
-					<p:commandButton action="#{bean.excluirFuncionario(f)}" styleClass="ui-button-danger"
-						id="excluir" icon="pi pi-trash" update="tabelaFuncionario"
-						process="@this">
-						<f:setPropertyActionListener value="#{f}"
-							target="#{bean.funcionario}" />
-						<p:tooltip for="excluir" value="Excluir Funcionario"
-							showEffect="clip" hideEffect="fold" />
-					</p:commandButton>
-				</p:column>
-
-			</p:dataTable>
+			<p:panel style="opacity:0.8">
+				<center>
+					<h1>#{bundle['lista.funcionario']}</h1>
+				</center>
+				<p:dataTable value="#{bean.funcionarios}" var="f"
+					tableStyleClass="cabecalho" style="opacity:0.8"
+					id="tabelaFuncionario" paginator="true" rows="7"
+					stickyHeader="true" stickyTopAt=".layout-topbar">
+					
+					<p:column headerText="FUNÇÃO">
+						<h:outputText value="#{f.funcao}" />
+					</p:column>
+					<p:column headerText="NOME" sortBy="#{f.nome}">
+						<h:outputText value="#{f.nome}" />
+					</p:column>
+					<p:column headerText="CPF">
+						<h:outputText value="#{f.cpf}" />
+					</p:column>
+					<p:column headerText="TELEFONE">
+						<h:outputText value="#{f.telefone}" />
+					</p:column>
+					<p:column headerText="ENDERENÇO">
+						<h:outputText value="#{f.endereco}" />
+					</p:column>
+					<p:column headerText="EMAIL">
+						<h:outputText value="#{f.email}" />
+					</p:column>
+					<p:column headerText="LOGIN">
+						<h:outputText value="#{f.login}" />
+					</p:column>
+					<p:column headerText="SENHA">
+						<h:outputText value="#{f.senha}" />
+					</p:column>
+					<p:column headerText="" width="100">
+						<p:commandButton icon="pi pi-pencil" id="editar"
+							update="form tabelaFuncionario" process="@this">
+							<f:setPropertyActionListener value="#{f}"
+								target="#{bean.funcionario}" />
+							<p:tooltip for="editar" value="Editar Funcionario"
+								showEffect="clip" hideEffect="fold" />
+						</p:commandButton>
+						<font></font>
+						<font></font>
+						<p:commandButton action="#{bean.excluirFuncionario(f)}"
+							styleClass="ui-button-danger" id="excluir" icon="pi pi-trash"
+							update="form tabelaFuncionario" process="@this">
+							<p:tooltip for="excluir" value="Excluir Funcionario"
+								showEffect="clip" hideEffect="fold" />
+						</p:commandButton>
+					</p:column>
+				</p:dataTable>
+			</p:panel>
 		</h:body>
 	</ui:define>
 </ui:composition>

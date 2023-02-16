@@ -12,41 +12,41 @@
 
 
 <ui:composition template="/_template.html">
-	<ui:define name="titulo">
-		<h1>Pesquisar Serviço Pelo Funcioanrio</h1>
-	</ui:define>
-
-	<ui:define name="conteudo">
-
+		<ui:define name="conteudo">
 		<h:body>
 			<h:form id="form">
-				<p:growl  showDetail="true" />
-				<p:commandButton value="#{bundle.pesquisar}"
-					oncomplete="PF('pesquisarServico').show()" icon="pi pi-search"
-					id="pesquisar" />
-				<p:tooltip for="pesquisar" value="Pesquisar Serviço"
-					showEffect="clip" hideEffect="fold" />
-				<font></font>
-				<font></font>
-				<font></font>
-				<p:commandButton value="#{bundle.imprimir}"
-					action="#{servicobean.imprimirServicoPeloFuncioanrio}" id="imprimir"
-					icon="pi pi-print" update="form tabelaServico" process="@this">
-					<p:tooltip for="imprimir" value="Imprimir Relatorio"
-						showEffect="clip" hideEffect="fold" />
-				</p:commandButton>
-				<p:separator />
+				<p:panel style="opacity:0.8">
+					<center>
+						<h1>Pesquisar Serviço Pelo Funcioanrio</h1>
+						<p:growl showDetail="true" />
+						<p:separator />
+						<p:commandButton value="#{bundle.pesquisar}"
+							oncomplete="PF('pesquisarServico').show()" icon="pi pi-search"
+							id="pesquisar" />
+						<p:tooltip for="pesquisar" value="Pesquisar Serviço"
+							showEffect="clip" hideEffect="fold" />
+						<font></font> <font></font> <font></font>
+						<p:commandButton value="#{bundle.imprimir}"
+							action="#{servicobean.imprimirServicoPeloFuncioanrio}"
+							id="imprimir" icon="pi pi-print" update="form tabelaServico"
+							process="@this">
+							<p:tooltip for="imprimir" value="Imprimir Relatorio"
+								showEffect="clip" hideEffect="fold" />
+						</p:commandButton>
+						<p:separator />
+					</center>
+				</p:panel>
 			</h:form>
 			<p:dialog header="Pesquisar Funcionario" widgetVar="pesquisarServico"
-				modal="true" resizable="false" closeOnEscape="true">
+				modal="true" resizable="false" closeOnEscape="true"
+				style="opacity:0.8">
 				<h:form id="form1">
 					<p:messages autoUpdate="true" id="msg" />
-						<p:panelGrid columns="4" >
-
-							<p:outputLabel value="Funcionario" for="funcionario" />
-							<p:inputMask id="funcionario" placeholder="Insira o funcionario"
-								value="#{servicobean.servico.funcionario.nome}" size="30" />
-						</p:panelGrid>
+					<p:panelGrid columns="4">
+						<p:outputLabel value="Funcionario" for="funcionario" />
+						<p:inputMask id="funcionario" placeholder="Insira o funcionario"
+							value="#{servicobean.servico.funcionario.nome}" size="30" />
+					</p:panelGrid>
 					<font></font>
 					<font></font>
 					<p:commandButton icon="pi pi-search" id="pesquisar"
@@ -55,98 +55,91 @@
 						oncomplete="PF('pesquisarServico').hide()" />
 					<p:tooltip for="pesquisar" value="Pesquisar Serviço"
 						showEffect="clip" hideEffect="fold" />
-
 				</h:form>
 			</p:dialog>
-			<center>
-				<h1>Lista de Serviço</h1>
-			</center>
-
-			<p:dataTable value="#{servicobean.servicoPorFuncionario}" var="s"
-				id="tabelaServico" paginator="true" rows="5"  rowStyleClass="#{s.pago == 1 ? 'cheap' : null}">
-				<p:column headerText="Funcionario">
-					<h:outputText value="#{s.funcionario.nome}" />
-				</p:column>
-				<p:column headerText="Cliente">
-					<h:outputText value="#{s.cliente.nome}" />
-				</p:column>
-				<p:column headerText="Modelo">
-					<h:outputText value="#{s.veiculo.modelo}" />
-				</p:column>
-
-				<p:column headerText="Data do Serviço">
-					<h:outputText value="#{s.data}">
-						<f:convertDateTime pattern="dd/MM/yyyy" />
-					</h:outputText>
-				</p:column>
-				<p:column headerText="Data da Entrega">
-					<h:outputText value="#{s.dataEntrega}">
-						<f:convertDateTime pattern="dd/MM/yyyy" />
-					</h:outputText>
-				</p:column>
-
-				<p:column headerText="Valor">
+			<p:panel style="opacity:0.8">
+				<center>
+					<h1>Lista de Serviço</h1>
+				</center>
+				<p:dataTable value="#{servicobean.servicoPorFuncionario}" var="s"
+					id="tabelaServico" paginator="true" rows="5"
+					rowStyleClass="#{s.pago == 1 ? 'cheap' : null}">
+					<p:column headerText="Funcionario">
+						<h:outputText value="#{s.funcionario.nome}" />
+					</p:column>
+					<p:column headerText="Cliente">
+						<h:outputText value="#{s.cliente.nome}" />
+					</p:column>
+					<p:column headerText="Modelo">
+						<h:outputText value="#{s.veiculo.modelo}" />
+					</p:column>
+					<p:column headerText="Data do Serviço">
+						<h:outputText value="#{s.data}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</h:outputText>
+					</p:column>
+					<p:column headerText="Data da Entrega">
+						<h:outputText value="#{s.dataEntrega}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</h:outputText>
+					</p:column>
+					<p:column headerText="Valor">
 						<h:outputText value="#{s.valor}">
 							<f:convertNumber type="currency" />
 						</h:outputText>
 					</p:column>
-				<p:column headerText="Pago">
-					<h:outputText value="#{servicobean.formatarPagamento(s)}"  />
-				</p:column>
-				<p:column headerText="Status" width="100">
-					<h:outputText value="#{s.status}" />
-				</p:column>
-				<p:column headerText="Descrição">
-					<h:outputText value="#{s.descricao}" />
-				</p:column>
-				<p:column headerText="Observação">
-					<h:outputText value="#{s.observacoes}" />
-				</p:column>
+					<p:column headerText="Pago">
+						<h:outputText value="#{servicobean.formatarPagamento(s)}" />
+					</p:column>
+					<p:column headerText="Status" width="100">
+						<h:outputText value="#{s.status}" />
+					</p:column>
+					<p:column headerText="Descrição">
+						<h:outputText value="#{s.descricao}" />
+					</p:column>
+					<p:column headerText="Observação">
+						<h:outputText value="#{s.observacoes}" />
+					</p:column>
+					<p:column headerText="" width="100">
+						<p:commandButton icon="pi pi-pencil" update="form tabelaServico"
+							id="atualizar" process="@this">
+							<f:setPropertyActionListener value="#{s}"
+								target="#{servicobean.servico}" />
+							<p:tooltip for="atualizar" value="Editar Serviço"
+								showEffect="clip" hideEffect="fold" />
+						</p:commandButton>
+						<font></font>
+						<p:commandButton action="#{servicobean.excluirServico(s)}"
+							styleClass="ui-button-danger" id="excluir" icon="pi pi-trash"
+							update="tabelaServico" process="@this">
+							<f:setPropertyActionListener value="#{s}"
+								target="#{servicobean.servico}" />
+							<p:tooltip for="excluir" value="Excluir Serviço"
+								showEffect="clip" hideEffect="fold" />
+						</p:commandButton>
+						<p:separator />
+						<p:commandButton action="#{servicobean.ordemServico(s)}"
+							styleClass="ui-button-help mr-2" id="animate" icon="pi pi-print"
+							update="tabelaServico" process="@this">
+							<f:setPropertyActionListener value="#{s}"
+								target="#{servicobean.servico}" />
+							<p:tooltip for="animate" value="Imprimir O.S." showEffect="clip"
+								hideEffect="fold" />
+						</p:commandButton>
+						<font></font>
 
-				<p:column headerText="" width="100">
-					<p:commandButton icon="pi pi-pencil" update="form tabelaServico"
-						id="atualizar" process="@this">
-						<f:setPropertyActionListener value="#{s}"
-							target="#{servicobean.servico}" />
-						<p:tooltip for="atualizar" value="Editar Serviço"
-							showEffect="clip" hideEffect="fold" />
-
-					</p:commandButton>
-					<font></font>
-
-					<p:commandButton action="#{servicobean.excluirServico(s)}" styleClass="ui-button-danger"
-						id="excluir" icon="pi pi-trash" update="tabelaServico"
-						process="@this">
-						<f:setPropertyActionListener value="#{s}"
-							target="#{servicobean.servico}" />
-						<p:tooltip for="excluir" value="Excluir Serviço" showEffect="clip"
-							hideEffect="fold" />
-
-					</p:commandButton>
-					<p:separator />
-					<p:commandButton action="#{servicobean.ordemServico(s)}" styleClass="ui-button-help mr-2"
-						id="animate" icon="pi pi-print" update="tabelaServico"
-						process="@this">
-						<f:setPropertyActionListener value="#{s}"
-							target="#{servicobean.servico}" />
-						<p:tooltip for="animate" value="Imprimir O.S." showEffect="clip"
-							hideEffect="fold" />
-
-					</p:commandButton>
-					<font></font>
-
-					<font></font>
-					<p:commandButton action="#{servicobean.imprimirContrato(s)}" styleClass="ui-button-warning mr-2"
-						id="contrato" icon="pi pi-book" update="tabelaServico"
-						process="@this">
-						<f:setPropertyActionListener value="#{s}"
-							target="#{servicobean.servico}" />
-						<p:tooltip for="contrato" value="Imprimir contrato"
-							showEffect="clip" hideEffect="fold" />
-
-					</p:commandButton>
-				</p:column>
-			</p:dataTable>
+						<font></font>
+						<p:commandButton action="#{servicobean.imprimirContrato(s)}"
+							styleClass="ui-button-warning mr-2" id="contrato"
+							icon="pi pi-book" update="tabelaServico" process="@this">
+							<f:setPropertyActionListener value="#{s}"
+								target="#{servicobean.servico}" />
+							<p:tooltip for="contrato" value="Imprimir contrato"
+								showEffect="clip" hideEffect="fold" />
+						</p:commandButton>
+					</p:column>
+				</p:dataTable>
+			</p:panel>
 		</h:body>
 	</ui:define>
 </ui:composition>

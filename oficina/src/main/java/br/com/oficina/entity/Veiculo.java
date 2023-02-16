@@ -29,7 +29,6 @@ public class Veiculo implements Serializable {
 	private String ano;
 	@ManyToOne
 	@JoinColumn(name = "\"ID_CLIENTE\"")
-	
 	private Cliente cliente = new Cliente();
 
 	public Veiculo() {

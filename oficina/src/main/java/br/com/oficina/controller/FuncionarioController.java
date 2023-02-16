@@ -21,7 +21,6 @@ import javax.inject.Named;
 @SessionScoped
 public class FuncionarioController implements Serializable {
 	private static final long serialVersionUID = 1L;
-
 	private FuncionarioServiceImpl funcionarioServiceImpl = new FuncionarioServiceImpl();
 
 	@Inject
@@ -29,39 +28,9 @@ public class FuncionarioController implements Serializable {
 
 	private List<Funcionario> funcionarios = new ArrayList<>();
 
-	public List<Funcionario> buscarDadosDosFuncionarios() {
-		return funcionarioServiceImpl.buscarDadosDosFuncionarios();
-	}
-
-	public Funcionario buscarFuncionarioPeloId(Long id) {
-		return funcionarioServiceImpl.buscarFuncionarioPeloId(id);
-	}
-
-	public Funcionario editarFuncionario(Funcionario funcionario) {
-		return funcionarioServiceImpl.editarFuncionario(funcionario);
-	}
-
-	public Funcionario cadastrarFuncionario(Funcionario funcionario) {
-		return funcionarioServiceImpl.cadastrarFuncionario(funcionario);
-	}
-
-	public Funcionario removerFuncionario(Funcionario funcionario) {
-
-		return funcionarioServiceImpl.removerFuncionario(funcionario);
-
-	}
-
-	public Long removerFuncionario(Long id) {
-		return funcionarioServiceImpl.removerFuncionario(id);
-	}
-
-	public List<Funcionario> buscarDadosDosFuncionarios(Funcionario funcionario) {
-		return funcionarioServiceImpl.buscarDadosDosFuncionarios(funcionario);
-	}
-
 	public String isLoginSenhaValida(String login, String senha) {
 		try {
-			List<Funcionario> listaFuncionarios = buscarDadosDosFuncionarios();
+			List<Funcionario> listaFuncionarios = funcionarioServiceImpl.buscarDadosDosFuncionarios();
 			for (Funcionario funcionario : listaFuncionarios) {
 				if (login.equals(funcionario.getLogin()) && senha.equals(funcionario.getSenha())) {
 					Message.info("Login e Senha valida!!!");
@@ -72,12 +41,11 @@ public class FuncionarioController implements Serializable {
 			}
 		} catch (Exception e) {
 		}
-		Message.info("Login e Senha errada!!!");
+		Message.erro("Login e Senha errada!!!");
 		return null;
 	}
 
 	public String deslogar() {
-
 		FacesContext context = FacesContext.getCurrentInstance();
 		context.getExternalContext().getSessionMap().remove("funcionarioLogado");
 		return "logar?faces-redirect-true";
@@ -85,7 +53,6 @@ public class FuncionarioController implements Serializable {
 	}
 
 	public String cadastroLogin() {
-
 		FacesContext context = FacesContext.getCurrentInstance();
 		try {
 			context.getExternalContext().redirect("http://localhost:8080/oficina/cadastroLoginFuncionario.xhtml");
@@ -100,15 +67,17 @@ public class FuncionarioController implements Serializable {
 	public String cadastrarFuncionario() {
 		try {
 			if (funcionario.getIdFuncionario() == null) {
-				cadastrarFuncionario(funcionario);
+				 funcionarioServiceImpl.cadastrarFuncionario(funcionario);
+				Message.info("Funcionario Cadastro com Sucesso!!!");
 				carregarFuncionarios();
 				limpar();
-				Message.info("Funcionario Cadastro com Sucesso!!!");
 			} else {
-				updateFuncionario(funcionario);
+				funcionarioServiceImpl.editarFuncionario(funcionario);
+				Message.info("Funcionario atualizado com Sucesso!!!");
 				carregarFuncionarios();
 				limpar();
 			}
+		
 		} catch (Exception e) {
 			Message.erro(" Funcionario não foi Cadastro!!!");
 
@@ -119,7 +88,7 @@ public class FuncionarioController implements Serializable {
 	public Funcionario imprimir() {
 
 		RelatorioUtil.criarRelatorio("C:/Users/diego/git/oficinaWeb/oficina/relatorio/relatorioFuncionario.jrxml",
-				buscarDadosDosFuncionarios());
+				funcionarioServiceImpl.buscarDadosDosFuncionarios());
 		Message.info("Impressão Reliazada com Sucesso!!!");
 		return funcionario;
 
@@ -128,7 +97,7 @@ public class FuncionarioController implements Serializable {
 	public Funcionario gerarPdf() {
 		String pathJasper = "C:\\Users\\diego\\git\\oficinaWeb\\oficina\\relatorio\\relatorioFuncionario.jasper";
 		String saida = "C:\\Users\\diego\\git\\oficinaWeb\\oficina\\relatorio\\relatorioFuncionario.pdf";
-		RelatorioUtil.gerarArquivoPdf(pathJasper, buscarDadosDosFuncionarios(), saida);
+		RelatorioUtil.gerarArquivoPdf(pathJasper, funcionarioServiceImpl.buscarDadosDosFuncionarios(), saida);
 		Message.info("Download Reliazada com Sucesso!!!");
 		return funcionario;
 
@@ -136,28 +105,17 @@ public class FuncionarioController implements Serializable {
 
 	public void excluirFuncionario(Funcionario funcionario) {
 		try {
-			removerFuncionario(funcionario);
-			Message.info("Funcionario excluido com Sucesso!!!");
+			funcionarioServiceImpl.removerFuncionario(funcionario);
+			Message.erro("Funcionario excluido com Sucesso!!!");
 			carregarFuncionarios();
 			limpar();
-
 		} catch (Exception e) {
 			Message.erro(" Funcionario não foi excluido!!!");
 		}
 	}
-	public void updateFuncionario(Funcionario funcionario) {
-		try {
-			editarFuncionario(funcionario);
-			carregarFuncionarios();
-			Message.info("Funcionario atualizado com Sucesso!!!");
-
-		} catch (Exception e) {
-			Message.erro(" Funcionario não foi atualizado!!!");
-		}
-	}
-
+	
 	public void pesquisarFuncionario() {
-		funcionarios = buscarDadosDosFuncionarios(funcionario);
+		funcionarios =funcionarioServiceImpl.buscarDadosDosFuncionarios(funcionario);
 		limpar();
 		if(!funcionarios.isEmpty()) {
 			Message.info("Funcionario foi encontrado !!!");
@@ -165,9 +123,10 @@ public class FuncionarioController implements Serializable {
 			Message.info("Funcionario não foi encontrado !!!");
 		}
 		}
+	
 	@PostConstruct
 	public void carregarFuncionarios() {
-		funcionarios = buscarDadosDosFuncionarios();
+		funcionarios = funcionarioServiceImpl.buscarDadosDosFuncionarios();
 	}
 
 	private void limpar() {

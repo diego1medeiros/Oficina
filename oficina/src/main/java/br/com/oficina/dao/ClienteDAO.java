@@ -1,13 +1,9 @@
 package br.com.oficina.dao;
 
-import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-import br.com.oficina.entity.BonusCliente;
-import br.com.oficina.entity.BonusClienteId;
 import br.com.oficina.entity.Cliente;
-import br.com.oficina.entity.Veiculo;
 import br.com.oficina.util.JPAUtil;
 
 public class ClienteDAO {
@@ -118,51 +114,7 @@ public class ClienteDAO {
 		return listaClientes;
 	}
 
-	public BonusCliente cadastrarBonusCliente(BonusCliente bonusCliente, Cliente cliente, Veiculo veiculo) {
-		EntityManager em = JPAUtil.getConnection();
-		try {
-			em.getTransaction().begin();
-			bonusCliente.setBonusClienteId(new BonusClienteId(cliente.getIdCliente(), veiculo.getIdVeiculo()));
-			bonusCliente.setDescricaoBonus(bonusCliente.getDescricaoBonus());
-			em.persist(bonusCliente);
-			em.getTransaction().commit();
-		} catch (Exception e) {
-			em.getTransaction().rollback();
-		} finally {
-			em.close();
-		}
-		return bonusCliente;
-	}
-
-	public List<BonusCliente> buscarBonusDosClientes() {
-		EntityManager em = JPAUtil.getConnection();
-		List<BonusCliente> listaBonus = null;
-		try {
-			String jpql = "select b from BonusCliente b ";
-			listaBonus = em.createQuery(jpql, BonusCliente.class).getResultList();
-			em.close();
-		} catch (Exception e) {
-			em.getTransaction().rollback();
-		}
-		return listaBonus;
-	}
-
-	public BonusCliente removerBonus(BonusCliente bonusCliente) {
-		EntityManager em = JPAUtil.getConnection();
-		try {
-			em.getTransaction().begin();
-
-			bonusCliente = em.merge(bonusCliente);
-			em.remove(bonusCliente);
-			em.getTransaction().commit();
-		} catch (Exception e) {
-			em.getTransaction().rollback();
-		} finally {
-			em.close();
-		}
-		return bonusCliente;
-	}
-
+	
 	public List<Cliente> buscarCliente(String nomeCliente) {
 		EntityManager em = JPAUtil.getConnection();
 		List<Cliente> listaClientes = null;
