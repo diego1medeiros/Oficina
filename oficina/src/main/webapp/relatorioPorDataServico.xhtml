@@ -21,7 +21,7 @@
 		
 			<h:form id="form">
 				<p:growl showDetail="true" />
-				<p:panel style="opacity:0.8">
+				<p:panel style="opacity:0.9">
 					<center>
 				<h1>Buscar Serviços</h1>
 				</center>
@@ -35,9 +35,6 @@
 						<p:datePicker id="dataEntrega" showIcon="true"
 							value="#{servicobean.servico.dataEntrega}" pattern="dd/MM/yyyy"
 							locale="pt_BR" />
-
-
-
 						<p:outputLabel for="pago" value="#{bundle['servico.pago']}"  />
 						<p:selectOneMenu id="pago" value="#{servicobean.servico.pago}">
 							<f:selectItem itemLabel="Todos" itemValue="2" />
@@ -64,13 +61,14 @@
 						showEffect="clip" hideEffect="fold" />
 				</p:commandButton>
 			</center>
-			<p:panel style="opacity:0.8">
+			<p:panel style="opacity:0.9">
 				<center>
 					<h1>#{bundle['lista.servico']} </h1>
 				</center>
-				<p:dataTable value="#{servicobean.servicosPorData}" var="s" tableStyleClass="cabecalho"
+				<p:dataTable value="#{servicobean.servicosPorData}" var="s" 
 					id="tabelaServico" paginator="true" rows="7" stickyHeader="true"
 					stickyTopAt=".layout-topbar"  rowStyleClass="#{s.pago == 1 ? 'cheap' : null}">
+					
 					<p:column headerText="Funcionario">
 						<h:outputText value="#{s.nomeFuncionario}" />
 					</p:column>

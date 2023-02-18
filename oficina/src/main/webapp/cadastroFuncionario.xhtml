@@ -15,7 +15,7 @@
 			<h:form id="form">
 				<p:growl showDetail="true" />
 				<p:separator />
-				<p:panel style="opacity:0.8">
+				<p:panel style="opacity:0.9">
 					<center>
 						<h1>#{bundle['cadastro.funcionario']}</h1>
 					</center>
@@ -102,7 +102,7 @@
 				</p:commandButton>
 				<p:separator />
 			</h:form>
-			<p:dialog header="Pesquisar Funcionario" style="opacity:0.8"
+			<p:dialog header="Pesquisar Funcionario" style="opacity:0.9"
 				widgetVar="pesquisarFuncionario" modal="true" resizable="false"
 				closeOnEscape="true">
 				<h:form id="form1">
@@ -164,7 +164,7 @@
 					<h1>#{bundle['lista.funcionario']}</h1>
 				</center>
 				<p:dataTable value="#{bean.funcionarios}" var="f"
-					tableStyleClass="cabecalho" style="opacity:0.8"
+					tableStyleClass="cabecalho" style="opacity:0.9"
 					id="tabelaFuncionario" paginator="true" rows="7"
 					stickyHeader="true" stickyTopAt=".layout-topbar">
 					

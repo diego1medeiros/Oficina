@@ -7,6 +7,7 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
 <h:head>
+	<link rel="stylesheet" href="css/estilo.css"/>
 	<h:outputStylesheet library="css" name="file.css" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>#{bundle['title']}</title>
@@ -16,13 +17,15 @@
 	<ui:define name="conteudo">
 		<h:body>
 			<h:form id="form">
+			
 				<p:growl showDetail="true" />
 				<p:separator />
-				<p:panel style="opacity:0.8">
+				<p:panel style="opacity:0.9; background-color:#D2691E!important;
+				">
 					<center>
 						<h1>#{bundle['cadastro.cliente']}</h1>
 					</center>
-					<p:panelGrid columns="14" layout="grid" style="margin-tpo:10pix">
+					<p:panelGrid columns="14" layout="grid" style="margin-tpo:10pix ; ">
 						<p:outputLabel value="#{bundle['cliente.nome']}" for="nome" />
 						<p:inputText id="nome" required="true"
 							requiredMessage="O nome e Obrigatorio!!"
@@ -32,19 +35,19 @@
 						<p:inputMask id="cpf" required="true" mask="999.999.999-99"
 							validateMask="true" requiredMessage="O cpf e obrigatório !!"
 							placeholder="Insira o cpf" value="#{clientebean.cliente.cpf}"
-							size="25" />
+							size="10" />
 						<p:outputLabel value="#{bundle['cliente.telefone']}"
 							for="telefone" />
 						<p:inputMask id="telefone" required="true" mask="(99) 99999-9999"
 							validateMask="true" requiredMessage="O telefone e obrigatório !!"
 							placeholder="Insira o telefone"
-							value="#{clientebean.cliente.telefone}" size="25" />
+							value="#{clientebean.cliente.telefone}" size="15" />
 						<p:outputLabel value="#{bundle['cliente.endereco']}"
 							for="endereco" />
 						<p:inputText id="endereco" required="true"
 							requiredMessage="O enderenço e obrigatório !!"
 							placeholder="Insira o Endereço"
-							value="#{clientebean.cliente.endereco}" size="25" />
+							value="#{clientebean.cliente.endereco}" size="35" />
 						<p:outputLabel value="#{bundle['cliente.email']}" for="email" />
 						<p:inputText id="email" required="true" validateMask="true"
 							requiredMessage="O email e obrigatório !!"
@@ -85,7 +88,7 @@
 			</h:form>
 			<p:dialog header="Pesquisar Cliente" widgetVar="pesquisarCliente"
 				modal="true" resizable="false" closeOnEscape="true"
-				style="opacity:0.8">
+				>
 				<p:separator />
 				<h:form id="form1">
 					<p:messages autoUpdate="true" id="msg" />
@@ -127,7 +130,7 @@
 						showEffect="clip" hideEffect="fold" />
 				</h:form>
 			</p:dialog>
-			<p:panel style="opacity:0.8">
+			<p:panel style="opacity:0.9" >
 				<center>
 					<h1>#{bundle['lista.cliente']}</h1>
 				</center>

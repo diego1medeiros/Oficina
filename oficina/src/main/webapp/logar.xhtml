@@ -19,26 +19,25 @@ html {
 }
 </style>
 </h:head>
-
-
 <h:body>
 
 	<center>
+	
 		<br /> <br /> <br /> <br />
+		<br /> <br />
+		<h1 style="font-weight: bold;">LOGIN</h1>
 		<h:form id="login">
 			<p:growl showDetail="true" />
-			<p:panelGrid columns="5" style="opacity:0.8">
+			<p:panelGrid columns="2" style="opacity:0.8">
 
 				<p:outputLabel value="Login" for="login" style=" font-weight: bold;" />
 				<p:inputText value="#{login}" id="login"
 					placeholder="digite o login"
 					requiredMessage="O login é obrigatoria" />
-
 				<p:outputLabel value="Senha" for="senha" style=" font-weight: bold;" />
 				<p:password value="#{senha}" id="senha" placeholder="digite o senha"
 					requiredMessage="A senha e obrigatoria" />
 			</p:panelGrid>
-
 			<br />
 			<p:commandButton value="Efetue Login"
 				action="#{bean.isLoginSenhaValida(login,senha)}" update="@form"
@@ -49,12 +48,9 @@ html {
 		<h2>Não tenho cadastro ?</h2>
 		<p:commandLink value="Cadastrar Funcionario"
 			onclick="PF('cadastroNovoFuncionario').show()" />
-
 		<p:dialog header="Cadastro de Funcionario"
 			widgetVar="cadastroNovoFuncionario" modal="true" resizable="false"
 			closeOnEscape="true">
-
-
 			<h:body>
 				<h:form id="form">
 					<p:messages autoUpdate="true" id="msg" />
@@ -72,7 +68,6 @@ html {
 								<f:selectItem itemLabel="Atendente" itemValue="Atendente" />
 								<f:selectItem itemLabel="Gerente" itemValue="Gerente" />
 							</p:selectOneMenu>
-
 							<p:outputLabel value="Nome" for="nome" />
 							<p:inputText id="nome" required="true"
 								requiredMessage="O nome e Obrigatorio!!"
@@ -94,13 +89,11 @@ html {
 								requiredMessage="O enderenço e obrigatório !!"
 								placeholder="Insira o Endereço"
 								value="#{bean.funcionario.endereco}" size="25" />
-
 							<p:outputLabel value="Email" for="email" />
 							<p:inputText id="email" required="true" validateMask="true"
 								requiredMessage="O email e obrigatório !!"
 								placeholder="Insira o email" value="#{bean.funcionario.email}"
 								size="15" />
-
 							<p:outputLabel value="Login" for="login" />
 							<p:inputText id="login" required="true"
 								requiredMessage="O Login e obrigatório !!"
