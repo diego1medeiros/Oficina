@@ -16,11 +16,13 @@ import br.com.oficina.util.RelatorioUtil;
 @SessionScoped
 public class ClienteController implements Serializable {
 
- 	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
+
 	private ClienteServiceImpl clienteServiceImpl = new ClienteServiceImpl();
+	
 	@Inject
 	private Cliente cliente;
- //teste
+
 	private List<Cliente> clientes = new ArrayList<>();
 	private List<Cliente> listaclientes = new ArrayList<>();
 

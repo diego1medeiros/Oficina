@@ -11,4 +11,9 @@
 		<var>bundle</var>
 	   </resource-bundle>
      </application>
+     
+     <lifecycle>
+  <phase-listener> br.com.oficina.util.Autorizador</phase-listener>
+  
+  </lifecycle>
   </faces-config>
