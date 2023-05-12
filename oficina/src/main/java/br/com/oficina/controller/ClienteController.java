@@ -11,7 +11,7 @@ import br.com.oficina.entity.Cliente;
 import br.com.oficina.service.ClienteServiceImpl;
 import br.com.oficina.util.Message;
 import br.com.oficina.util.RelatorioUtil;
-
+//teste
 @Named("clientebean")
 @SessionScoped
 public class ClienteController implements Serializable {
